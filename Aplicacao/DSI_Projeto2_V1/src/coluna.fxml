@@ -19,6 +19,7 @@
                     <menus>
                       <Menu mnemonicParsing="false" text="File">
                         <items>
+                              <MenuItem mnemonicParsing="false" text="test" />
                           <MenuItem mnemonicParsing="false" text="Close" />
                         </items>
                       </Menu>
@@ -36,8 +37,7 @@
                   </MenuBar>
                </children>
             </VBox>
-            <VBox prefHeight="200.0" prefWidth="100.0" />
-            <TableView fx:id="table" layoutY="25.0" onMousePressed="#click" prefHeight="373.0" prefWidth="614.0">
+            <TableView fx:id="tableUti" editable="true" layoutY="25.0" onMousePressed="#click" prefHeight="374.0" prefWidth="614.0" visible="false">
                      <columns>
                         <TableColumn fx:id="uti_cc_col" text="Nº CC" />
                         <TableColumn fx:id="uti_nome_col" prefWidth="116.0" text="Nome" />
@@ -46,6 +46,26 @@
                         <TableColumn fx:id="uti_mora_col" prefWidth="150.0" text="Morada" />
                         <TableColumn fx:id="uti_nif_col" prefWidth="84.0" text="NIF" />
                      </columns>
+            </TableView>
+            <TableView fx:id="tableLiv" editable="true" layoutY="25.0" prefHeight="374.0" prefWidth="600.0" visible="false">
+              <columns>
+                <TableColumn fx:id="liv_nLiv_col" prefWidth="75.0" text="Nº livro" />
+                <TableColumn fx:id="liv_titu_col" prefWidth="75.0" text="Titulo" />
+                  <TableColumn fx:id="liv_tema_col" prefWidth="75.0" text="Tema" />
+                  <TableColumn fx:id="liv_aut_col" prefWidth="75.0" text="Autor" />
+                  <TableColumn fx:id="liv_edi_col" prefWidth="75.0" text="Editora" />
+                  <TableColumn fx:id="liv_data_col" prefWidth="75.0" text="Data" />
+                  <TableColumn fx:id="liv_requi_col" prefWidth="75.0" text="Requisitado" />
+                  <TableColumn fx:id="liv_ina_col" prefWidth="75.0" text="Inativo" />
+              </columns>
+            </TableView>
+            <TableView fx:id="tableReq" layoutY="25.0" prefHeight="374.0" prefWidth="600.0">
+              <columns>
+                <TableColumn fx:id="req_nLiv_col" prefWidth="75.0" text="Nº Livro" />
+                <TableColumn fx:id="req_cc_col" prefWidth="85.0" text="Nº CC" />
+                  <TableColumn fx:id="req_dReq_col" prefWidth="107.0" text="data_requisição" />
+                  <TableColumn fx:id="req_dEnt_col" prefWidth="96.0" text="data_entrega" />
+              </columns>
             </TableView>
          </children></AnchorPane>
 

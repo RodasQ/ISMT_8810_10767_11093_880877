@@ -41,9 +41,9 @@ import javafx.beans.property.SimpleStringProperty;
             return nome.get();
         }
  
-//        public void setNome(String snome) {
-//            nome.set(snome);
-//        }
+        public void setNome(String snome) {
+            nome.set(snome);
+        }
         
         public String getContacto() {
             return contacto.get();
