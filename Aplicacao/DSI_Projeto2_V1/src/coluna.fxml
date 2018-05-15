@@ -85,8 +85,8 @@
                   <Text layoutX="18.0" layoutY="192.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Editora:" wrappingWidth="52.208984375" />
                   <Text layoutX="26.0" layoutY="261.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Data:" wrappingWidth="37.208984375" />
                   <Text layoutX="26.0" layoutY="225.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tema:" wrappingWidth="37.208984375" />
-                  <Button layoutX="159.0" layoutY="297.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="52.0" text="Salvar" />
-                  <Button layoutX="300.0" layoutY="297.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="52.0" text="Sair" />
+                  <Button layoutX="159.0" layoutY="297.0" mnemonicParsing="false" onAction="#registarLivro" prefHeight="25.0" prefWidth="52.0" text="Salvar" />
+                  <Button layoutX="300.0" layoutY="297.0" mnemonicParsing="false" onAction="#sairJanela" prefHeight="25.0" prefWidth="52.0" text="Sair" />
                   <Text layoutX="247.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="REGISTO DE LIVROS" />
                </children>
             </Pane>
