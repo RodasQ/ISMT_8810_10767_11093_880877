@@ -99,6 +99,7 @@ public class ColunaController implements Initializable {
     private TableColumn req_dReq_col = new TableColumn();
     @FXML
     private TableColumn req_dEnt_col = new TableColumn();
+    
     @FXML
     private TextField regUtiCc;
     @FXML
@@ -342,8 +343,17 @@ public class ColunaController implements Initializable {
             regLiviErroEditora.setFill(Paint.valueOf("Red"));
             flag = false;
         }
-       // falta validação para ver se a data está vazia -> regLivData.get
-       // falta fazer o add
+        if (regLivData.getValue() == null)
+        {
+            regLiviErroData.setVisible(true);
+            regLiviErroData.setText("Data Inválida");
+            regLiviErroData.setFill(Paint.valueOf("Red"));
+            flag = false;
+        }
+        if(flag)
+        {
+            dataLivros.add(new Livro(n, regLivTitulo.getText(), regLivTema.getText(), regLivAutor.getText(), regLivEditora.getText(), regLivData.getValue().toString(), "N", "N"));
+        }
         
     }
 
