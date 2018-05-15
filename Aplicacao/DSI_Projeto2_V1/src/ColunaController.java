@@ -122,9 +122,6 @@ public class ColunaController implements Initializable {
     private TextField regLivData;
     @FXML
     private TextField regLivTema;
-    private Text regUtiErro;
-    private Text regUtiErro2;
-    private Text regUtiErro3;
     @FXML
     private Text regLiviErroNumero;
     @FXML
@@ -223,62 +220,92 @@ public class ColunaController implements Initializable {
     private void registarUtilizador(ActionEvent event) 
     {
         boolean flag = true;
-        regUtiErro.setVisible(false);
-        regUtiErro2.setVisible(false);
-        regUtiErro3.setVisible(false);
+        regUtiErroCc.setVisible(false);
+        regUtiErroContacto.setVisible(false);
+        regUtiErroEmail.setVisible(false);
+        regUtiErroMorada.setVisible(false);
+        regUtiErroNif.setVisible(false);
+        regUtiErroNome.setVisible(false);
         String cont = new String(RegUtiCont.getText());
         if (isInteger(cont) == 0)
         {
-            regUtiErro.setVisible(true);
-            regUtiErro.setText("Contem caraters invalidos");
-            regUtiErro.setFill(Paint.valueOf("Red"));
+            regUtiErroContacto.setVisible(true);
+            regUtiErroContacto.setText("Contem caraters invalidos");
+            regUtiErroContacto.setFill(Paint.valueOf("Red"));
             flag = false;
         }
         if(cont.length() != 9)
         {
-            regUtiErro.setVisible(true);
-            regUtiErro.setText("Numero de telefone Inválido");
-            regUtiErro.setFill(Paint.valueOf("Red"));
+            regUtiErroContacto.setVisible(true);
+            regUtiErroContacto.setText("Numero de telefone Inválido");
+            regUtiErroContacto.setFill(Paint.valueOf("Red"));
             flag = false;
         }
         String nif = new String(RegUtiNif.getText());
         if (isInteger(nif) == 0)
         {
-            regUtiErro2.setVisible(true);
-            regUtiErro2.setText("Contem caraters invalidos");
-            regUtiErro2.setFill(Paint.valueOf("Red"));
+            regUtiErroNif.setVisible(true);
+            regUtiErroNif.setText("Contem caraters invalidos");
+            regUtiErroNif.setFill(Paint.valueOf("Red"));
             flag = false;
         }
         if(nif.length() != 9)
         {
-            regUtiErro2.setVisible(true);
-            regUtiErro2.setText("Numero fiscal Inválido");
-            regUtiErro2.setFill(Paint.valueOf("Red"));
+            regUtiErroNif.setVisible(true);
+            regUtiErroNif.setText("Numero fiscal Inválido");
+            regUtiErroNif.setFill(Paint.valueOf("Red"));
             flag = false;
         }
         String mail = new String(RegUtiEmail.getText());
         if(mail.indexOf("@")==-1) //verifica se o e-mail tem o @
         {
-            regUtiErro3.setVisible(true);
-            regUtiErro3.setText("Email Inválido");
-            regUtiErro3.setFill(Paint.valueOf("Red"));
+            regUtiErroEmail.setVisible(true);
+            regUtiErroEmail.setText("Email Inválido");
+            regUtiErroEmail.setFill(Paint.valueOf("Red"));
             flag = false;
         }
         if (RegUtiNome.getText().length() == 0)
         {
-            regUtiErro3.setVisible(true);
-            regUtiErro3.setText("Nome Inválido");
-            regUtiErro3.setFill(Paint.valueOf("Red"));
+            regUtiErroNome.setVisible(true);
+            regUtiErroNome.setText("Nome Inválido");
+            regUtiErroNome.setFill(Paint.valueOf("Red"));
             flag = false;
         }
-        //falta ver os outros erros
-        
+        if (regUtiCc.getText().length() == 0)
+        {
+            regUtiErroCc.setVisible(true);
+            regUtiErroCc.setText("CC/TR Inválido");
+            regUtiErroCc.setFill(Paint.valueOf("Red"));
+            flag = false;
+        }
+        if (RegUtiMorada.getText().length() == 0)
+        {
+            regUtiErroMorada.setVisible(true);
+            regUtiErroMorada.setText("Morada Inválido");
+            regUtiErroMorada.setFill(Paint.valueOf("Red"));
+            flag = false;
+        }     
         if(flag)
+        {
             dataUtilizadores.add(new Utilizador(regUtiCc.getText(),RegUtiNome.getText(),cont,mail,RegUtiMorada.getText(),nif));
+            fecharJanelas();
+            //falta chamar a função da janela que confirma registo com sucesso
+        }
     }
 
     @FXML
-    private void registarLivro(ActionEvent event) {
+    private void registarLivro(ActionEvent event) 
+    {
+        boolean flag = true;
+        regLiviErroAutor.setVisible(false);
+        regLiviErroData.setVisible(false);
+        regLiviErroEditora.setVisible(false);
+        regLiviErroNumero.setVisible(false);
+        regLiviErroTema.setVisible(false);
+        regLiviErroTitulo.setVisible(false);
+        
+     //falta fazer validações e o add   
+        
     }
 
     @FXML
