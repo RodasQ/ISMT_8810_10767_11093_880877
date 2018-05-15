@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
 
 <ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ColunaController">
   <content>
@@ -59,7 +63,7 @@
                   <TableColumn fx:id="liv_ina_col" prefWidth="75.0" text="Inativo" />
               </columns>
             </TableView>
-            <TableView fx:id="tableReq" layoutY="25.0" prefHeight="374.0" prefWidth="600.0">
+            <TableView fx:id="tableReq" layoutY="25.0" prefHeight="374.0" prefWidth="600.0" visible="false">
               <columns>
                 <TableColumn fx:id="req_nLiv_col" prefWidth="75.0" text="Nº Livro" />
                 <TableColumn fx:id="req_cc_col" prefWidth="85.0" text="Nº CC" />
@@ -67,6 +71,25 @@
                   <TableColumn fx:id="req_dEnt_col" prefWidth="96.0" text="data_entrega" />
               </columns>
             </TableView>
+            <Pane layoutY="25.0" prefHeight="374.0" prefWidth="600.0">
+               <children>
+                  <TextField layoutX="82.0" layoutY="62.0" prefHeight="25.0" prefWidth="258.0" />
+                  <Text layoutX="34.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nº" wrappingWidth="20.208984375" />
+                  <Text layoutX="24.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Título:" wrappingWidth="40.208984375" />
+                  <TextField layoutX="82.0" layoutY="100.0" prefHeight="25.0" prefWidth="258.0" />
+                  <TextField layoutX="82.0" layoutY="173.0" prefHeight="25.0" prefWidth="258.0" />
+                  <TextField layoutX="82.0" layoutY="138.0" prefHeight="25.0" prefWidth="258.0" />
+                  <TextField layoutX="82.0" layoutY="244.0" prefHeight="25.0" prefWidth="258.0" />
+                  <TextField layoutX="82.0" layoutY="208.0" prefHeight="25.0" prefWidth="258.0" />
+                  <Text layoutX="22.0" layoutY="155.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Autor:" wrappingWidth="45.208984375" />
+                  <Text layoutX="18.0" layoutY="192.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Editora:" wrappingWidth="52.208984375" />
+                  <Text layoutX="26.0" layoutY="261.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Data:" wrappingWidth="37.208984375" />
+                  <Text layoutX="26.0" layoutY="225.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tema:" wrappingWidth="37.208984375" />
+                  <Button layoutX="159.0" layoutY="297.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="52.0" text="Salvar" />
+                  <Button layoutX="300.0" layoutY="297.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="52.0" text="Sair" />
+                  <Text layoutX="247.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="REGISTO DE LIVROS" />
+               </children>
+            </Pane>
          </children></AnchorPane>
 
   </content>
