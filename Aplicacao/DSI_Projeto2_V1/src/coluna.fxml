@@ -52,7 +52,7 @@
             </VBox>
             <TableView fx:id="tableUti" editable="true" layoutY="25.0" onMousePressed="#click" prefHeight="374.0" prefWidth="614.0" visible="false">
                      <columns>
-                        <TableColumn fx:id="uti_cc_col" text="Nº CC" />
+                        <TableColumn fx:id="uti_cc_col" text="Nº CC/TR" />
                         <TableColumn fx:id="uti_nome_col" prefWidth="116.0" text="Nome" />
                         <TableColumn fx:id="uti_cont_col" prefWidth="94.0" text="Contacto" />
                         <TableColumn fx:id="uti_mail_col" prefWidth="93.0" text="E-mail" />
@@ -95,7 +95,7 @@
                   <Text layoutX="26.0" layoutY="261.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Data:" wrappingWidth="37.208984375" />
                   <Text layoutX="26.0" layoutY="225.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tema:" wrappingWidth="37.208984375" />
                   <Button layoutX="159.0" layoutY="297.0" mnemonicParsing="false" onAction="#registarLivro" prefHeight="25.0" prefWidth="62.0" text="Guardar" />
-                  <Button layoutX="300.0" layoutY="297.0" mnemonicParsing="false" onAction="#sairJanela" prefHeight="25.0" prefWidth="52.0" text="Sair" />
+                  <Button layoutX="312.0" layoutY="297.0" mnemonicParsing="false" onAction="#sairJanela" prefHeight="25.0" prefWidth="62.0" text="Sair" />
                   <Text layoutX="247.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="REGISTO DE LIVROS" />
                   <Text fx:id="regLiviErroNumero" layoutX="373.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" visible="false" />
                   <Text fx:id="regLiviErroTitulo" layoutX="373.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" visible="false" />
@@ -107,7 +107,7 @@
             </Pane>
             <Pane fx:id="regUtiWindow" layoutY="25.0" prefHeight="374.0" prefWidth="600.0" visible="false">
                <children>
-                  <Text layoutX="43.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CC" />
+                  <Text layoutX="43.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CC/TR" />
                   <Text layoutX="34.0" layoutY="113.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome" />
                   <Text layoutX="21.0" layoutY="151.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contacto" />
                   <Text layoutX="35.0" layoutY="188.0" strokeType="OUTSIDE" strokeWidth="0.0" text="E-mail" />
@@ -119,17 +119,18 @@
                   <TextField fx:id="RegUtiEmail" layoutX="85.0" layoutY="171.0" prefHeight="25.0" prefWidth="258.0" />
                   <TextField fx:id="RegUtiMorada" layoutX="85.0" layoutY="206.0" prefHeight="25.0" prefWidth="258.0" />
                   <TextField fx:id="RegUtiNif" layoutX="85.0" layoutY="241.0" prefHeight="25.0" prefWidth="258.0" />
-                  <Button layoutX="102.0" layoutY="300.0" mnemonicParsing="false" onAction="#registarUtilizador" text="Guardar" />
+                  <Button layoutX="159.0" layoutY="297.0" mnemonicParsing="false" onAction="#registarUtilizador" prefHeight="25.0" prefWidth="62.0" text="Guardar" />
                   <Text fx:id="regUtiErroCc" layoutX="404.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" visible="false" />
                   <Text fx:id="regUtiErroContacto" layoutX="404.0" layoutY="151.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" visible="false" />
                   <Text fx:id="regUtiErroNome" layoutX="404.0" layoutY="113.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" visible="false" />
                   <Text fx:id="regUtiErroEmail" layoutX="404.0" layoutY="188.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" visible="false" />
                   <Text fx:id="regUtiErroMorada" layoutX="404.0" layoutY="223.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" visible="false" />
                   <Text fx:id="regUtiErroNif" layoutX="404.0" layoutY="258.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" visible="false" />
-                  <Button layoutX="363.0" layoutY="300.0" mnemonicParsing="false" onAction="#sairJanela" prefHeight="25.0" prefWidth="52.0" text="Sair" />
+                  <Button layoutX="312.0" layoutY="297.0" mnemonicParsing="false" onAction="#sairJanela" prefHeight="25.0" prefWidth="62.0" text="Sair" />
                   <Text layoutX="197.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="REGISTO DE UTILIZADORES" wrappingWidth="151.67578125" />
                </children>
             </Pane>
+            <Pane layoutY="25.0" prefHeight="374.0" prefWidth="600.0" visible="false" />
          </children></AnchorPane>
 
   </content>
