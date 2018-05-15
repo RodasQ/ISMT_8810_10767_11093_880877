@@ -21,20 +21,29 @@
                <children>
                   <MenuBar prefHeight="25.0" prefWidth="2435.0">
                     <menus>
-                      <Menu mnemonicParsing="false" text="File">
+                      <Menu mnemonicParsing="false" text="Ficheiro">
                         <items>
-                              <MenuItem mnemonicParsing="false" text="test" />
-                          <MenuItem mnemonicParsing="false" text="Close" />
+                              <MenuItem mnemonicParsing="false" text="Importar tabelas" />
+                          <MenuItem mnemonicParsing="false" text="Fechar" />
                         </items>
                       </Menu>
-                      <Menu mnemonicParsing="false" text="Edit">
+                        <Menu mnemonicParsing="false" text="Pesquisar">
+                           <items>
+                              <MenuItem mnemonicParsing="false" text="Aluno" />
+                              <MenuItem mnemonicParsing="false" text="Livros" />
+                              <MenuItem mnemonicParsing="false" text="Requisições" />
+                           </items>
+                        </Menu>
+                      <Menu mnemonicParsing="false" text="Registar">
                         <items>
-                          <MenuItem mnemonicParsing="false" text="Delete" />
+                            <MenuItem mnemonicParsing="false" text="Aluno" />
+                              <MenuItem mnemonicParsing="false" text="Livros" />
+                              <MenuItem mnemonicParsing="false" text="Requisição" />
                         </items>
                       </Menu>
-                      <Menu mnemonicParsing="false" text="Help">
+                      <Menu mnemonicParsing="false" text="Editar">
                         <items>
-                          <MenuItem mnemonicParsing="false" text="About" />
+                          <MenuItem mnemonicParsing="false" text="Apagar" />
                         </items>
                       </Menu>
                     </menus>
@@ -105,6 +114,9 @@
                   <TextField fx:id="RegUtiMorada" layoutX="91.0" layoutY="195.0" />
                   <TextField fx:id="RegUtiNif" layoutX="91.0" layoutY="233.0" />
                   <Button layoutX="102.0" layoutY="300.0" mnemonicParsing="false" onAction="#registarUtilizador" text="Guardar" />
+                  <Text fx:id="regUtiErro" layoutX="320.0" layoutY="135.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+                  <Text fx:id="regUtiErro2" layoutX="320.0" layoutY="250.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+                  <Text fx:id="regUtiErro3" layoutX="320.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
                </children>
             </Pane>
          </children></AnchorPane>
