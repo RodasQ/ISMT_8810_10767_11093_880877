@@ -25,6 +25,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Paint;
+import javafx.scene.text.Text;
 
 /**
  * FXML Controller class
@@ -120,6 +122,37 @@ public class ColunaController implements Initializable {
     private TextField regLivData;
     @FXML
     private TextField regLivTema;
+    private Text regUtiErro;
+    private Text regUtiErro2;
+    private Text regUtiErro3;
+    @FXML
+    private Text regLiviErroNumero;
+    @FXML
+    private Text regLiviErroTitulo;
+    @FXML
+    private Text regLiviErroAutor;
+    @FXML
+    private Text regLiviErroEditora;
+    @FXML
+    private Text regLiviErroTema;
+    @FXML
+    private Text regLiviErroData;
+    @FXML
+    private Text regUtiErroCc;
+    @FXML
+    private Text regUtiErroContacto;
+    @FXML
+    private Text regUtiErroNome;
+    @FXML
+    private Text regUtiErroEmail;
+    @FXML
+    private Text regUtiErroMorada;
+    @FXML
+    private Text regUtiErroNif;
+    @FXML
+    private Pane regUtiWindow;
+    @FXML
+    private Pane regLivWindow;
 
 
     /**
@@ -173,6 +206,7 @@ public class ColunaController implements Initializable {
         tableUti.setItems(dataUtilizadores);
         tableLiv.setItems(dataLivros);
         tableReq.setItems(dataRequisicao);
+        fecharJanelas();
 
     }   
 
@@ -188,9 +222,59 @@ public class ColunaController implements Initializable {
     @FXML
     private void registarUtilizador(ActionEvent event) 
     {
+        boolean flag = true;
+        regUtiErro.setVisible(false);
+        regUtiErro2.setVisible(false);
+        regUtiErro3.setVisible(false);
         String cont = new String(RegUtiCont.getText());
-        System.out.println(cont);
-       
+        if (isInteger(cont) == 0)
+        {
+            regUtiErro.setVisible(true);
+            regUtiErro.setText("Contem caraters invalidos");
+            regUtiErro.setFill(Paint.valueOf("Red"));
+            flag = false;
+        }
+        if(cont.length() != 9)
+        {
+            regUtiErro.setVisible(true);
+            regUtiErro.setText("Numero de telefone Inválido");
+            regUtiErro.setFill(Paint.valueOf("Red"));
+            flag = false;
+        }
+        String nif = new String(RegUtiNif.getText());
+        if (isInteger(nif) == 0)
+        {
+            regUtiErro2.setVisible(true);
+            regUtiErro2.setText("Contem caraters invalidos");
+            regUtiErro2.setFill(Paint.valueOf("Red"));
+            flag = false;
+        }
+        if(nif.length() != 9)
+        {
+            regUtiErro2.setVisible(true);
+            regUtiErro2.setText("Numero fiscal Inválido");
+            regUtiErro2.setFill(Paint.valueOf("Red"));
+            flag = false;
+        }
+        String mail = new String(RegUtiEmail.getText());
+        if(mail.indexOf("@")==-1) //verifica se o e-mail tem o @
+        {
+            regUtiErro3.setVisible(true);
+            regUtiErro3.setText("Email Inválido");
+            regUtiErro3.setFill(Paint.valueOf("Red"));
+            flag = false;
+        }
+        if (RegUtiNome.getText().length() == 0)
+        {
+            regUtiErro3.setVisible(true);
+            regUtiErro3.setText("Nome Inválido");
+            regUtiErro3.setFill(Paint.valueOf("Red"));
+            flag = false;
+        }
+        //falta ver os outros erros
+        
+        if(flag)
+            dataUtilizadores.add(new Utilizador(regUtiCc.getText(),RegUtiNome.getText(),cont,mail,RegUtiMorada.getText(),nif));
     }
 
     @FXML
@@ -198,10 +282,67 @@ public class ColunaController implements Initializable {
     }
 
     @FXML
-    private void sairJanela(ActionEvent event) {
+    private void sairJanela(ActionEvent event) 
+    {
+        fecharJanelas();
+    }
+    
+    public void fecharJanelas()
+    {
+        tableUti.setVisible(false);
+        tableReq.setVisible(false);
+        tableLiv.setVisible(false);
+        regLivWindow.setVisible(false);
+        regUtiWindow.setVisible(false);
     }
             
+    public int isInteger(String test){
+        try{
+            return Integer.parseInt(test.trim());
+        }catch(Exception e){
+            return 0;
+        }
+    }
     
+
+    @FXML
+    private void pesquisarUtilizador(ActionEvent event) 
+    {
+        fecharJanelas();
+        tableUti.setVisible(true);
+    }
+
+    @FXML
+    private void pesquisarLivro(ActionEvent event) 
+    {
+        fecharJanelas();
+        tableLiv.setVisible(true);
+    }
+
+    @FXML
+    private void pesquisarRequisicoes(ActionEvent event) 
+    {
+        fecharJanelas();
+        tableReq.setVisible(true);
+    }
+
+    @FXML
+    private void registarUtilizadorJanela(ActionEvent event) 
+    {
+        fecharJanelas();
+        regUtiWindow.setVisible(true);
+    }
+
+    @FXML
+    private void registarLivroJanela(ActionEvent event) 
+    {
+        fecharJanelas();
+        regLivWindow.setVisible(true);
+    }
+
+    @FXML
+    private void registarRequisicoesJanela(ActionEvent event) {
+    }
    
 }
 
