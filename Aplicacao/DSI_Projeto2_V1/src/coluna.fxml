@@ -36,9 +36,9 @@
                         </Menu>
                       <Menu mnemonicParsing="false" text="Registar">
                         <items>
-                            <MenuItem mnemonicParsing="false" onAction="#registarUtilizador" text="Utilizador" />
-                              <MenuItem mnemonicParsing="false" onAction="#registarLivro" text="Livros" />
-                              <MenuItem mnemonicParsing="false" onAction="#registarRequisicoes" text="Requisição" />
+                            <MenuItem mnemonicParsing="false" onAction="#registarUtilizadorJanela" text="Utilizador" />
+                              <MenuItem mnemonicParsing="false" onAction="#registarLivroJanela" text="Livros" />
+                              <MenuItem mnemonicParsing="false" onAction="#registarRequisicoesJanela" text="Requisição" />
                         </items>
                       </Menu>
                       <Menu mnemonicParsing="false" text="Editar">
@@ -80,7 +80,7 @@
                   <TableColumn fx:id="req_dEnt_col" prefWidth="96.0" text="data_entrega" />
               </columns>
             </TableView>
-            <Pane layoutY="25.0" prefHeight="374.0" prefWidth="600.0">
+            <Pane fx:id="regLivWindow" layoutY="25.0" prefHeight="374.0" prefWidth="600.0" visible="false">
                <children>
                   <TextField fx:id="regLivNum" layoutX="82.0" layoutY="62.0" prefHeight="25.0" prefWidth="258.0" />
                   <Text layoutX="34.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nº" wrappingWidth="20.208984375" />
@@ -94,39 +94,40 @@
                   <Text layoutX="18.0" layoutY="192.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Editora:" wrappingWidth="52.208984375" />
                   <Text layoutX="26.0" layoutY="261.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Data:" wrappingWidth="37.208984375" />
                   <Text layoutX="26.0" layoutY="225.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tema:" wrappingWidth="37.208984375" />
-                  <Button layoutX="159.0" layoutY="297.0" mnemonicParsing="false" onAction="#registarLivro" prefHeight="25.0" prefWidth="52.0" text="Salvar" />
+                  <Button layoutX="159.0" layoutY="297.0" mnemonicParsing="false" onAction="#registarLivro" prefHeight="25.0" prefWidth="62.0" text="Guardar" />
                   <Button layoutX="300.0" layoutY="297.0" mnemonicParsing="false" onAction="#sairJanela" prefHeight="25.0" prefWidth="52.0" text="Sair" />
                   <Text layoutX="247.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="REGISTO DE LIVROS" />
-                  <Text fx:id="regLiviErroNumero" layoutX="431.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-                  <Text fx:id="regLiviErroTitulo" layoutX="437.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-                  <Text fx:id="regLiviErroAutor" layoutX="439.0" layoutY="153.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-                  <Text fx:id="regLiviErroEditora" layoutX="438.0" layoutY="190.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-                  <Text fx:id="regLiviErroTema" layoutX="442.0" layoutY="227.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-                  <Text fx:id="regLiviErroData" layoutX="443.0" layoutY="263.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+                  <Text fx:id="regLiviErroNumero" layoutX="373.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" visible="false" />
+                  <Text fx:id="regLiviErroTitulo" layoutX="373.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" visible="false" />
+                  <Text fx:id="regLiviErroAutor" layoutX="373.0" layoutY="155.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" visible="false" />
+                  <Text fx:id="regLiviErroEditora" layoutX="373.0" layoutY="192.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" visible="false" />
+                  <Text fx:id="regLiviErroTema" layoutX="373.0" layoutY="225.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" visible="false" />
+                  <Text fx:id="regLiviErroData" layoutX="373.0" layoutY="261.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" visible="false" />
                </children>
             </Pane>
-            <Pane layoutY="25.0" prefHeight="374.0" prefWidth="600.0" visible="false">
+            <Pane fx:id="regUtiWindow" layoutY="25.0" prefHeight="374.0" prefWidth="600.0" visible="false">
                <children>
-                  <Text layoutX="43.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CC" />
-                  <Text layoutX="34.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome" />
-                  <Text layoutX="22.0" layoutY="121.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contacto" />
-                  <Text layoutX="29.0" layoutY="159.0" strokeType="OUTSIDE" strokeWidth="0.0" text="E-mail" />
-                  <Text layoutX="32.0" layoutY="198.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Morada" />
-                  <Text layoutX="43.0" layoutY="238.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NIF" />
-                  <TextField fx:id="regUtiCc" layoutX="91.0" layoutY="29.0" prefHeight="25.0" prefWidth="258.0" />
-                  <TextField fx:id="RegUtiNome" layoutX="91.0" layoutY="66.0" prefHeight="25.0" prefWidth="258.0" />
-                  <TextField fx:id="RegUtiCont" layoutX="91.0" layoutY="104.0" prefHeight="25.0" prefWidth="258.0" />
-                  <TextField fx:id="RegUtiEmail" layoutX="91.0" layoutY="142.0" prefHeight="25.0" prefWidth="258.0" />
-                  <TextField fx:id="RegUtiMorada" layoutX="91.0" layoutY="181.0" prefHeight="25.0" prefWidth="258.0" />
-                  <TextField fx:id="RegUtiNif" layoutX="91.0" layoutY="221.0" prefHeight="25.0" prefWidth="258.0" />
+                  <Text layoutX="43.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CC" />
+                  <Text layoutX="34.0" layoutY="113.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome" />
+                  <Text layoutX="21.0" layoutY="151.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contacto" />
+                  <Text layoutX="35.0" layoutY="188.0" strokeType="OUTSIDE" strokeWidth="0.0" text="E-mail" />
+                  <Text layoutX="31.0" layoutY="219.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Morada" />
+                  <Text layoutX="43.0" layoutY="258.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NIF" />
+                  <TextField fx:id="regUtiCc" layoutX="85.0" layoutY="58.0" prefHeight="25.0" prefWidth="258.0" />
+                  <TextField fx:id="RegUtiNome" layoutX="85.0" layoutY="96.0" prefHeight="25.0" prefWidth="258.0" />
+                  <TextField fx:id="RegUtiCont" layoutX="85.0" layoutY="134.0" prefHeight="25.0" prefWidth="258.0" />
+                  <TextField fx:id="RegUtiEmail" layoutX="85.0" layoutY="171.0" prefHeight="25.0" prefWidth="258.0" />
+                  <TextField fx:id="RegUtiMorada" layoutX="85.0" layoutY="206.0" prefHeight="25.0" prefWidth="258.0" />
+                  <TextField fx:id="RegUtiNif" layoutX="85.0" layoutY="241.0" prefHeight="25.0" prefWidth="258.0" />
                   <Button layoutX="102.0" layoutY="300.0" mnemonicParsing="false" onAction="#registarUtilizador" text="Guardar" />
-                  <Text fx:id="regUtiErroCc" layoutX="470.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-                  <Text fx:id="regUtiErroContacto" layoutX="470.0" layoutY="121.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-                  <Text fx:id="regUtiErroNome" layoutX="470.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-                  <Text fx:id="regUtiErroEmail" layoutX="470.0" layoutY="156.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-                  <Text fx:id="regUtiErroMorada" layoutX="470.0" layoutY="198.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-                  <Text fx:id="regUtiErroNif" layoutX="470.0" layoutY="237.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-                  <Button layoutX="353.0" layoutY="301.0" mnemonicParsing="false" onAction="#sairJanela" prefHeight="25.0" prefWidth="52.0" text="Sair" />
+                  <Text fx:id="regUtiErroCc" layoutX="404.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" visible="false" />
+                  <Text fx:id="regUtiErroContacto" layoutX="404.0" layoutY="151.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" visible="false" />
+                  <Text fx:id="regUtiErroNome" layoutX="404.0" layoutY="113.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" visible="false" />
+                  <Text fx:id="regUtiErroEmail" layoutX="404.0" layoutY="188.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" visible="false" />
+                  <Text fx:id="regUtiErroMorada" layoutX="404.0" layoutY="223.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" visible="false" />
+                  <Text fx:id="regUtiErroNif" layoutX="404.0" layoutY="258.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" visible="false" />
+                  <Button layoutX="363.0" layoutY="300.0" mnemonicParsing="false" onAction="#sairJanela" prefHeight="25.0" prefWidth="52.0" text="Sair" />
+                  <Text layoutX="197.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="REGISTO DE UTILIZADORES" wrappingWidth="151.67578125" />
                </children>
             </Pane>
          </children></AnchorPane>
