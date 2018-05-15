@@ -108,6 +108,18 @@ public class ColunaController implements Initializable {
     private TextField RegUtiMorada;
     @FXML
     private TextField RegUtiNif;
+    @FXML
+    private TextField regLivNum;
+    @FXML
+    private TextField regLivTitulo;
+    @FXML
+    private TextField regLivEditora;
+    @FXML
+    private TextField regLivAutor;
+    @FXML
+    private TextField regLivData;
+    @FXML
+    private TextField regLivTema;
 
 
     /**
@@ -174,10 +186,19 @@ public class ColunaController implements Initializable {
     }
 
     @FXML
-    private void RegistarUtilizador(ActionEvent event) 
+    private void registarUtilizador(ActionEvent event) 
     {
-        System.out.println(RegUtiCont.getText());
-        
+        String cont = new String(RegUtiCont.getText());
+        System.out.println(cont);
+       
+    }
+
+    @FXML
+    private void registarLivro(ActionEvent event) {
+    }
+
+    @FXML
+    private void sairJanela(ActionEvent event) {
     }
             
     
