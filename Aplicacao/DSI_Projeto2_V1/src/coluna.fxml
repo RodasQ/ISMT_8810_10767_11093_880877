@@ -71,16 +71,16 @@
                   <TableColumn fx:id="req_dEnt_col" prefWidth="96.0" text="data_entrega" />
               </columns>
             </TableView>
-            <Pane layoutY="25.0" prefHeight="374.0" prefWidth="600.0" visible="false">
+            <Pane layoutY="25.0" prefHeight="374.0" prefWidth="600.0">
                <children>
-                  <TextField layoutX="82.0" layoutY="62.0" prefHeight="25.0" prefWidth="258.0" />
+                  <TextField fx:id="regLivNum" layoutX="82.0" layoutY="62.0" prefHeight="25.0" prefWidth="258.0" />
                   <Text layoutX="34.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nº" wrappingWidth="20.208984375" />
                   <Text layoutX="24.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Título:" wrappingWidth="40.208984375" />
-                  <TextField layoutX="82.0" layoutY="100.0" prefHeight="25.0" prefWidth="258.0" />
-                  <TextField layoutX="82.0" layoutY="173.0" prefHeight="25.0" prefWidth="258.0" />
-                  <TextField layoutX="82.0" layoutY="138.0" prefHeight="25.0" prefWidth="258.0" />
-                  <TextField layoutX="82.0" layoutY="244.0" prefHeight="25.0" prefWidth="258.0" />
-                  <TextField layoutX="82.0" layoutY="208.0" prefHeight="25.0" prefWidth="258.0" />
+                  <TextField fx:id="regLivTitulo" layoutX="82.0" layoutY="100.0" prefHeight="25.0" prefWidth="258.0" />
+                  <TextField fx:id="regLivEditora" layoutX="82.0" layoutY="173.0" prefHeight="25.0" prefWidth="258.0" />
+                  <TextField fx:id="regLivAutor" layoutX="82.0" layoutY="138.0" prefHeight="25.0" prefWidth="258.0" />
+                  <TextField fx:id="regLivData" layoutX="82.0" layoutY="244.0" prefHeight="25.0" prefWidth="258.0" />
+                  <TextField fx:id="regLivTema" layoutX="82.0" layoutY="208.0" prefHeight="25.0" prefWidth="258.0" />
                   <Text layoutX="22.0" layoutY="155.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Autor:" wrappingWidth="45.208984375" />
                   <Text layoutX="18.0" layoutY="192.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Editora:" wrappingWidth="52.208984375" />
                   <Text layoutX="26.0" layoutY="261.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Data:" wrappingWidth="37.208984375" />
@@ -90,7 +90,7 @@
                   <Text layoutX="247.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="REGISTO DE LIVROS" />
                </children>
             </Pane>
-            <Pane layoutY="25.0" prefHeight="374.0" prefWidth="600.0">
+            <Pane layoutY="25.0" prefHeight="374.0" prefWidth="600.0" visible="false">
                <children>
                   <Text layoutX="43.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CC" />
                   <Text layoutX="32.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome" />
