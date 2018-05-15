@@ -16,6 +16,7 @@ import javafx.event.EventTarget;
 import javafx.geometry.Insets;
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -119,7 +120,7 @@ public class ColunaController implements Initializable {
     @FXML
     private TextField regLivAutor;
     @FXML
-    private TextField regLivData;
+    private DatePicker regLivData;
     @FXML
     private TextField regLivTema;
     @FXML
@@ -150,6 +151,7 @@ public class ColunaController implements Initializable {
     private Pane regUtiWindow;
     @FXML
     private Pane regLivWindow;
+
 
 
     /**
@@ -304,7 +306,44 @@ public class ColunaController implements Initializable {
         regLiviErroTema.setVisible(false);
         regLiviErroTitulo.setVisible(false);
         
-     //falta fazer validações e o add   
+        String n = new String(regLivNum.getText());
+        if (isInteger(n) == 0)
+        {
+            regLiviErroNumero.setVisible(true);
+            regLiviErroNumero.setText("Contem caraters invalidos");
+            regLiviErroNumero.setFill(Paint.valueOf("Red"));
+            flag = false;
+        }
+        if (regLivTitulo.getText().length() == 0)
+        {
+            regLiviErroTitulo.setVisible(true);
+            regLiviErroTitulo.setText("Titulo Inválido");
+            regLiviErroTitulo.setFill(Paint.valueOf("Red"));
+            flag = false;
+        }
+        if (regLivTema.getText().length() == 0)
+        {
+            regLiviErroTema.setVisible(true);
+            regLiviErroTema.setText("Tema Inválido");
+            regLiviErroTema.setFill(Paint.valueOf("Red"));
+            flag = false;
+        }
+        if (regLivAutor.getText().length() == 0)
+        {
+            regLiviErroAutor.setVisible(true);
+            regLiviErroAutor.setText("Autor Inválido");
+            regLiviErroAutor.setFill(Paint.valueOf("Red"));
+            flag = false;
+        }
+        if (regLivEditora.getText().length() == 0)
+        {
+            regLiviErroEditora.setVisible(true);
+            regLiviErroEditora.setText("Editora Inválido");
+            regLiviErroEditora.setFill(Paint.valueOf("Red"));
+            flag = false;
+        }
+       // falta validação para ver se a data está vazia -> regLivData.get
+       // falta fazer o add
         
     }
 
