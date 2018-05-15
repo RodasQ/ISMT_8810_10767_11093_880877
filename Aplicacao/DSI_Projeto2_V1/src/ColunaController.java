@@ -19,6 +19,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
@@ -95,6 +96,18 @@ public class ColunaController implements Initializable {
     private TableColumn req_dReq_col = new TableColumn();
     @FXML
     private TableColumn req_dEnt_col = new TableColumn();
+    @FXML
+    private TextField regUtiCc;
+    @FXML
+    private TextField RegUtiNome;
+    @FXML
+    private TextField RegUtiCont;
+    @FXML
+    private TextField RegUtiEmail;
+    @FXML
+    private TextField RegUtiMorada;
+    @FXML
+    private TextField RegUtiNif;
 
 
     /**
@@ -157,6 +170,13 @@ public class ColunaController implements Initializable {
         //System.out.println(e);
         EventTarget nome = e.getTarget();
         System.out.println(nome);
+        
+    }
+
+    @FXML
+    private void RegistarUtilizador(ActionEvent event) 
+    {
+        System.out.println(RegUtiCont.getText());
         
     }
             
