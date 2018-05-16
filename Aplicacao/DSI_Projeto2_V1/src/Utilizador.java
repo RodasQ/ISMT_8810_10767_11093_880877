@@ -15,17 +15,21 @@ import javafx.beans.property.SimpleStringProperty;
  
         private final SimpleStringProperty cc;
         private final SimpleStringProperty nome;
+        private final SimpleStringProperty dNascimento;
         private final SimpleStringProperty contacto;
         private final SimpleStringProperty email;
         private final SimpleStringProperty morada;
+        private final SimpleStringProperty localidade;
         private final SimpleStringProperty nif;
  
-        Utilizador(String scc, String snome, String scontacto, String semail, String smorada, String snif) {
+        Utilizador(String scc, String snome,String sdNascimento, String scontacto, String semail, String smorada,String slocalidade, String snif) {
             this.cc = new SimpleStringProperty(scc);
             this.nome = new SimpleStringProperty(snome);
+            this.dNascimento = new SimpleStringProperty(sdNascimento);
             this.contacto = new SimpleStringProperty(scontacto);
             this.email = new SimpleStringProperty(semail);
             this.morada = new SimpleStringProperty(smorada);
+            this.localidade = new SimpleStringProperty(slocalidade);
             this.nif = new SimpleStringProperty(snif);
         }
  
@@ -43,6 +47,14 @@ import javafx.beans.property.SimpleStringProperty;
  
         public void setNome(String snome) {
             nome.set(snome);
+        }
+        
+        public String getDNascimento() {
+            return dNascimento.get();
+        }
+ 
+        public void setDNascimento(String s) {
+            dNascimento.set(s);
         }
         
         public String getContacto() {
@@ -67,6 +79,13 @@ import javafx.beans.property.SimpleStringProperty;
  
         public void setMorada(String smorada) {
             morada.set(smorada);
+        }
+        public String getLocalidade() {
+            return localidade.get();
+        }
+ 
+        public void setLocalidade(String s) {
+            localidade.set(s);
         }
         
         public String getNif() {

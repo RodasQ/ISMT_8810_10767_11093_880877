@@ -22,6 +22,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
@@ -41,8 +42,8 @@ public class ColunaController implements Initializable {
     
     private final ObservableList<Utilizador> dataUtilizadores =
         FXCollections.observableArrayList(
-            new Utilizador("9845231", "Smith", "21654258","sfs@sdg.com","Rua sdfegg","561606"),
-            new Utilizador("651345", "Paulo", "23642645","sfs@sdg.com","Rua sdfegg","561606")
+            new Utilizador("9845231", "Smith","05-12-2002", "21654258","sfs@sdg.com","Rua sdfegg","Coimbra","561606"),
+            new Utilizador("651345", "Paulo","10-05-1990", "23642645","sfs@sdg.com","Rua sdfegg","Cantanhede","561606")
         );
     @FXML
     private TableView<Livro> tableLiv = new TableView<Livro>();
@@ -73,6 +74,10 @@ public class ColunaController implements Initializable {
     private TableColumn uti_mora_col = new TableColumn();
     @FXML
     private TableColumn uti_nif_col = new TableColumn();
+    @FXML
+    private TableColumn uti_dNasc_col = new TableColumn();
+    @FXML
+    private TableColumn uti_loc_col = new TableColumn();
     
     @FXML
     private TableColumn liv_nLiv_col = new TableColumn();
@@ -102,15 +107,10 @@ public class ColunaController implements Initializable {
     
     @FXML
     private TextField regUtiCc;
-    @FXML
     private TextField RegUtiNome;
-    @FXML
     private TextField RegUtiCont;
-    @FXML
     private TextField RegUtiEmail;
-    @FXML
     private TextField RegUtiMorada;
-    @FXML
     private TextField RegUtiNif;
     @FXML
     private TextField regLivNum;
@@ -152,6 +152,46 @@ public class ColunaController implements Initializable {
     private Pane regUtiWindow;
     @FXML
     private Pane regLivWindow;
+    private DatePicker RegUtiDataNasc;
+    private TextField RegUtiLocalidade;
+    @FXML
+    private Text regUtiErroData;
+    @FXML
+    private Text regUtiErroLocalidade;
+    @FXML
+    private TextField regUtiNome;
+    @FXML
+    private DatePicker regUtiDataNasc;
+    @FXML
+    private TextField regUtiCont;
+    @FXML
+    private TextField regUtiEmail;
+    @FXML
+    private TextField regUtiMorada;
+    @FXML
+    private TextField regUtiLocalidade;
+    @FXML
+    private TextField regUtiNif;
+    @FXML
+    private Pane regReqWindow;
+    @FXML
+    private TextField regReqCC;
+    @FXML
+    private TextField regReqLivro;
+    @FXML
+    private Text regReqErroCc;
+    @FXML
+    private Text regReqErroDReq;
+    @FXML
+    private Text regReqErroLivro;
+    @FXML
+    private Text regReqErroDEnt;
+    @FXML
+    private DatePicker regReqDReq;
+    @FXML
+    private DatePicker regReqDEnt;
+    @FXML
+    private Pane regReqEntregaWindow;
 
 
 
@@ -167,12 +207,16 @@ public class ColunaController implements Initializable {
                 new PropertyValueFactory<Utilizador, String>("cc"));
         uti_nome_col.setCellValueFactory(
                 new PropertyValueFactory<Utilizador, String>("nome"));
+        uti_dNasc_col.setCellValueFactory(
+                new PropertyValueFactory<Utilizador, String>("dNascimento"));
         uti_cont_col.setCellValueFactory(
                 new PropertyValueFactory<Utilizador, String>("contacto"));
         uti_mail_col.setCellValueFactory(
                 new PropertyValueFactory<Utilizador, String>("email"));
         uti_mora_col.setCellValueFactory(
                 new PropertyValueFactory<Utilizador, String>("morada"));
+        uti_loc_col.setCellValueFactory(
+                new PropertyValueFactory<Utilizador, String>("localidade"));
         uti_nif_col.setCellValueFactory(
                 new PropertyValueFactory<Utilizador, String>("nif"));
         
@@ -202,7 +246,17 @@ public class ColunaController implements Initializable {
         req_dEnt_col.setCellValueFactory(
                 new PropertyValueFactory<Utilizador, String>("dEntrega"));
  
-        dataUtilizadores.add(new Utilizador("123456789","Flavio","239444444","eu@eu.com","Rua da esquerda","123456789"));
+        
+        uti_cc_col.setCellFactory(TextFieldTableCell.forTableColumn());
+        uti_cont_col.setCellFactory(TextFieldTableCell.forTableColumn());
+        uti_dNasc_col.setCellFactory(TextFieldTableCell.forTableColumn());
+        uti_loc_col.setCellFactory(TextFieldTableCell.forTableColumn());
+        uti_mail_col.setCellFactory(TextFieldTableCell.forTableColumn());
+        uti_mora_col.setCellFactory(TextFieldTableCell.forTableColumn());
+        uti_nif_col.setCellFactory(TextFieldTableCell.forTableColumn());
+        uti_nome_col.setCellFactory(TextFieldTableCell.forTableColumn());
+        
+        
         tableUti.setItems(dataUtilizadores);
         tableLiv.setItems(dataLivros);
         tableReq.setItems(dataRequisicao);
@@ -221,6 +275,16 @@ public class ColunaController implements Initializable {
 
     @FXML
     private void registarUtilizador(ActionEvent event) 
+    {  
+        if(validarRegistarUtilizador())
+        {
+            dataUtilizadores.add(new Utilizador(regUtiCc.getText(),RegUtiNome.getText(),RegUtiDataNasc.getValue().toString(),RegUtiCont.getText(),RegUtiEmail.getText(),RegUtiMorada.getText(),RegUtiLocalidade.getText(),RegUtiNif.getText()));
+            fecharJanelas();
+            //falta chamar a função da janela que confirma registo com sucesso
+        }
+    }
+    
+    private boolean validarRegistarUtilizador ()
     {
         boolean flag = true;
         regUtiErroCc.setVisible(false);
@@ -267,7 +331,7 @@ public class ColunaController implements Initializable {
             regUtiErroEmail.setFill(Paint.valueOf("Red"));
             flag = false;
         }
-        if (RegUtiNome.getText().length() == 0)
+        if (regUtiNome.getText().length() == 0)
         {
             regUtiErroNome.setVisible(true);
             regUtiErroNome.setText("Nome Inválido");
@@ -281,23 +345,46 @@ public class ColunaController implements Initializable {
             regUtiErroCc.setFill(Paint.valueOf("Red"));
             flag = false;
         }
-        if (RegUtiMorada.getText().length() == 0)
+        if (regUtiMorada.getText().length() == 0)
         {
             regUtiErroMorada.setVisible(true);
             regUtiErroMorada.setText("Morada Inválido");
             regUtiErroMorada.setFill(Paint.valueOf("Red"));
             flag = false;
-        }     
+        }   
+        if (regUtiDataNasc.getValue() == null)
+        {
+            regUtiErroLocalidade.setVisible(true);
+            regUtiErroLocalidade.setText("Data Inválida");
+            regUtiErroLocalidade.setFill(Paint.valueOf("Red"));
+            flag = false;
+        }
+        if (regUtiLocalidade.getText().length() == 0)
+        {
+            regUtiErroLocalidade.setVisible(true);
+            regUtiErroLocalidade.setText("Morada Inválido");
+            regUtiErroLocalidade.setFill(Paint.valueOf("Red"));
+            flag = false;
+        }  
         if(flag)
         {
-            dataUtilizadores.add(new Utilizador(regUtiCc.getText(),RegUtiNome.getText(),cont,mail,RegUtiMorada.getText(),nif));
-            fecharJanelas();
-            //falta chamar a função da janela que confirma registo com sucesso
+            return true;
         }
+        else return false;
     }
 
     @FXML
     private void registarLivro(ActionEvent event) 
+    {
+        if(validarRegistarLivro())
+        {
+            dataLivros.add(new Livro(regLivNum.getText(), regLivTitulo.getText(), regLivTema.getText(), regLivAutor.getText(), regLivEditora.getText(), regLivData.getValue().toString(), "N", "N"));
+            fecharJanelas();
+        }
+        
+    }
+
+    private boolean validarRegistarLivro()
     {
         boolean flag = true;
         regLiviErroAutor.setVisible(false);
@@ -352,11 +439,11 @@ public class ColunaController implements Initializable {
         }
         if(flag)
         {
-            dataLivros.add(new Livro(n, regLivTitulo.getText(), regLivTema.getText(), regLivAutor.getText(), regLivEditora.getText(), regLivData.getValue().toString(), "N", "N"));
+            return true;
         }
-        
+        else return false;
     }
-
+    
     @FXML
     private void sairJanela(ActionEvent event) 
     {
@@ -370,6 +457,7 @@ public class ColunaController implements Initializable {
         tableLiv.setVisible(false);
         regLivWindow.setVisible(false);
         regUtiWindow.setVisible(false);
+        regReqWindow.setVisible(false);
     }
             
     public int isInteger(String test){
@@ -417,7 +505,28 @@ public class ColunaController implements Initializable {
     }
 
     @FXML
-    private void registarRequisicoesJanela(ActionEvent event) {
+    private void registarRequisicoesJanela(ActionEvent event) 
+    {
+        fecharJanelas();
+        regReqWindow.setVisible(true);
+        regReqEntregaWindow.setVisible(false);
+    }
+
+    @FXML
+    private void registarRequisicao(ActionEvent event) 
+    {
+        validarRegistarRequisicao();
+    }
+    
+    private boolean validarRegistarRequisicao()
+    {
+        boolean flag = true;
+        regReqErroCc.setVisible(false);
+        regReqErroDEnt.setVisible(false);
+        regReqErroDReq.setVisible(false);
+        regReqErroLivro.setVisible(false);
+        System.out.println(dataUtilizadores.indexOf(regReqCC.getText()));
+        return true;
     }
    
 }
