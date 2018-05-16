@@ -52,7 +52,7 @@
                   </MenuBar>
                </children>
             </VBox>
-            <TableView fx:id="tableUti" editable="true" layoutY="25.0" onMousePressed="#click" prefHeight="374.0" prefWidth="614.0" visible="false">
+            <TableView fx:id="tableUti" editable="true" layoutY="25.0" onMousePressed="#click" prefHeight="374.0" prefWidth="614.0" tableMenuButtonVisible="true">
                      <columns>
                         <TableColumn fx:id="uti_cc_col" text="Nº CC/TR" />
                         <TableColumn fx:id="uti_nome_col" prefWidth="116.0" text="Nome" />
@@ -64,7 +64,7 @@
                         <TableColumn fx:id="uti_nif_col" prefWidth="84.0" text="NIF" />
                      </columns>
             </TableView>
-            <TableView fx:id="tableLiv" editable="true" layoutY="25.0" prefHeight="374.0" prefWidth="600.0" visible="false">
+            <TableView fx:id="tableLiv" editable="true" layoutY="25.0" prefHeight="374.0" prefWidth="600.0" tableMenuButtonVisible="true" visible="false">
               <columns>
                 <TableColumn fx:id="liv_nLiv_col" prefWidth="75.0" text="Nº livro" />
                 <TableColumn fx:id="liv_titu_col" prefWidth="75.0" text="Titulo" />
@@ -76,7 +76,7 @@
                   <TableColumn fx:id="liv_ina_col" prefWidth="75.0" text="Inativo" />
               </columns>
             </TableView>
-            <TableView fx:id="tableReq" layoutY="25.0" prefHeight="374.0" prefWidth="600.0" visible="false">
+            <TableView fx:id="tableReq" editable="true" layoutY="25.0" prefHeight="374.0" prefWidth="600.0" tableMenuButtonVisible="true" visible="false">
               <columns>
                 <TableColumn fx:id="req_nLiv_col" prefWidth="75.0" text="Nº Livro" />
                 <TableColumn fx:id="req_cc_col" prefWidth="85.0" text="Nº CC" />
@@ -99,7 +99,7 @@
                   <Text layoutX="26.0" layoutY="225.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tema:" wrappingWidth="37.208984375" />
                   <Button layoutX="448.0" layoutY="335.0" mnemonicParsing="false" onAction="#registarLivro" prefHeight="25.0" prefWidth="62.0" text="Guardar" />
                   <Button layoutX="524.0" layoutY="335.0" mnemonicParsing="false" onAction="#sairJanela" prefHeight="25.0" prefWidth="62.0" text="Sair" />
-                  <Text layoutX="247.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="REGISTO DE LIVROS" />
+                  <Text layoutX="231.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="REGISTO DE LIVROS" />
                   <Text fx:id="regLiviErroNumero" layoutX="373.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" visible="false" />
                   <Text fx:id="regLiviErroTitulo" layoutX="373.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" visible="false" />
                   <Text fx:id="regLiviErroAutor" layoutX="373.0" layoutY="155.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" visible="false" />
@@ -144,7 +144,7 @@
                   <Text fx:id="regUtiErroLocalidade" layoutX="405.0" layoutY="303.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" visible="false" />
                </children>
             </Pane>
-            <Pane fx:id="regReqWindow" layoutY="25.0" prefHeight="374.0" prefWidth="600.0">
+            <Pane fx:id="regReqWindow" layoutY="25.0" prefHeight="374.0" prefWidth="600.0" visible="false">
                <children>
                   <Text layoutX="43.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CC/TR" />
                   <Text layoutX="34.0" layoutY="113.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nº Livro" />
