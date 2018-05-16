@@ -86,13 +86,13 @@
             </TableView>
             <Pane fx:id="regLivWindow" layoutY="25.0" prefHeight="374.0" prefWidth="600.0" visible="false">
                <children>
-                  <TextField fx:id="regLivNum" layoutX="82.0" layoutY="62.0" prefHeight="25.0" prefWidth="258.0" />
+                  <TextField fx:id="regLivNum" layoutX="102.0" layoutY="62.0" prefHeight="25.0" prefWidth="258.0" />
                   <Text layoutX="34.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nº" wrappingWidth="20.208984375" />
                   <Text layoutX="24.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Título:" wrappingWidth="40.208984375" />
-                  <TextField fx:id="regLivTitulo" layoutX="82.0" layoutY="100.0" prefHeight="25.0" prefWidth="258.0" />
-                  <TextField fx:id="regLivAutor" layoutX="82.0" layoutY="138.0" prefHeight="25.0" prefWidth="258.0" />
-                  <TextField fx:id="regLivEditora" layoutX="82.0" layoutY="173.0" prefHeight="25.0" prefWidth="258.0" />
-                  <TextField fx:id="regLivTema" layoutX="82.0" layoutY="208.0" prefHeight="25.0" prefWidth="258.0" />
+                  <TextField fx:id="regLivTitulo" layoutX="102.0" layoutY="100.0" prefHeight="25.0" prefWidth="258.0" />
+                  <TextField fx:id="regLivAutor" layoutX="102.0" layoutY="138.0" prefHeight="25.0" prefWidth="258.0" />
+                  <TextField fx:id="regLivEditora" layoutX="102.0" layoutY="173.0" prefHeight="25.0" prefWidth="258.0" />
+                  <TextField fx:id="regLivTema" layoutX="102.0" layoutY="208.0" prefHeight="25.0" prefWidth="258.0" />
                   <Text layoutX="22.0" layoutY="155.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Autor:" wrappingWidth="45.208984375" />
                   <Text layoutX="18.0" layoutY="192.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Editora:" wrappingWidth="52.208984375" />
                   <Text layoutX="26.0" layoutY="261.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Data:" wrappingWidth="37.208984375" />
@@ -106,7 +106,7 @@
                   <Text fx:id="regLiviErroEditora" layoutX="373.0" layoutY="192.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" visible="false" />
                   <Text fx:id="regLiviErroTema" layoutX="373.0" layoutY="225.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" visible="false" />
                   <Text fx:id="regLiviErroData" layoutX="373.0" layoutY="261.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" visible="false" />
-                  <DatePicker fx:id="regLivData" layoutX="82.0" layoutY="244.0" prefHeight="25.0" prefWidth="258.0" />
+                  <DatePicker fx:id="regLivData" layoutX="102.0" layoutY="244.0" prefHeight="25.0" prefWidth="258.0" />
                </children>
             </Pane>
             <Pane fx:id="regUtiWindow" layoutY="25.0" prefHeight="374.0" prefWidth="600.0" visible="false">
@@ -117,14 +117,14 @@
                   <Text layoutX="37.0" layoutY="232.0" strokeType="OUTSIDE" strokeWidth="0.0" text="E-mail" />
                   <Text layoutX="33.0" layoutY="267.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Morada" />
                   <Text layoutX="36.0" layoutY="340.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NIF" />
-                  <TextField fx:id="regUtiCc" layoutX="106.0" layoutY="58.0" prefHeight="25.0" prefWidth="258.0" />
-                  <TextField fx:id="regUtiNome" layoutX="106.0" layoutY="96.0" prefHeight="25.0" prefWidth="258.0" />
-                  <DatePicker fx:id="regUtiDataNasc" layoutX="106.0" layoutY="134.0" prefHeight="25.0" prefWidth="258.0" />
-                  <TextField fx:id="regUtiCont" layoutX="106.0" layoutY="175.0" prefHeight="25.0" prefWidth="258.0" />
-                  <TextField fx:id="regUtiEmail" layoutX="106.0" layoutY="211.0" prefHeight="25.0" prefWidth="258.0" />
-                  <TextField fx:id="regUtiMorada" layoutX="106.0" layoutY="250.0" prefHeight="25.0" prefWidth="258.0" />
-                  <TextField fx:id="regUtiLocalidade" layoutX="106.0" layoutY="286.0" prefHeight="25.0" prefWidth="258.0" />
-                  <TextField fx:id="regUtiNif" layoutX="106.0" layoutY="323.0" prefHeight="25.0" prefWidth="258.0" />
+                  <TextField fx:id="regUtiCc" layoutX="102.0" layoutY="58.0" prefHeight="25.0" prefWidth="258.0" />
+                  <TextField fx:id="regUtiNome" layoutX="102.0" layoutY="96.0" prefHeight="25.0" prefWidth="258.0" />
+                  <DatePicker fx:id="regUtiDataNasc" layoutX="102.0" layoutY="134.0" prefHeight="25.0" prefWidth="258.0" />
+                  <TextField fx:id="regUtiCont" layoutX="102.0" layoutY="175.0" prefHeight="25.0" prefWidth="258.0" />
+                  <TextField fx:id="regUtiEmail" layoutX="102.0" layoutY="211.0" prefHeight="25.0" prefWidth="258.0" />
+                  <TextField fx:id="regUtiMorada" layoutX="102.0" layoutY="250.0" prefHeight="25.0" prefWidth="258.0" />
+                  <TextField fx:id="regUtiLocalidade" layoutX="102.0" layoutY="286.0" prefHeight="25.0" prefWidth="258.0" />
+                  <TextField fx:id="regUtiNif" layoutX="102.0" layoutY="323.0" prefHeight="25.0" prefWidth="258.0" />
                   <Button layoutX="448.0" layoutY="335.0" mnemonicParsing="false" onAction="#registarUtilizador" prefHeight="25.0" prefWidth="62.0" text="Guardar" />
                   <Text fx:id="regUtiErroCc" layoutX="404.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" visible="false" />
                   <Text fx:id="regUtiErroContacto" layoutX="404.0" layoutY="192.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" visible="false" />
@@ -133,7 +133,7 @@
                   <Text fx:id="regUtiErroMorada" layoutX="404.0" layoutY="267.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" visible="false" />
                   <Text fx:id="regUtiErroNif" layoutX="404.0" layoutY="340.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" visible="false" />
                   <Button layoutX="524.0" layoutY="335.0" mnemonicParsing="false" onAction="#sairJanela" prefHeight="25.0" prefWidth="62.0" text="Sair" />
-                  <Text layoutX="197.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="REGISTO DE UTILIZADORES" wrappingWidth="151.67578125" />
+                  <Text layoutX="231.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="REGISTO DE UTILIZADORES" wrappingWidth="151.67578125" />
                   <Text layoutX="22.0" layoutY="303.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Localidade" />
                   <Text layoutX="16.0" layoutY="151.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Data Nascimento">
                      <font>
@@ -153,22 +153,26 @@
                         <Font size="11.0" />
                      </font>
                   </Text>
-                  <Text layoutX="23.0" layoutY="188.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Data_Entrega">
-                     <font>
-                        <Font size="11.0" />
-                     </font>
-                  </Text>
                   <TextField fx:id="regReqCC" layoutX="102.0" layoutY="58.0" prefHeight="25.0" prefWidth="258.0" />
                   <TextField fx:id="regReqLivro" layoutX="102.0" layoutY="96.0" prefHeight="25.0" prefWidth="258.0" />
-                  <Text fx:id="regReqErroCc" layoutX="404.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-                  <Text fx:id="regReqErroDReq" layoutX="404.0" layoutY="151.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-                  <Text fx:id="regReqErroLivro" layoutX="404.0" layoutY="113.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-                  <Text fx:id="regReqErroDEnt" layoutX="404.0" layoutY="188.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+                  <Text fx:id="regReqErroCc" layoutX="393.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" visible="false" />
+                  <Text fx:id="regReqErroDReq" layoutX="393.0" layoutY="151.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" visible="false" />
+                  <Text fx:id="regReqErroLivro" layoutX="393.0" layoutY="113.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" visible="false" />
                   <DatePicker fx:id="regReqDReq" layoutX="102.0" layoutY="134.0" prefHeight="25.0" prefWidth="258.0" />
-                  <DatePicker fx:id="regReqDEnt" layoutX="102.0" layoutY="179.0" prefHeight="25.0" prefWidth="258.0" />
                   <Button layoutX="448.0" layoutY="335.0" mnemonicParsing="false" onAction="#registarRequisicao" prefHeight="25.0" prefWidth="62.0" text="Guardar" />
                   <Button layoutX="524.0" layoutY="335.0" mnemonicParsing="false" onAction="#sairJanela" prefHeight="25.0" prefWidth="62.0" text="Sair" />
                   <Text layoutX="231.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="REQUISIÇÕES" wrappingWidth="80.67578125" />
+                  <Pane fx:id="regReqEntregaWindow" layoutY="170.0" prefHeight="35.0" prefWidth="448.0">
+                     <children>
+                        <DatePicker fx:id="regReqDEnt" layoutX="102.0" prefHeight="25.0" prefWidth="258.0" />
+                        <Text layoutX="28.0" layoutY="17.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Data_Entrega">
+                           <font>
+                              <Font size="11.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="regReqErroDEnt" layoutX="393.0" layoutY="17.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" visible="false" />
+                     </children>
+                  </Pane>
                </children>
             </Pane>
          </children></AnchorPane>
