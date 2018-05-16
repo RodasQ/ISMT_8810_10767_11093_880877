@@ -5,6 +5,7 @@
  */
 
 import java.net.URL;
+import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -107,11 +108,6 @@ public class ColunaController implements Initializable {
     
     @FXML
     private TextField regUtiCc;
-    private TextField RegUtiNome;
-    private TextField RegUtiCont;
-    private TextField RegUtiEmail;
-    private TextField RegUtiMorada;
-    private TextField RegUtiNif;
     @FXML
     private TextField regLivNum;
     @FXML
@@ -152,8 +148,6 @@ public class ColunaController implements Initializable {
     private Pane regUtiWindow;
     @FXML
     private Pane regLivWindow;
-    private DatePicker RegUtiDataNasc;
-    private TextField RegUtiLocalidade;
     @FXML
     private Text regUtiErroData;
     @FXML
@@ -193,8 +187,6 @@ public class ColunaController implements Initializable {
     @FXML
     private Pane regReqEntregaWindow;
 
-
-
     /**
      * Initializes the controller class.
      */
@@ -204,47 +196,47 @@ public class ColunaController implements Initializable {
       //  table.setEditable(true);
  
         uti_cc_col.setCellValueFactory(
-                new PropertyValueFactory<Utilizador, String>("cc"));
+                new PropertyValueFactory("cc"));
         uti_nome_col.setCellValueFactory(
-                new PropertyValueFactory<Utilizador, String>("nome"));
+                new PropertyValueFactory("nome"));
         uti_dNasc_col.setCellValueFactory(
-                new PropertyValueFactory<Utilizador, String>("dNascimento"));
+                new PropertyValueFactory("dNascimento"));
         uti_cont_col.setCellValueFactory(
-                new PropertyValueFactory<Utilizador, String>("contacto"));
+                new PropertyValueFactory("contacto"));
         uti_mail_col.setCellValueFactory(
-                new PropertyValueFactory<Utilizador, String>("email"));
+                new PropertyValueFactory("email"));
         uti_mora_col.setCellValueFactory(
-                new PropertyValueFactory<Utilizador, String>("morada"));
+                new PropertyValueFactory("morada"));
         uti_loc_col.setCellValueFactory(
-                new PropertyValueFactory<Utilizador, String>("localidade"));
+                new PropertyValueFactory("localidade"));
         uti_nif_col.setCellValueFactory(
-                new PropertyValueFactory<Utilizador, String>("nif"));
+                new PropertyValueFactory("nif"));
         
         liv_nLiv_col.setCellValueFactory(
-                new PropertyValueFactory<Utilizador, String>("nLivro"));
+                new PropertyValueFactory("nLivro"));
         liv_titu_col.setCellValueFactory(
-                new PropertyValueFactory<Utilizador, String>("titulo"));
+                new PropertyValueFactory("titulo"));
         liv_tema_col.setCellValueFactory(
-                new PropertyValueFactory<Utilizador, String>("tema"));
+                new PropertyValueFactory("tema"));
         liv_aut_col.setCellValueFactory(
-                new PropertyValueFactory<Utilizador, String>("autor"));
+                new PropertyValueFactory("autor"));
         liv_edi_col.setCellValueFactory(
-                new PropertyValueFactory<Utilizador, String>("editora"));
+                new PropertyValueFactory("editora"));
         liv_data_col.setCellValueFactory(
-                new PropertyValueFactory<Utilizador, String>("data"));
+                new PropertyValueFactory("data"));
         liv_requi_col.setCellValueFactory(
-                new PropertyValueFactory<Utilizador, String>("requisitado"));
+                new PropertyValueFactory("requisitado"));
         liv_ina_col.setCellValueFactory(
-                new PropertyValueFactory<Utilizador, String>("inativo"));
+                new PropertyValueFactory("inativo"));
         
         req_nLiv_col.setCellValueFactory(
-                new PropertyValueFactory<Utilizador, String>("nLivro"));
+                new PropertyValueFactory("nLivro"));
         req_cc_col.setCellValueFactory(
-                new PropertyValueFactory<Utilizador, String>("cc"));
+                new PropertyValueFactory("cc"));
         req_dReq_col.setCellValueFactory(
-                new PropertyValueFactory<Utilizador, String>("dRequisicao"));
+                new PropertyValueFactory("dRequisicao"));
         req_dEnt_col.setCellValueFactory(
-                new PropertyValueFactory<Utilizador, String>("dEntrega"));
+                new PropertyValueFactory("dEntrega"));
  
         
         uti_cc_col.setCellFactory(TextFieldTableCell.forTableColumn());
@@ -255,6 +247,21 @@ public class ColunaController implements Initializable {
         uti_mora_col.setCellFactory(TextFieldTableCell.forTableColumn());
         uti_nif_col.setCellFactory(TextFieldTableCell.forTableColumn());
         uti_nome_col.setCellFactory(TextFieldTableCell.forTableColumn());
+        
+        
+        liv_aut_col.setCellFactory(TextFieldTableCell.forTableColumn());
+        liv_data_col.setCellFactory(TextFieldTableCell.forTableColumn());
+        liv_edi_col.setCellFactory(TextFieldTableCell.forTableColumn());
+        liv_ina_col.setCellFactory(TextFieldTableCell.forTableColumn());
+        liv_nLiv_col.setCellFactory(TextFieldTableCell.forTableColumn());
+        liv_requi_col.setCellFactory(TextFieldTableCell.forTableColumn());
+        liv_tema_col.setCellFactory(TextFieldTableCell.forTableColumn());
+        liv_titu_col.setCellFactory(TextFieldTableCell.forTableColumn());
+        
+        req_nLiv_col.setCellFactory(TextFieldTableCell.forTableColumn());
+        req_cc_col.setCellFactory(TextFieldTableCell.forTableColumn());
+        req_dReq_col.setCellFactory(TextFieldTableCell.forTableColumn());
+        req_dEnt_col.setCellFactory(TextFieldTableCell.forTableColumn());
         
         
         tableUti.setItems(dataUtilizadores);
@@ -278,7 +285,7 @@ public class ColunaController implements Initializable {
     {  
         if(validarRegistarUtilizador())
         {
-            dataUtilizadores.add(new Utilizador(regUtiCc.getText(),RegUtiNome.getText(),RegUtiDataNasc.getValue().toString(),RegUtiCont.getText(),RegUtiEmail.getText(),RegUtiMorada.getText(),RegUtiLocalidade.getText(),RegUtiNif.getText()));
+            dataUtilizadores.add(new Utilizador(regUtiCc.getText(),regUtiNome.getText(),regUtiDataNasc.getValue().format(DateTimeFormatter.ofPattern("dd-MM-yyyy")),regUtiCont.getText(),regUtiEmail.getText(),regUtiMorada.getText(),regUtiLocalidade.getText(),regUtiNif.getText()));
             fecharJanelas();
             //falta chamar a função da janela que confirma registo com sucesso
         }
@@ -293,7 +300,7 @@ public class ColunaController implements Initializable {
         regUtiErroMorada.setVisible(false);
         regUtiErroNif.setVisible(false);
         regUtiErroNome.setVisible(false);
-        String cont = new String(RegUtiCont.getText());
+        String cont = new String(regUtiCont.getText());
         if (isInteger(cont) == 0)
         {
             regUtiErroContacto.setVisible(true);
@@ -308,7 +315,7 @@ public class ColunaController implements Initializable {
             regUtiErroContacto.setFill(Paint.valueOf("Red"));
             flag = false;
         }
-        String nif = new String(RegUtiNif.getText());
+        String nif = new String(regUtiNif.getText());
         if (isInteger(nif) == 0)
         {
             regUtiErroNif.setVisible(true);
@@ -323,7 +330,7 @@ public class ColunaController implements Initializable {
             regUtiErroNif.setFill(Paint.valueOf("Red"));
             flag = false;
         }
-        String mail = new String(RegUtiEmail.getText());
+        String mail = new String(regUtiEmail.getText());
         if(mail.indexOf("@")==-1) //verifica se o e-mail tem o @
         {
             regUtiErroEmail.setVisible(true);
@@ -368,6 +375,7 @@ public class ColunaController implements Initializable {
         }  
         if(flag)
         {
+            System.out.println("true");
             return true;
         }
         else return false;
@@ -378,7 +386,8 @@ public class ColunaController implements Initializable {
     {
         if(validarRegistarLivro())
         {
-            dataLivros.add(new Livro(regLivNum.getText(), regLivTitulo.getText(), regLivTema.getText(), regLivAutor.getText(), regLivEditora.getText(), regLivData.getValue().toString(), "N", "N"));
+        //    String datatest = regLivData.getValue().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+            dataLivros.add(new Livro(regLivNum.getText(), regLivTitulo.getText(), regLivTema.getText(), regLivAutor.getText(), regLivEditora.getText(), regLivData.getValue().format(DateTimeFormatter.ofPattern("dd-MM-yyyy")), "N", "N"));
             fecharJanelas();
         }
         
@@ -525,8 +534,15 @@ public class ColunaController implements Initializable {
         regReqErroDEnt.setVisible(false);
         regReqErroDReq.setVisible(false);
         regReqErroLivro.setVisible(false);
-        System.out.println(dataUtilizadores.indexOf(regReqCC.getText()));
+        
+        System.out.println(uti_cc_col.getCellData(2));
+            //    contains(regReqCC.getText()));
         return true;
+    }
+    
+    private int colunaIndexOf()
+    {
+        return 0;
     }
    
 }
