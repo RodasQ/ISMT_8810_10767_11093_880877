@@ -43,24 +43,24 @@ public class ColunaController implements Initializable {
     
     private final ObservableList<Utilizador> dataUtilizadores =
         FXCollections.observableArrayList(
-            new Utilizador("9845231", "Smith","05-12-2002", "21654258","sfs@sdg.com","Rua sdfegg","Coimbra","561606"),
-            new Utilizador("651345", "Paulo","10-05-1990", "23642645","sfs@sdg.com","Rua sdfegg","Cantanhede","561606")
+            new Utilizador("589624782", "André","01-07-1989", "915896547","andre@gmail.com","Rua do Brasil","Coimbra","842498745"),
+            new Utilizador("289756586", "Flávio","10-05-1990", "912568749","flavio@gmail.com","Praça da República","Coimbra","125483314")
         );
     @FXML
     private TableView<Livro> tableLiv = new TableView<Livro>();
     
         private final ObservableList<Livro> dataLivros =
         FXCollections.observableArrayList(
-            new Livro("123","titulo","tema","autor","editora","data","N","N"),
-            new Livro("1223","titulo2","tema2","autor2","editora2","data2","N","N")
+            new Livro("1","Anjos e Demónios","policial","Dan Brown","Asa","01-04-2003","N","N"),
+            new Livro("2","Harry Potter e a Câmera dos Segredos","magia","J.K.Rowlings","Asa","01-02/2001","N","N")
         );
     @FXML
     private TableView<Requisicao> tableReq = new TableView<Requisicao>();
     
         private final ObservableList<Requisicao> dataRequisicao =
         FXCollections.observableArrayList(
-            new Requisicao("123","12345789","dataRe","DataEnt"),
-            new Requisicao("1223","987654321","dataRe2","DataEnt2")
+            new Requisicao("1","589624782","16-05-2018","A colocar"),
+            new Requisicao("2","289756586","03-05-2017","A colocar")
         );
     
     @FXML
