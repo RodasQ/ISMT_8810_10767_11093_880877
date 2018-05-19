@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ContextMenu?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
@@ -63,6 +64,13 @@
                   <TableColumn fx:id="uti_loc_col" prefWidth="75.0" text="Localidade" />
                         <TableColumn fx:id="uti_nif_col" prefWidth="84.0" text="NIF" />
                      </columns>
+               <contextMenu>
+                  <ContextMenu>
+                    <items>
+                      <MenuItem mnemonicParsing="false" onAction="#apagarLinhaUtilizador" text="apagar" />
+                    </items>
+                  </ContextMenu>
+               </contextMenu>
             </TableView>
             <TableView fx:id="tableLiv" editable="true" layoutY="25.0" prefHeight="374.0" prefWidth="600.0" tableMenuButtonVisible="true" visible="false">
               <columns>
@@ -75,6 +83,13 @@
                   <TableColumn fx:id="liv_requi_col" prefWidth="75.0" text="Requisitado" />
                   <TableColumn fx:id="liv_ina_col" prefWidth="75.0" text="Inativo" />
               </columns>
+               <contextMenu>
+                  <ContextMenu>
+                     <items>
+                        <MenuItem mnemonicParsing="false" onAction="#apagarLinhaLivro" text="apagar" />
+                     </items>
+                  </ContextMenu>
+               </contextMenu>
             </TableView>
             <TableView fx:id="tableReq" editable="true" layoutY="25.0" prefHeight="374.0" prefWidth="600.0" tableMenuButtonVisible="true" visible="false">
               <columns>
@@ -83,6 +98,13 @@
                   <TableColumn fx:id="req_dReq_col" prefWidth="107.0" text="data_requisição" />
                   <TableColumn fx:id="req_dEnt_col" prefWidth="96.0" text="data_entrega" />
               </columns>
+               <contextMenu>
+                  <ContextMenu>
+                     <items>
+                        <MenuItem mnemonicParsing="false" onAction="#apagarLinhaRequisicao" text="apagar" />
+                     </items>
+                  </ContextMenu>
+               </contextMenu>
             </TableView>
             <Pane fx:id="regLivWindow" layoutY="25.0" prefHeight="374.0" prefWidth="600.0" visible="false">
                <children>

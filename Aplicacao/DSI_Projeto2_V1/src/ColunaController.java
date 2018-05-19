@@ -544,6 +544,18 @@ public class ColunaController implements Initializable {
     {
         return 0;
     }
+
+    @FXML
+    private void apagarLinhaUtilizador(ActionEvent event) {
+    }
+
+    @FXML
+    private void apagarLinhaLivro(ActionEvent event) {
+    }
+
+    @FXML
+    private void apagarLinhaRequisicao(ActionEvent event) {
+    }
    
 }
 
