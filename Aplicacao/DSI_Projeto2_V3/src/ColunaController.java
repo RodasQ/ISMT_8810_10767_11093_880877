@@ -705,6 +705,10 @@ public class ColunaController implements Initializable {
            tableUti.getSelectionModel().select(f);
         }
     }
+
+    @FXML
+    private void entregarLivro(ActionEvent event) {
+    }
    
 }
 

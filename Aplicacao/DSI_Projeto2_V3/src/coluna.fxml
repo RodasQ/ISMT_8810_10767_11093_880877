@@ -103,6 +103,7 @@
                      <items>
                         <MenuItem mnemonicParsing="false" onAction="#pesquisarUtiReq" text="Pesquisar Utilizador" />
                         <MenuItem mnemonicParsing="false" onAction="#pesquisarLivroReq" text="Pesquisar Livro" />
+                        <MenuItem mnemonicParsing="false" onAction="#entregarLivro" text="Entregar Livro" />
                         <MenuItem mnemonicParsing="false" onAction="#apagarLinhaRequisicao" text="apagar" />
                      </items>
                   </ContextMenu>
