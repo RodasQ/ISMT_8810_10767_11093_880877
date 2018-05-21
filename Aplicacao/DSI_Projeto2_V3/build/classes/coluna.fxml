@@ -53,7 +53,7 @@
                   </MenuBar>
                </children>
             </VBox>
-            <TableView fx:id="tableUti" editable="true" layoutY="25.0" onMousePressed="#click" prefHeight="374.0" prefWidth="614.0" tableMenuButtonVisible="true">
+            <TableView fx:id="tableUti" editable="true" layoutY="25.0" onMousePressed="#click" prefHeight="374.0" prefWidth="614.0" tableMenuButtonVisible="true" visible="false">
                      <columns>
                         <TableColumn fx:id="uti_cc_col" text="Nº CC/TR" />
                         <TableColumn fx:id="uti_nome_col" prefWidth="116.0" text="Nome" />
@@ -86,12 +86,12 @@
                <contextMenu>
                   <ContextMenu>
                      <items>
-                        <MenuItem mnemonicParsing="false" onAction="#apagarLinhaLivro" text="apagar" />
+                        <MenuItem mnemonicParsing="false" onAction="#InativoLinhaLivro" text="Tornar Inativo" />
                      </items>
                   </ContextMenu>
                </contextMenu>
             </TableView>
-            <TableView fx:id="tableReq" editable="true" layoutY="25.0" prefHeight="374.0" prefWidth="600.0" tableMenuButtonVisible="true" visible="false">
+            <TableView fx:id="tableReq" editable="true" layoutY="25.0" prefHeight="374.0" prefWidth="600.0" tableMenuButtonVisible="true">
               <columns>
                 <TableColumn fx:id="req_nLiv_col" prefWidth="75.0" text="Nº Livro" />
                 <TableColumn fx:id="req_cc_col" prefWidth="85.0" text="Nº CC" />
@@ -101,6 +101,9 @@
                <contextMenu>
                   <ContextMenu>
                      <items>
+                        <MenuItem mnemonicParsing="false" onAction="#pesquisarUtiReq" text="Pesquisar Utilizador" />
+                        <MenuItem mnemonicParsing="false" onAction="#pesquisarLivroReq" text="Pesquisar Livro" />
+                        <MenuItem mnemonicParsing="false" onAction="#entregarLivro" text="Entregar Livro" />
                         <MenuItem mnemonicParsing="false" onAction="#apagarLinhaRequisicao" text="apagar" />
                      </items>
                   </ContextMenu>

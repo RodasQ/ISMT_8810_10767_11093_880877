@@ -4,35 +4,32 @@
  * and open the template in the editor.
  */
 
+import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
+import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
 import java.net.URL;
+import java.text.DateFormat;
 import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventTarget;
-import javafx.geometry.Insets;
-import javafx.scene.Group;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
-import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.VBox;
-import javafx.scene.text.Font;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.Text;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * FXML Controller class
@@ -190,6 +187,7 @@ public class ColunaController implements Initializable {
     private DatePicker regReqDEnt;
     @FXML
     private Pane regReqEntregaWindow;
+    private String date;
 
     /**
      * Initializes the controller class.
@@ -708,6 +706,12 @@ public class ColunaController implements Initializable {
 
     @FXML
     private void entregarLivro(ActionEvent event) {
+        
+        DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        Date datatemp = new Date();
+
+        tableReq.getSelectionModel().getSelectedItem().setDEntrega(dateFormat.format(datatemp).toString());
+        tableReq.refresh();
     }
    
 }
