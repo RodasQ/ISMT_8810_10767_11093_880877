@@ -57,8 +57,9 @@ public class ColunaController implements Initializable {
     
         private final ObservableList<Livro> dataLivros =
         FXCollections.observableArrayList(
-            new Livro("1","Anjos e Demónios","policial","Dan Brown","Asa","01-04-2003"),
-            new Livro("2","Harry Potter e a Câmera dos Segredos","magia","J.K.Rowlings","Asa","01-02/2001")
+            new Livro("1","Anjos e Demónios","policial","Dan Brown","Asa","01-04-2003","Requisitado"),
+            new Livro("2","Harry Potter e a Câmera dos Segredos","magia","J.K.Rowlings","Asa","01-02-2001","Requisitado"),
+            new Livro("3","Juntos Para Sempre", "Ficção Literária", "W. Bruce Cameron","Asa","04-04-2017","Livre")
         );
     @FXML
     private TableView<Requisicao> tableReq = new TableView<Requisicao>();
@@ -304,10 +305,9 @@ public class ColunaController implements Initializable {
         }
     }
     
-    private boolean validarRegistarUtilizadorContacto()
+    private boolean validarRegistarUtilizadorContacto(String cont)
     {
         boolean flag = true;
-        String cont = new String(regUtiCont.getText());
         if (isInteger(cont) == 0)
         {
             regUtiErroContacto.setVisible(true);
@@ -325,10 +325,9 @@ public class ColunaController implements Initializable {
         return flag;
     }
     
-    private boolean validarRegistarUtilizadorNif()
+    private boolean validarRegistarUtilizadorNif(String nif)
     {
         boolean flag = true;
-        String nif = new String(regUtiNif.getText());
         if (isInteger(nif) == 0)
         {
             regUtiErroNif.setVisible(true);
@@ -346,10 +345,9 @@ public class ColunaController implements Initializable {
         return flag;
     }
     
-    private boolean validarRegistarUtilizadorEmail()
+    private boolean validarRegistarUtilizadorEmail(String mail)
     {
         boolean flag = true;
-        String mail = new String(regUtiEmail.getText());
         if(mail.indexOf("@")==-1) //verifica se o e-mail tem o @
         {
             regUtiErroEmail.setVisible(true);
@@ -360,10 +358,10 @@ public class ColunaController implements Initializable {
         return flag;
     }
     
-    private boolean validarRegistarUtilizadorNome()
+    private boolean validarRegistarUtilizadorNome(String nome)
     {
          boolean flag = true;
-        if (regUtiNome.getText().length() == 0)
+        if (nome.length() == 0)
         {
             regUtiErroNome.setVisible(true);
             regUtiErroNome.setText("Nome Inválido");
@@ -373,10 +371,10 @@ public class ColunaController implements Initializable {
         return flag;
     }
     
-    private boolean validarRegistarUtilizadorCc()
+    private boolean validarRegistarUtilizadorCc(String cc)
     {
         boolean flag = true;
-        if (regUtiCc.getText().length() == 0)
+        if (cc.length() == 0)
         {
             regUtiErroCc.setVisible(true);
             regUtiErroCc.setText("CC/TR Inválido");
@@ -385,10 +383,10 @@ public class ColunaController implements Initializable {
         }
         return flag;
     }
-    private boolean validarRegistarUtilizadorMorada()
+    private boolean validarRegistarUtilizadorMorada(String morada)
     {
         boolean flag = true;
-        if (regUtiMorada.getText().length() == 0)
+        if (morada.length() == 0)
         {
             regUtiErroMorada.setVisible(true);
             regUtiErroMorada.setText("Morada Inválido");
@@ -409,10 +407,22 @@ public class ColunaController implements Initializable {
         }
         return flag;
     }
-    private boolean validarRegistarUtilizadorLocalidade()
+    private boolean validarRegistarUtilizadorDNascimentoString(String d)
     {
         boolean flag = true;
-        if (regUtiLocalidade.getText().length() == 0)
+        if (d.length() == 0)
+        {
+            regUtiErroData.setVisible(true);
+            regUtiErroData.setText("Data Inválida");
+            regUtiErroData.setFill(Paint.valueOf("Red"));
+            flag = false;
+        }
+        return flag;
+    }
+    private boolean validarRegistarUtilizadorLocalidade(String local)
+    {
+        boolean flag = true;
+        if (local.length() == 0)
         {
             regUtiErroLocalidade.setVisible(true);
             regUtiErroLocalidade.setText("Morada Inválido");
@@ -433,21 +443,21 @@ public class ColunaController implements Initializable {
         regUtiErroNome.setVisible(false);
         regUtiErroLocalidade.setVisible(false);
         regUtiErroData.setVisible(false);
-        if(validarRegistarUtilizadorContacto() == false)
+        if(validarRegistarUtilizadorContacto(regUtiCont.getText()) == false)
             flag = false;
-        if(validarRegistarUtilizadorNif() == false)
+        if(validarRegistarUtilizadorNif(regUtiNif.getText()) == false)
             flag = false;
-        if(validarRegistarUtilizadorEmail()== false)
+        if(validarRegistarUtilizadorEmail(regUtiEmail.getText())== false)
             flag = false;
-        if(validarRegistarUtilizadorNome()== false)
+        if(validarRegistarUtilizadorNome(regUtiNome.getText())== false)
             flag = false;
-        if(validarRegistarUtilizadorCc()== false)
+        if(validarRegistarUtilizadorCc(regUtiCc.getText())== false)
             flag = false;
-        if(validarRegistarUtilizadorMorada()== false)
+        if(validarRegistarUtilizadorMorada(regUtiMorada.getText())== false)
             flag = false;
         if(validarRegistarUtilizadorDNascimento()== false)
             flag = false;
-        if(validarRegistarUtilizadorLocalidade()== false)
+        if(validarRegistarUtilizadorLocalidade(regUtiLocalidade.getText())== false)
             flag = false;
 
         if(flag)
@@ -464,16 +474,15 @@ public class ColunaController implements Initializable {
         if(validarRegistarLivro())
         {
         //    String datatest = regLivData.getValue().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
-            dataLivros.add(new Livro(regLivNum.getText(), regLivTitulo.getText(), regLivTema.getText(), regLivAutor.getText(), regLivEditora.getText(), regLivData.getValue().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"))));
+            dataLivros.add(new Livro(regLivNum.getText(), regLivTitulo.getText(), regLivTema.getText(), regLivAutor.getText(), regLivEditora.getText(), regLivData.getValue().format(DateTimeFormatter.ofPattern("dd-MM-yyyy")),"Livre"));
             fecharJanelas();
         }
         
     }
 
-    private boolean validarRegistarLivroNum()
+    private boolean validarRegistarLivroNum(String n)
     {
         boolean flag = true;
-        String n = new String(regLivNum.getText());
         if (isInteger(n) == 0)
         {
             regLiviErroNumero.setVisible(true);
@@ -483,6 +492,85 @@ public class ColunaController implements Initializable {
         }
         return flag;
     }
+    
+    private boolean validarRegistarLivroTitulo(String titulo)
+    {
+        boolean flag = true;
+        if (titulo.length() == 0)
+        {
+            regLiviErroTitulo.setVisible(true);
+            regLiviErroTitulo.setText("Titulo Inválido");
+            regLiviErroTitulo.setFill(Paint.valueOf("Red"));
+            flag = false;
+        }
+        return flag;
+    }
+    
+    private boolean validarRegistarLivroTema(String tema)
+    {
+        boolean flag = true;
+        if (tema.length() == 0)
+        {
+            regLiviErroTema.setVisible(true);
+            regLiviErroTema.setText("Tema Inválido");
+            regLiviErroTema.setFill(Paint.valueOf("Red"));
+            flag = false;
+        }
+        return flag;
+    }
+    private boolean validarRegistarLivroAutor(String autor)
+    {
+        boolean flag = true;
+        if (autor.length() == 0)
+        {
+            regLiviErroAutor.setVisible(true);
+            regLiviErroAutor.setText("Autor Inválido");
+            regLiviErroAutor.setFill(Paint.valueOf("Red"));
+            flag = false;
+        }
+            return flag;
+    }
+    
+    private boolean validarRegistarLivroEditora(String editora)
+    {
+        boolean flag = true;
+        if (editora.length() == 0)
+        {
+            regLiviErroEditora.setVisible(true);
+            regLiviErroEditora.setText("Editora Inválido");
+            regLiviErroEditora.setFill(Paint.valueOf("Red"));
+            flag = false;
+        }
+        return flag;
+    }
+    
+    private boolean validarRegistarLivroData()
+    {
+        boolean flag = true;
+        if (regLivData.getValue() == null)
+        {
+            regLiviErroData.setVisible(true);
+            regLiviErroData.setText("Data Inválida");
+            regLiviErroData.setFill(Paint.valueOf("Red"));
+            flag = false;
+        }
+        
+        return flag;
+    }
+    private boolean validarRegistarLivroDataSring(String d)
+    {
+        boolean flag = true;
+        if (d.length() == 0)
+        {
+            regLiviErroData.setVisible(true);
+            regLiviErroData.setText("Data Inválida");
+            regLiviErroData.setFill(Paint.valueOf("Red"));
+            flag = false;
+        }
+        
+        return flag;
+    }
+            
     
     private boolean validarRegistarLivro()
     {
@@ -494,44 +582,19 @@ public class ColunaController implements Initializable {
         regLiviErroTema.setVisible(false);
         regLiviErroTitulo.setVisible(false);
         
-        if(validarRegistarLivroNum() == false)
+        if(validarRegistarLivroNum(regLivNum.getText()) == false)
             flag = false;
-        
-        if (regLivTitulo.getText().length() == 0)
-        {
-            regLiviErroTitulo.setVisible(true);
-            regLiviErroTitulo.setText("Titulo Inválido");
-            regLiviErroTitulo.setFill(Paint.valueOf("Red"));
+        if(validarRegistarLivroTitulo(regLivTitulo.getText())== false)
             flag = false;
-        }
-        if (regLivTema.getText().length() == 0)
-        {
-            regLiviErroTema.setVisible(true);
-            regLiviErroTema.setText("Tema Inválido");
-            regLiviErroTema.setFill(Paint.valueOf("Red"));
+        if(validarRegistarLivroTema(regLivTema.getText())== false)
             flag = false;
-        }
-        if (regLivAutor.getText().length() == 0)
-        {
-            regLiviErroAutor.setVisible(true);
-            regLiviErroAutor.setText("Autor Inválido");
-            regLiviErroAutor.setFill(Paint.valueOf("Red"));
+        if(validarRegistarLivroAutor(regLivAutor.getText())== false)
             flag = false;
-        }
-        if (regLivEditora.getText().length() == 0)
-        {
-            regLiviErroEditora.setVisible(true);
-            regLiviErroEditora.setText("Editora Inválido");
-            regLiviErroEditora.setFill(Paint.valueOf("Red"));
+        if(validarRegistarLivroEditora(regLivEditora.getText())== false)
             flag = false;
-        }
-        if (regLivData.getValue() == null)
-        {
-            regLiviErroData.setVisible(true);
-            regLiviErroData.setText("Data Inválida");
-            regLiviErroData.setFill(Paint.valueOf("Red"));
+        if(validarRegistarLivroData()== false)
             flag = false;
-        }
+
         if(flag)
         {
             return true;
@@ -610,10 +673,15 @@ public class ColunaController implements Initializable {
     @FXML
     private void registarRequisicao(ActionEvent event) 
     {
-        
+        //falta verificar se o livro está requisitado!!
         if (validarRegistarRequisicao())
         {
             dataRequisicao.add(new Requisicao(regReqLivro.getText(), regReqCC.getText(),regReqDReq.getValue().format(DateTimeFormatter.ofPattern("dd-MM-yyyy")),""));
+            int l = LivNIndexOf(regReqLivro.getText());
+            tableLiv.getSelectionModel().select(l);
+            tableLiv.getSelectionModel().getSelectedItem().setRequisitado("Requisitado");
+            tableLiv.refresh();
+            fecharJanelas();
         }
         
     }
@@ -634,12 +702,27 @@ public class ColunaController implements Initializable {
             flag = false;
         }
         
-        if (LivNIndexOf(regReqLivro.getText()) == -1)
+        int l = LivNIndexOf(regReqLivro.getText());
+        if (l == -1)
         {
             regReqErroLivro.setVisible(true);
             regReqErroLivro.setText("Numero do Livro não registado");
             regReqErroLivro.setFill(Paint.valueOf("Red"));
             flag = false;
+        }
+        if (liv_requi_col.getCellData(l) == "Requisitado")
+        {
+            regReqErroLivro.setVisible(true);
+            regReqErroLivro.setText("O livro já se encontra requisitado");
+            regReqErroLivro.setFill(Paint.valueOf("Red"));
+            flag = false;
+        }
+        if (liv_ina_col.getCellData(l) == "Inativo")
+        {
+            regReqErroLivro.setVisible(true);
+            regReqErroLivro.setText("O livro já não se encontra Ativo");
+            regReqErroLivro.setFill(Paint.valueOf("Red"));
+            flag = false; 
         }
         
         if (regReqDReq.getValue() == null)
@@ -725,25 +808,16 @@ public class ColunaController implements Initializable {
     }
     
     @FXML
-    private void InativoLinhaLivro(ActionEvent event) {
-        
-//         if(ReqLivNIndexOf(tableLiv.getSelectionModel().getSelectedItem().getNLivro()) == -1)
-//         {
-             //tableLiv.getItems().remove(tableLiv.getSelectionModel().getSelectedItem());
-             tableLiv.getSelectionModel().getSelectedItem().setInativo("Inativo");
-             tableLiv.refresh();
-             //tableLiv.
-             //falta codigo para forçar update
-//         }
-//         else
-//         {
-//           Alert alert = new Alert(AlertType.ERROR); 
-//           alert.setTitle("Erro a apagar campo"); 
-//           alert.setHeaderText("Não pode apagar este livro por ele já ter sido requisitado anteriormente"); 
-//          // alert.setContentText("Ooops, there was an error!"); 
-//           alert.showAndWait(); 
-//         }
-        //apenas deixar apaga se não existir nenhuma requisição feita
+    private void InativoLinhaLivro(ActionEvent event) 
+    {
+        tableLiv.getSelectionModel().getSelectedItem().setInativo("Inativo");
+        tableLiv.refresh();
+    }
+    @FXML
+    private void ativoLinhaLivro(ActionEvent event) 
+    {
+        tableLiv.getSelectionModel().getSelectedItem().setInativo("Não");
+        tableLiv.refresh();
     }
 
     @FXML
@@ -790,13 +864,275 @@ public class ColunaController implements Initializable {
 
         tableReq.getSelectionModel().getSelectedItem().setDEntrega(dateFormat.format(datatemp).toString());
         tableReq.refresh();
+        
+        int f = LivNIndexOf(tableReq.getSelectionModel().getSelectedItem().getNLivro());
+                if (f == -1)
+        {
+            System.out.println("erro inesperado!\nDentro do entregarLivro");
+        }
+        else
+        {
+           tableLiv.getSelectionModel().select(f);
+           tableLiv.getSelectionModel().getSelectedItem().setRequisitado("Livre");
+           tableLiv.refresh();
+        }
+    }
+
+
+    @FXML
+    private void editarUtiCc(TableColumn.CellEditEvent event) 
+    {
+        
+        if(validarRegistarUtilizadorCc(event.getNewValue().toString()) == true)
+        {
+           tableUti.getSelectionModel().getSelectedItem().setCc(event.getNewValue().toString());
+        }
+        else
+        {
+            Alert alert = new Alert(AlertType.ERROR); 
+            alert.setTitle("Erro a editar"); 
+            alert.setHeaderText("Colocou um valor inválido"); 
+          //  alert.setContentText("Ooops, there was an error!"); 
+            alert.showAndWait();
+        }
+        tableUti.refresh();
     }
 
     @FXML
-    private void editarUti(TableColumn.CellEditEvent event) 
+    private void editarUtiNome(TableColumn.CellEditEvent event) 
     {
-        System.out.println(event.getNewValue());
+        if(validarRegistarUtilizadorNome(event.getNewValue().toString()) == true)
+        {
+           tableUti.getSelectionModel().getSelectedItem().setNome(event.getNewValue().toString());
+        }
+        else
+        {
+            Alert alert = new Alert(AlertType.ERROR); 
+            alert.setTitle("Erro a editar"); 
+            alert.setHeaderText("Colocou um valor inválido"); 
+          //  alert.setContentText("Ooops, there was an error!"); 
+            alert.showAndWait();
+        }
+        tableUti.refresh();
     }
+
+    @FXML
+    private void editarUtiDN(TableColumn.CellEditEvent event) 
+    {
+        if(validarRegistarUtilizadorDNascimentoString(event.getNewValue().toString()) == true)
+        {
+           tableUti.getSelectionModel().getSelectedItem().setDNascimento(event.getNewValue().toString());
+           //ver isto mais tarde, melhorar a validação do edit das datas
+        }
+        else
+        {
+            Alert alert = new Alert(AlertType.ERROR); 
+            alert.setTitle("Erro a editar"); 
+            alert.setHeaderText("Colocou um valor inválido"); 
+          //  alert.setContentText("Ooops, there was an error!"); 
+            alert.showAndWait();
+        }
+        tableUti.refresh();
+    }
+
+    @FXML
+    private void editarUtiContacto(TableColumn.CellEditEvent event) 
+    {
+        if(validarRegistarUtilizadorContacto(event.getNewValue().toString()) == true)
+        {
+           tableUti.getSelectionModel().getSelectedItem().setContacto(event.getNewValue().toString());
+        }
+        else
+        {
+            Alert alert = new Alert(AlertType.ERROR); 
+            alert.setTitle("Erro a editar"); 
+            alert.setHeaderText("Colocou um valor inválido"); 
+          //  alert.setContentText("Ooops, there was an error!"); 
+            alert.showAndWait();
+        }
+        tableUti.refresh();
+    }
+
+    @FXML
+    private void editarUtiEmail(TableColumn.CellEditEvent event) 
+    {
+        if(validarRegistarUtilizadorEmail(event.getNewValue().toString()) == true)
+        {
+           tableUti.getSelectionModel().getSelectedItem().setEmail(event.getNewValue().toString());
+        }
+        else
+        {
+            Alert alert = new Alert(AlertType.ERROR); 
+            alert.setTitle("Erro a editar"); 
+            alert.setHeaderText("Colocou um valor inválido"); 
+          //  alert.setContentText("Ooops, there was an error!"); 
+            alert.showAndWait();
+        }
+        tableUti.refresh();
+    }
+
+    @FXML
+    private void editarUtiMorada(TableColumn.CellEditEvent event) 
+    {
+        if(validarRegistarUtilizadorMorada(event.getNewValue().toString()) == true)
+        {
+           tableUti.getSelectionModel().getSelectedItem().setMorada(event.getNewValue().toString());
+        }
+        else
+        {
+            Alert alert = new Alert(AlertType.ERROR); 
+            alert.setTitle("Erro a editar"); 
+            alert.setHeaderText("Colocou um valor inválido"); 
+          //  alert.setContentText("Ooops, there was an error!"); 
+            alert.showAndWait();
+        }
+        tableUti.refresh();
+    }
+
+    @FXML
+    private void editarUtiLocalidade(TableColumn.CellEditEvent event) 
+    {
+        if(validarRegistarUtilizadorLocalidade(event.getNewValue().toString()) == true)
+        {
+           tableUti.getSelectionModel().getSelectedItem().setLocalidade(event.getNewValue().toString());
+        }
+        else
+        {
+            Alert alert = new Alert(AlertType.ERROR); 
+            alert.setTitle("Erro a editar"); 
+            alert.setHeaderText("Colocou um valor inválido"); 
+          //  alert.setContentText("Ooops, there was an error!"); 
+            alert.showAndWait();
+        }
+        tableUti.refresh();
+    }
+
+    @FXML
+    private void editarUtiNif(TableColumn.CellEditEvent event) 
+    {
+        if(validarRegistarUtilizadorNif(event.getNewValue().toString()) == true)
+        {
+           tableUti.getSelectionModel().getSelectedItem().setNif(event.getNewValue().toString());
+        }
+        else
+        {
+            Alert alert = new Alert(AlertType.ERROR); 
+            alert.setTitle("Erro a editar"); 
+            alert.setHeaderText("Colocou um valor inválido"); 
+          //  alert.setContentText("Ooops, there was an error!"); 
+            alert.showAndWait();
+        }
+        tableUti.refresh();
+    }
+
+    @FXML
+    private void editarLivroNum(TableColumn.CellEditEvent event) 
+    {
+        if(validarRegistarLivroNum(event.getNewValue().toString()) == true)
+        {
+           tableLiv.getSelectionModel().getSelectedItem().setNLivro(event.getNewValue().toString());
+        }
+        else
+        {
+            Alert alert = new Alert(AlertType.ERROR); 
+            alert.setTitle("Erro a editar"); 
+            alert.setHeaderText("Colocou um valor inválido"); 
+          //  alert.setContentText("Ooops, there was an error!"); 
+            alert.showAndWait();
+        }
+        tableUti.refresh();
+    }
+
+    @FXML
+    private void editarLivroTitulo(TableColumn.CellEditEvent event) 
+    {
+        if(validarRegistarLivroTitulo(event.getNewValue().toString()) == true)
+        {
+           tableLiv.getSelectionModel().getSelectedItem().setTitulo(event.getNewValue().toString());
+        }
+        else
+        {
+            Alert alert = new Alert(AlertType.ERROR); 
+            alert.setTitle("Erro a editar"); 
+            alert.setHeaderText("Colocou um valor inválido"); 
+          //  alert.setContentText("Ooops, there was an error!"); 
+            alert.showAndWait();
+        }
+        tableUti.refresh();
+    }
+
+    @FXML
+    private void editarLivroTema(TableColumn.CellEditEvent event) 
+    {
+        if(validarRegistarLivroTema(event.getNewValue().toString()) == true)
+        {
+           tableLiv.getSelectionModel().getSelectedItem().setTema(event.getNewValue().toString());
+        }
+        else
+        {
+            Alert alert = new Alert(AlertType.ERROR); 
+            alert.setTitle("Erro a editar"); 
+            alert.setHeaderText("Colocou um valor inválido"); 
+          //  alert.setContentText("Ooops, there was an error!"); 
+            alert.showAndWait();
+        }
+        tableUti.refresh();
+    }
+
+    @FXML
+    private void editarLivroAutor(TableColumn.CellEditEvent event)
+    {
+        if(validarRegistarLivroAutor(event.getNewValue().toString()) == true)
+        {
+           tableLiv.getSelectionModel().getSelectedItem().setAutor(event.getNewValue().toString());
+        }
+        else
+        {
+            Alert alert = new Alert(AlertType.ERROR); 
+            alert.setTitle("Erro a editar"); 
+            alert.setHeaderText("Colocou um valor inválido"); 
+          //  alert.setContentText("Ooops, there was an error!"); 
+            alert.showAndWait();
+        }
+        tableUti.refresh();
+    }
+
+    @FXML
+    private void editarLivroEditora(TableColumn.CellEditEvent event) 
+    {
+        if(validarRegistarLivroEditora(event.getNewValue().toString()) == true)
+        {
+           tableLiv.getSelectionModel().getSelectedItem().setEditora(event.getNewValue().toString());
+        }
+        else
+        {
+            Alert alert = new Alert(AlertType.ERROR); 
+            alert.setTitle("Erro a editar"); 
+            alert.setHeaderText("Colocou um valor inválido"); 
+          //  alert.setContentText("Ooops, there was an error!"); 
+            alert.showAndWait();
+        }
+        tableUti.refresh();
+    }
+
+    @FXML
+    private void editarLivroData(TableColumn.CellEditEvent event) 
+    {
+        if(validarRegistarLivroDataSring(event.getNewValue().toString()) == true)
+        {
+           tableLiv.getSelectionModel().getSelectedItem().setData(event.getNewValue().toString());
+        }
+        else
+        {
+            Alert alert = new Alert(AlertType.ERROR); 
+            alert.setTitle("Erro a editar"); 
+            alert.setHeaderText("Colocou um valor inválido"); 
+          //  alert.setContentText("Ooops, there was an error!"); 
+            alert.showAndWait();
+        }
+        tableUti.refresh();  
+    }
+    
    
 }
 

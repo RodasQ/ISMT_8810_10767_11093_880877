@@ -22,14 +22,14 @@ public class Livro {
     private final SimpleStringProperty inativo;
     
     
-    Livro(String snLivro, String stitulo, String stema, String sautor, String seditora, String sdata) {
+    Livro(String snLivro, String stitulo, String stema, String sautor, String seditora, String sdata, String srequisitado) {
         this.nLivro = new SimpleStringProperty(snLivro);
         this.titulo = new SimpleStringProperty(stitulo);
         this.tema = new SimpleStringProperty(stema);
         this.autor = new SimpleStringProperty(sautor);
         this.editora = new SimpleStringProperty(seditora);
         this.data = new SimpleStringProperty(sdata);
-        this.requisitado = new SimpleStringProperty("Não");
+        this.requisitado = new SimpleStringProperty(srequisitado);
         this.inativo = new SimpleStringProperty("Não");
     }
     

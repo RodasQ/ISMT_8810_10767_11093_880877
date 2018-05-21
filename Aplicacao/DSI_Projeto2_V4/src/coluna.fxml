@@ -44,29 +44,25 @@
                               <MenuItem mnemonicParsing="false" onAction="#registarRequisicoesJanela" text="Requisição" />
                         </items>
                       </Menu>
-                      <Menu mnemonicParsing="false" text="Editar">
-                        <items>
-                          <MenuItem mnemonicParsing="false" text="Apagar" />
-                        </items>
-                      </Menu>
                     </menus>
                   </MenuBar>
                </children>
             </VBox>
-            <TableView fx:id="tableUti" editable="true" layoutY="25.0" onMousePressed="#click" prefHeight="374.0" prefWidth="614.0" tableMenuButtonVisible="true" visible="false">
+            <TableView fx:id="tableUti" editable="true" layoutY="25.0" onMousePressed="#click" prefHeight="374.0" prefWidth="614.0" tableMenuButtonVisible="true">
                      <columns>
-                        <TableColumn fx:id="uti_cc_col" onEditCommit="#editarUti" text="Nº CC/TR" />
-                        <TableColumn fx:id="uti_nome_col" prefWidth="116.0" text="Nome" />
-                  <TableColumn fx:id="uti_dNasc_col" prefWidth="75.0" text="Data Nascimento" />
-                        <TableColumn fx:id="uti_cont_col" prefWidth="94.0" text="Contacto" />
-                        <TableColumn fx:id="uti_mail_col" prefWidth="93.0" text="E-mail" />
-                        <TableColumn fx:id="uti_mora_col" prefWidth="150.0" text="Morada" />
-                  <TableColumn fx:id="uti_loc_col" prefWidth="75.0" text="Localidade" />
-                        <TableColumn fx:id="uti_nif_col" prefWidth="84.0" text="NIF" />
+                        <TableColumn fx:id="uti_cc_col" onEditCommit="#editarUtiCc" text="Nº CC/TR" />
+                        <TableColumn fx:id="uti_nome_col" onEditCommit="#editarUtiNome" prefWidth="116.0" text="Nome" />
+                  <TableColumn fx:id="uti_dNasc_col" onEditCommit="#editarUtiDN" prefWidth="75.0" text="Data Nascimento" />
+                        <TableColumn fx:id="uti_cont_col" onEditCommit="#editarUtiContacto" prefWidth="94.0" text="Contacto" />
+                        <TableColumn fx:id="uti_mail_col" onEditCommit="#editarUtiEmail" prefWidth="93.0" text="E-mail" />
+                        <TableColumn fx:id="uti_mora_col" onEditCommit="#editarUtiMorada" prefWidth="150.0" text="Morada" />
+                  <TableColumn fx:id="uti_loc_col" onEditCommit="#editarUtiLocalidade" prefWidth="75.0" text="Localidade" />
+                        <TableColumn fx:id="uti_nif_col" onEditCommit="#editarUtiNif" prefWidth="84.0" text="NIF" />
                      </columns>
                <contextMenu>
                   <ContextMenu>
                     <items>
+                        <MenuItem mnemonicParsing="false" onAction="#registarUtilizadorJanela" text="Registar Utilizador" />
                       <MenuItem mnemonicParsing="false" onAction="#apagarLinhaUtilizador" text="apagar" />
                     </items>
                   </ContextMenu>
@@ -74,24 +70,26 @@
             </TableView>
             <TableView fx:id="tableLiv" editable="true" layoutY="25.0" prefHeight="374.0" prefWidth="600.0" tableMenuButtonVisible="true" visible="false">
               <columns>
-                <TableColumn fx:id="liv_nLiv_col" prefWidth="75.0" text="Nº livro" />
-                <TableColumn fx:id="liv_titu_col" prefWidth="75.0" text="Titulo" />
-                  <TableColumn fx:id="liv_tema_col" prefWidth="75.0" text="Tema" />
-                  <TableColumn fx:id="liv_aut_col" prefWidth="75.0" text="Autor" />
-                  <TableColumn fx:id="liv_edi_col" prefWidth="75.0" text="Editora" />
-                  <TableColumn fx:id="liv_data_col" prefWidth="75.0" text="Data" />
+                <TableColumn fx:id="liv_nLiv_col" onEditCommit="#editarLivroNum" prefWidth="75.0" text="Nº livro" />
+                <TableColumn fx:id="liv_titu_col" onEditCommit="#editarLivroTitulo" prefWidth="75.0" text="Titulo" />
+                  <TableColumn fx:id="liv_tema_col" onEditCommit="#editarLivroTema" prefWidth="75.0" text="Tema" />
+                  <TableColumn fx:id="liv_aut_col" onEditCommit="#editarLivroAutor" prefWidth="75.0" text="Autor" />
+                  <TableColumn fx:id="liv_edi_col" onEditCommit="#editarLivroEditora" prefWidth="75.0" text="Editora" />
+                  <TableColumn fx:id="liv_data_col" onEditCommit="#editarLivroData" prefWidth="75.0" text="Data" />
                   <TableColumn fx:id="liv_requi_col" prefWidth="75.0" text="Requisitado" />
                   <TableColumn fx:id="liv_ina_col" prefWidth="75.0" text="Inativo" />
               </columns>
                <contextMenu>
                   <ContextMenu>
                      <items>
+                        <MenuItem mnemonicParsing="false" onAction="#registarLivroJanela" text="Registar Livro" />
+                        <MenuItem mnemonicParsing="false" onAction="#ativoLinhaLivro" text="Tornar Ativo" />
                         <MenuItem mnemonicParsing="false" onAction="#InativoLinhaLivro" text="Tornar Inativo" />
                      </items>
                   </ContextMenu>
                </contextMenu>
             </TableView>
-            <TableView fx:id="tableReq" editable="true" layoutY="25.0" prefHeight="374.0" prefWidth="600.0" tableMenuButtonVisible="true">
+            <TableView fx:id="tableReq" editable="true" layoutY="25.0" prefHeight="374.0" prefWidth="600.0" tableMenuButtonVisible="true" visible="false">
               <columns>
                 <TableColumn fx:id="req_nLiv_col" prefWidth="75.0" text="Nº Livro" />
                 <TableColumn fx:id="req_cc_col" prefWidth="85.0" text="Nº CC" />
@@ -101,6 +99,8 @@
                <contextMenu>
                   <ContextMenu>
                      <items>
+                        <MenuItem mnemonicParsing="false" onAction="#registarUtilizadorJanela" text="Registar Utilizador" />
+                        <MenuItem mnemonicParsing="false" onAction="#registarLivroJanela" text="Registar Livro" />
                         <MenuItem mnemonicParsing="false" onAction="#pesquisarUtiReq" text="Pesquisar Utilizador" />
                         <MenuItem mnemonicParsing="false" onAction="#pesquisarLivroReq" text="Pesquisar Livro" />
                         <MenuItem mnemonicParsing="false" onAction="#entregarLivro" text="Entregar Livro" />
