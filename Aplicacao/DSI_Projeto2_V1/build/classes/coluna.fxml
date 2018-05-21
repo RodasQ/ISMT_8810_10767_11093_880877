@@ -67,7 +67,7 @@
                <contextMenu>
                   <ContextMenu>
                     <items>
-                      <MenuItem mnemonicParsing="false" text="apagar" />
+                      <MenuItem mnemonicParsing="false" onAction="#apagarLinhaUtilizador" text="apagar" />
                     </items>
                   </ContextMenu>
                </contextMenu>
@@ -83,6 +83,13 @@
                   <TableColumn fx:id="liv_requi_col" prefWidth="75.0" text="Requisitado" />
                   <TableColumn fx:id="liv_ina_col" prefWidth="75.0" text="Inativo" />
               </columns>
+               <contextMenu>
+                  <ContextMenu>
+                     <items>
+                        <MenuItem mnemonicParsing="false" onAction="#apagarLinhaLivro" text="apagar" />
+                     </items>
+                  </ContextMenu>
+               </contextMenu>
             </TableView>
             <TableView fx:id="tableReq" editable="true" layoutY="25.0" prefHeight="374.0" prefWidth="600.0" tableMenuButtonVisible="true" visible="false">
               <columns>
@@ -91,6 +98,13 @@
                   <TableColumn fx:id="req_dReq_col" prefWidth="107.0" text="data_requisição" />
                   <TableColumn fx:id="req_dEnt_col" prefWidth="96.0" text="data_entrega" />
               </columns>
+               <contextMenu>
+                  <ContextMenu>
+                     <items>
+                        <MenuItem mnemonicParsing="false" onAction="#apagarLinhaRequisicao" text="apagar" />
+                     </items>
+                  </ContextMenu>
+               </contextMenu>
             </TableView>
             <Pane fx:id="regLivWindow" layoutY="25.0" prefHeight="374.0" prefWidth="600.0" visible="false">
                <children>
