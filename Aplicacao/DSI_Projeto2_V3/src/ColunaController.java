@@ -17,8 +17,11 @@ import javafx.event.EventTarget;
 import javafx.geometry.Insets;
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
+import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -51,16 +54,17 @@ public class ColunaController implements Initializable {
     
         private final ObservableList<Livro> dataLivros =
         FXCollections.observableArrayList(
-            new Livro("1","Anjos e Demónios","policial","Dan Brown","Asa","01-04-2003","N","N"),
-            new Livro("2","Harry Potter e a Câmera dos Segredos","magia","J.K.Rowlings","Asa","01-02/2001","N","N")
+            new Livro("1","Anjos e Demónios","policial","Dan Brown","Asa","01-04-2003"),
+            new Livro("2","Harry Potter e a Câmera dos Segredos","magia","J.K.Rowlings","Asa","01-02/2001")
         );
     @FXML
     private TableView<Requisicao> tableReq = new TableView<Requisicao>();
     
         private final ObservableList<Requisicao> dataRequisicao =
         FXCollections.observableArrayList(
-            new Requisicao("1","589624782","16-05-2018","A colocar"),
-            new Requisicao("2","289756586","03-05-2017","A colocar")
+            new Requisicao("1","589624782","16-04-2017","20-3-2018"),
+            new Requisicao("2","289756586","03-05-2017",""),
+            new Requisicao("2","589624782","03-02-2018","")
         );
     
     @FXML
@@ -249,6 +253,7 @@ public class ColunaController implements Initializable {
         uti_nome_col.setCellFactory(TextFieldTableCell.forTableColumn());
         
         
+        
         liv_aut_col.setCellFactory(TextFieldTableCell.forTableColumn());
         liv_data_col.setCellFactory(TextFieldTableCell.forTableColumn());
         liv_edi_col.setCellFactory(TextFieldTableCell.forTableColumn());
@@ -268,6 +273,11 @@ public class ColunaController implements Initializable {
         tableLiv.setItems(dataLivros);
         tableReq.setItems(dataRequisicao);
         fecharJanelas();
+        
+        //System.out.println(tableUti.getItems().size());
+        //System.out.println(uti_cc_col.getCellData(0));
+        //colunaIndexOf("289756586");
+        //System.out.println(LivNIndexOf("1"));
 
     }   
 
@@ -285,7 +295,7 @@ public class ColunaController implements Initializable {
     {  
         if(validarRegistarUtilizador())
         {
-            dataUtilizadores.add(new Utilizador(regUtiCc.getText(),regUtiNome.getText(),regUtiDataNasc.getValue().format(DateTimeFormatter.ofPattern("dd-MM-yyyy")),regUtiCont.getText(),regUtiEmail.getText(),regUtiMorada.getText(),regUtiLocalidade.getText(),regUtiNif.getText()));
+            dataUtilizadores.add(new Utilizador(regUtiNome.getText(),regUtiCc.getText(),regUtiDataNasc.getValue().format(DateTimeFormatter.ofPattern("dd-MM-yyyy")),regUtiCont.getText(),regUtiEmail.getText(),regUtiMorada.getText(),regUtiLocalidade.getText(),regUtiNif.getText()));
             fecharJanelas();
             //falta chamar a função da janela que confirma registo com sucesso
         }
@@ -387,7 +397,7 @@ public class ColunaController implements Initializable {
         if(validarRegistarLivro())
         {
         //    String datatest = regLivData.getValue().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
-            dataLivros.add(new Livro(regLivNum.getText(), regLivTitulo.getText(), regLivTema.getText(), regLivAutor.getText(), regLivEditora.getText(), regLivData.getValue().format(DateTimeFormatter.ofPattern("dd-MM-yyyy")), "N", "N"));
+            dataLivros.add(new Livro(regLivNum.getText(), regLivTitulo.getText(), regLivTema.getText(), regLivAutor.getText(), regLivEditora.getText(), regLivData.getValue().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"))));
             fecharJanelas();
         }
         
@@ -524,7 +534,12 @@ public class ColunaController implements Initializable {
     @FXML
     private void registarRequisicao(ActionEvent event) 
     {
-        validarRegistarRequisicao();
+        
+        if (validarRegistarRequisicao())
+        {
+            dataRequisicao.add(new Requisicao(regReqCC.getText(),regReqLivro.getText(),regReqDReq.getValue().format(DateTimeFormatter.ofPattern("dd-MM-yyyy")),""));
+        }
+        
     }
     
     private boolean validarRegistarRequisicao()
@@ -535,33 +550,160 @@ public class ColunaController implements Initializable {
         regReqErroDReq.setVisible(false);
         regReqErroLivro.setVisible(false);
         
-        System.out.println(uti_cc_col.getCellData(2));
-            //    contains(regReqCC.getText()));
-        return true;
+        if (UtiCcIndexOf(regReqCC.getText()) == -1)
+        {
+            regReqErroCc.setVisible(true);
+            regReqErroCc.setText("Numero de CC/TR não registado");
+            regReqErroCc.setFill(Paint.valueOf("Red"));
+            flag = false;
+        }
+        
+        if (LivNIndexOf(regReqLivro.getText()) == -1)
+        {
+            regReqErroLivro.setVisible(true);
+            regReqErroLivro.setText("Numero do Livro não registado");
+            regReqErroLivro.setFill(Paint.valueOf("Red"));
+            flag = false;
+        }
+        
+        if (regReqDReq.getValue() == null)
+        {
+            regReqErroDReq.setVisible(true);
+            regReqErroDReq.setText("Data Inválida");
+            regReqErroDReq.setFill(Paint.valueOf("Red"));
+            flag = false;
+        }
+        
+        if(flag)
+        {
+            return true;
+        }
+        else return false;
     }
     
-    private int colunaIndexOf()
+    private int UtiCcIndexOf(String st)
     {
-        return 0;
+        int z = -1;
+        for (int i = 0; i< tableUti.getItems().size(); i++)
+        {
+            if(uti_cc_col.getCellData(i).equals(st))
+                z = i;         
+        }
+
+        return z;
+    }
+    
+    private int LivNIndexOf(String st)
+    {
+        int z = -1;
+        for (int i = 0; i< tableLiv.getItems().size(); i++)
+        {
+            if(liv_nLiv_col.getCellData(i).equals(st))
+                z = i;         
+        }
+           
+        return z;
+    }
+    
+    private int ReqCcIndexOf(String st)
+    {
+        int z = -1;
+        for (int i = 0; i< tableReq.getItems().size(); i++)
+        {
+            if(req_cc_col.getCellData(i).equals(st))
+                z = i;         
+        }
+
+        return z;
+    }
+    
+    private int ReqLivNIndexOf(String st)
+    {
+        int z = -1;
+        for (int i = 0; i< tableReq.getItems().size(); i++)
+        {
+            if(req_nLiv_col.getCellData(i).equals(st))
+                z = i;         
+        }
+           
+        return z;
     }
 
     @FXML
     private void apagarLinhaUtilizador(ActionEvent event) 
     {
      //   MyDataType selectedItem = tableUti.getSelectionModel().getSelectedItem();
-        tableUti.getItems().remove(tableUti.getSelectionModel().getSelectedItem());
-        //apenas deixar apagar se não existir nenhuma requisição feita
+       if(ReqCcIndexOf(tableUti.getSelectionModel().getSelectedItem().getCc()) == -1)
+       {
+           tableUti.getItems().remove(tableUti.getSelectionModel().getSelectedItem());
+       }
+       else
+       {
+           Alert alert = new Alert(AlertType.ERROR); 
+           alert.setTitle("Erro a apagar campo"); 
+           alert.setHeaderText("Não pode apagar este utilixador por ele já ter efetuado requisições anteriormente"); 
+          // alert.setContentText("Ooops, there was an error!"); 
+           alert.showAndWait();
+       }
+        //apenas deixa apagar se não existir nenhuma requisição feita
     }
-
+    
     @FXML
-    private void apagarLinhaLivro(ActionEvent event) {
-        tableLiv.getItems().remove(tableLiv.getSelectionModel().getSelectedItem());
-        //apenas deixar apagar se não existir nenhuma requisição feita
+    private void InativoLinhaLivro(ActionEvent event) {
+        
+//         if(ReqLivNIndexOf(tableLiv.getSelectionModel().getSelectedItem().getNLivro()) == -1)
+//         {
+             //tableLiv.getItems().remove(tableLiv.getSelectionModel().getSelectedItem());
+             tableLiv.getSelectionModel().getSelectedItem().setInativo("Inativo");
+             tableLiv.refresh();
+             //tableLiv.
+             //falta codigo para forçar update
+//         }
+//         else
+//         {
+//           Alert alert = new Alert(AlertType.ERROR); 
+//           alert.setTitle("Erro a apagar campo"); 
+//           alert.setHeaderText("Não pode apagar este livro por ele já ter sido requisitado anteriormente"); 
+//          // alert.setContentText("Ooops, there was an error!"); 
+//           alert.showAndWait(); 
+//         }
+        //apenas deixar apaga se não existir nenhuma requisição feita
     }
 
     @FXML
     private void apagarLinhaRequisicao(ActionEvent event) {
         tableReq.getItems().remove(tableReq.getSelectionModel().getSelectedItem());
+    }
+
+    @FXML
+    private void pesquisarLivroReq(ActionEvent event) 
+    {
+        int f = LivNIndexOf(tableReq.getSelectionModel().getSelectedItem().getNLivro());
+        if (f == -1)
+        {
+            System.out.println("erro inesperado!\nDentro do pesquisarLivroReq");
+        }
+        else
+        {
+           pesquisarLivro(new ActionEvent());
+           tableLiv.getSelectionModel().select(f);
+        }
+        
+    }
+
+    @FXML
+    private void pesquisarUtiReq(ActionEvent event) 
+    {
+        int f = UtiCcIndexOf(tableReq.getSelectionModel().getSelectedItem().getCc());
+        if (f == -1)
+        {
+            System.out.println("erro inesperado!\nDentro do pesquisarLivroReq");
+        }
+        else
+        {
+           pesquisarUtilizador(new ActionEvent());
+           tableUti.getSelectionModel().select(f);
+        }
     }
    
 }
