@@ -693,7 +693,7 @@ public class ColunaController implements Initializable {
             tableLiv.refresh();
             Alert alert = new Alert(AlertType.INFORMATION);
             alert.setTitle("Registo com sucesso");
-            alert.setHeaderText("Livro registado com sucesso!");
+            alert.setHeaderText("Requisição registada com sucesso!");
             //alert.setContentText("I have a great message for you!");
             alert.showAndWait();
             fecharJanelas();
