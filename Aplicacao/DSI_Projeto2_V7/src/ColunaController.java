@@ -226,6 +226,24 @@ public class ColunaController implements Initializable {
     private DatePicker regReqDEnt;
     @FXML
     private Pane regReqEntregaWindow;
+    @FXML
+    private Pane regFuncWindow;
+    @FXML
+    private TextField regFuncNome;
+    @FXML
+    private TextField regFuncLogin;
+    @FXML
+    private Text regFuncErroNome;
+    @FXML
+    private Text regFuncErroPass;
+    @FXML
+    private Text regFuncErroLogin;
+    @FXML
+    private TextField regFuncPass;
+    @FXML
+    private Text regFuncErroTipo;
+    @FXML
+    private TextField regFuncTipo;
 
 
 
@@ -921,7 +939,24 @@ public class ColunaController implements Initializable {
            
         return z;
     }
+    
+    private boolean ReqCcPorEntregarLivro(String st)
+    {
+        for (int i = 0; i< tableReq.getItems().size(); i++)
+        {
+            if(req_cc_col.getCellData(i).equals(st))
+            {
+                if(req_dEnt_col.getCellData(i).equals(""))
+                {
+                    System.out.println("Utilizador tem livro por entregar!");
+                    return true;
+                }
+            }
+        }
 
+        return false;
+    }
+    
     @FXML
     private void apagarLinhaUtilizador(ActionEvent event) 
     {
@@ -1295,13 +1330,14 @@ public class ColunaController implements Initializable {
     private void calcularDias()
     {
         //chamar esta função qaundo a janela Requisições é aberta!
-        
+        //falta fazer esta função
     }
 
     
    
     private void gravarUtilizador()
     {
+        //falta chamar esta função
         File ficheiro = new File("Utilizadores.bin");
         ObjectOutputStream escrita;
         int i=0;      
@@ -1332,6 +1368,7 @@ public class ColunaController implements Initializable {
     
     private void carregarUtilizador()
     {
+        //falta chamar esta função
         File ficheiro = new File("Utilizadores.bin");
             ObjectInputStream leitura = null; 
             
@@ -1381,6 +1418,7 @@ public class ColunaController implements Initializable {
     
     private void gravarLivro()
     {
+        //falta chamar esta função
         File ficheiro = new File("Livros.bin");
         ObjectOutputStream escrita;
         int i=0;      
@@ -1410,6 +1448,7 @@ public class ColunaController implements Initializable {
 
     private void carregarLivros()
     {
+        //falta chamar esta função
         File ficheiro = new File("Livros.bin");
             ObjectInputStream leitura = null; 
             
@@ -1458,6 +1497,7 @@ public class ColunaController implements Initializable {
     
     private void gravarRequisicao()
     {
+        //falta chamar esta função
         File ficheiro = new File("Requisicao.bin");
         ObjectOutputStream escrita;
         int i=0;      
@@ -1483,6 +1523,7 @@ public class ColunaController implements Initializable {
     
     private void carregarRequisicao()
     {
+        //falta chamar esta função
         File ficheiro = new File("Requisicao.bin");
             ObjectInputStream leitura = null; 
             
@@ -1526,6 +1567,7 @@ public class ColunaController implements Initializable {
     
     private void gravarFuncionario()
     {
+        //falta chamar esta função
         File ficheiro = new File("Funcionario.bin");
         ObjectOutputStream escrita;
         int i=0;      
@@ -1551,6 +1593,7 @@ public class ColunaController implements Initializable {
     
     private void carregarFuncionario()
     {
+        //falta chamar esta função
         File ficheiro = new File("Funcionario.bin");
             ObjectInputStream leitura = null; 
             
@@ -1590,6 +1633,16 @@ public class ColunaController implements Initializable {
             }
 
         }
+    }
+
+    @FXML
+    private void registarFuncionario(ActionEvent event) 
+    {
+        
+    }
+
+    @FXML
+    private void registarFuncionarioJanela(ActionEvent event) {
     }
    
 }
