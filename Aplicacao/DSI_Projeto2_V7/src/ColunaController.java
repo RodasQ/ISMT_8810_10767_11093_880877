@@ -827,6 +827,14 @@ public class ColunaController implements Initializable {
             regReqErroCc.setFill(Paint.valueOf("Red"));
             flag = false;
         }
+        
+        if (ReqCcPorEntregarLivro(s))
+        {
+            regReqErroCc.setVisible(true);
+            regReqErroCc.setText("Utilizador tem um livro por entregar!");
+            regReqErroCc.setFill(Paint.valueOf("Red"));
+            flag = false;
+        }
         return flag;
     }
     
@@ -966,7 +974,6 @@ public class ColunaController implements Initializable {
                 }
             }
         }
-
         return false;
     }
     
