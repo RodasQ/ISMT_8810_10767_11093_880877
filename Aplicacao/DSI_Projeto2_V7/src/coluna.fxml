@@ -43,6 +43,7 @@
                             <MenuItem mnemonicParsing="false" onAction="#registarUtilizadorJanela" text="Utilizador" />
                               <MenuItem mnemonicParsing="false" onAction="#registarLivroJanela" text="Livros" />
                               <MenuItem mnemonicParsing="false" onAction="#registarRequisicoesJanela" text="Requisição" />
+                              <MenuItem mnemonicParsing="false" onAction="#registarFuncionarioJanela" text="Funcionário" />
                         </items>
                       </Menu>
                     </menus>
@@ -222,20 +223,20 @@
                   </Text>
                   <TextField fx:id="regFuncNome" layoutX="102.0" layoutY="58.0" prefHeight="25.0" prefWidth="258.0" />
                   <TextField fx:id="regFuncLogin" layoutX="102.0" layoutY="96.0" prefHeight="25.0" prefWidth="258.0" />
+                  <TextField fx:id="regFuncPass" layoutX="101.0" layoutY="133.0" prefHeight="25.0" prefWidth="258.0" />
+                  <TextField fx:id="regFuncTipo" layoutX="102.0" layoutY="169.0" prefHeight="25.0" prefWidth="258.0" />
                   <Text fx:id="regFuncErroNome" layoutX="393.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" visible="false" />
                   <Text fx:id="regFuncErroPass" layoutX="393.0" layoutY="151.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" visible="false" />
                   <Text fx:id="regFuncErroLogin" layoutX="393.0" layoutY="113.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" visible="false" />
                   <Button layoutX="448.0" layoutY="335.0" mnemonicParsing="false" onAction="#registarFuncionario" prefHeight="25.0" prefWidth="62.0" text="Guardar" />
                   <Button layoutX="524.0" layoutY="335.0" mnemonicParsing="false" onAction="#sairJanela" prefHeight="25.0" prefWidth="62.0" text="Sair" />
                   <Text layoutX="231.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="FUNCIONÁRIOS" wrappingWidth="85.67578125" />
-                  <TextField fx:id="regFuncPass" layoutX="101.0" layoutY="133.0" prefHeight="25.0" prefWidth="258.0" />
                   <Text layoutX="43.0" layoutY="186.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tipo">
                      <font>
                         <Font size="11.0" />
                      </font>
                   </Text>
                   <Text fx:id="regFuncErroTipo" layoutX="393.0" layoutY="186.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" visible="false" />
-                  <TextField fx:id="regFuncTipo" layoutX="102.0" layoutY="169.0" prefHeight="25.0" prefWidth="258.0" />
                </children>
             </Pane>
          </children></AnchorPane>
