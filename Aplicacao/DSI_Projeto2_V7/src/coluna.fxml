@@ -212,7 +212,7 @@
                   </Pane>
                </children>
             </Pane>
-            <Pane fx:id="regFuncWindow" layoutY="25.0" prefHeight="374.0" prefWidth="600.0">
+            <Pane fx:id="regFuncWindow" layoutY="25.0" prefHeight="374.0" prefWidth="600.0" visible="false">
                <children>
                   <Text layoutX="43.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome" />
                   <Text layoutX="43.0" layoutY="113.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Login" />
