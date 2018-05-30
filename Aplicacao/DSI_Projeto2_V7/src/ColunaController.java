@@ -708,6 +708,12 @@ public class ColunaController implements Initializable {
     }
     
     @FXML
+    private void registarFuncionario(ActionEvent event) 
+    {
+        //adicionar registo
+    }
+    
+    @FXML
     private void sairJanela(ActionEvent event) 
     {
         fecharJanelas();
@@ -722,6 +728,7 @@ public class ColunaController implements Initializable {
         regLivWindow.setVisible(false);
         regUtiWindow.setVisible(false);
         regReqWindow.setVisible(false);
+        regFuncWindow.setVisible(false);
     }
             
     public int isInteger(String test){
@@ -781,6 +788,12 @@ public class ColunaController implements Initializable {
         fecharJanelas();
         regReqWindow.setVisible(true);
         regReqEntregaWindow.setVisible(false);
+    }
+    
+     @FXML
+    private void registarFuncionarioJanela(ActionEvent event) {
+        fecharJanelas();
+        regFuncWindow.setVisible(true);
     }
 
     @FXML
@@ -1635,16 +1648,5 @@ public class ColunaController implements Initializable {
         }
     }
 
-    @FXML
-    private void registarFuncionario(ActionEvent event) 
-    {
-        
-    }
-
-    @FXML
-    private void registarFuncionarioJanela(ActionEvent event) {
-    }
-   
 }
-
 
