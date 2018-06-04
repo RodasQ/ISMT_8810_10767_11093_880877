@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.ContextMenu?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Menu?>
@@ -146,7 +147,7 @@
                   <DatePicker fx:id="regLivData" layoutX="102.0" layoutY="244.0" prefHeight="25.0" prefWidth="258.0" />
                </children>
             </Pane>
-            <Pane fx:id="regUtiWindow" layoutY="25.0" prefHeight="374.0" prefWidth="600.0" visible="false">
+            <Pane fx:id="regUtiWindow" layoutY="25.0" prefHeight="374.0" prefWidth="600.0">
                <children>
                   <Text layoutX="34.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CC/TR" />
                   <Text layoutX="34.0" layoutY="113.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome" />
@@ -179,6 +180,9 @@
                   </Text>
                   <Text fx:id="regUtiErroData" layoutX="410.0" layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" visible="false" />
                   <Text fx:id="regUtiErroLocalidade" layoutX="405.0" layoutY="303.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" visible="false" />
+                  <ComboBox fx:id="regUtiTipo" layoutX="102.0" layoutY="348.0" prefHeight="25.0" prefWidth="258.0" />
+                  <Text layoutX="34.0" layoutY="366.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tipo" />
+                  <Text fx:id="regUtiErroTipo" layoutX="415.0" layoutY="364.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" visible="false" />
                </children>
             </Pane>
             <Pane fx:id="regReqWindow" layoutY="25.0" prefHeight="374.0" prefWidth="600.0" visible="false">
@@ -224,7 +228,6 @@
                   <TextField fx:id="regFuncNome" layoutX="102.0" layoutY="58.0" prefHeight="25.0" prefWidth="258.0" />
                   <TextField fx:id="regFuncLogin" layoutX="102.0" layoutY="96.0" prefHeight="25.0" prefWidth="258.0" />
                   <TextField fx:id="regFuncPass" layoutX="101.0" layoutY="133.0" prefHeight="25.0" prefWidth="258.0" />
-                  <TextField fx:id="regFuncTipo" layoutX="102.0" layoutY="169.0" prefHeight="25.0" prefWidth="258.0" />
                   <Text fx:id="regFuncErroNome" layoutX="393.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" visible="false" />
                   <Text fx:id="regFuncErroPass" layoutX="393.0" layoutY="151.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" visible="false" />
                   <Text fx:id="regFuncErroLogin" layoutX="393.0" layoutY="113.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" visible="false" />
@@ -237,6 +240,7 @@
                      </font>
                   </Text>
                   <Text fx:id="regFuncErroTipo" layoutX="393.0" layoutY="186.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" visible="false" />
+                  <ComboBox fx:id="regFuncTipo" layoutX="101.0" layoutY="169.0" prefHeight="25.0" prefWidth="258.0" />
                </children>
             </Pane>
          </children></AnchorPane>

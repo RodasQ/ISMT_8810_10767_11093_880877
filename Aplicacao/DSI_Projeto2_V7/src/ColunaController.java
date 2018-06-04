@@ -13,6 +13,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.URL;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
@@ -31,6 +32,7 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.SelectionMode;
@@ -60,7 +62,7 @@ public class ColunaController implements Initializable {
         FXCollections.observableArrayList(
             new Utilizador("589624782", "André","01-07-1989", "915896547","andre@gmail.com","Rua do Brasil","Coimbra","842498745","Aluno"),
             new Utilizador("289756586", "Flávio","10-05-1990", "912568749","flavio@gmail.com","Praça da República","Coimbra","125483314","Aluno"),
-            new Utilizador("965235783", "Rodrigo","03-02-1994", "96231569", "rodrigo@email.com","Avenida", "Coimbra", "654236957","Aluno")
+            new Utilizador("965235783", "Rodrigo","03-02-1994", "962315696", "rodrigo@email.com","Avenida", "Coimbra", "654236957","Aluno")
         );
     @FXML
     private TableView<Livro> tableLiv = new TableView<Livro>();
@@ -243,7 +245,11 @@ public class ColunaController implements Initializable {
     @FXML
     private Text regFuncErroTipo;
     @FXML
-    private TextField regFuncTipo;
+    private ComboBox<String> regFuncTipo;
+    @FXML
+    private ComboBox<String> regUtiTipo;
+    @FXML
+    private Text regUtiErroTipo;
 
 
 
@@ -351,6 +357,15 @@ public class ColunaController implements Initializable {
         tablefunc.setItems(dataFuncionario);
         fecharJanelas();
         
+        regFuncTipo.getItems().removeAll(regFuncTipo.getItems());
+        regFuncTipo.getItems().addAll("Funcionario", "Administrador");
+        regFuncTipo.getSelectionModel().select("Funcionario");
+        
+        regUtiTipo.getItems().removeAll(regFuncTipo.getItems());
+        regUtiTipo.getItems().addAll("Aluno","Docente", "Funcionario");
+        regUtiTipo.getSelectionModel().select("Aluno");
+        
+        
         //System.out.println(tableUti.getItems().size());
         //System.out.println(uti_cc_col.getCellData(0));
         //colunaIndexOf("289756586");
@@ -372,7 +387,7 @@ public class ColunaController implements Initializable {
     {  
         if(validarRegistarUtilizador())
         {
-            dataUtilizadores.add(new Utilizador(regUtiCc.getText(), regUtiNome.getText(),regUtiDataNasc.getValue().format(DateTimeFormatter.ofPattern("dd-MM-yyyy")),regUtiCont.getText(),regUtiEmail.getText(),regUtiMorada.getText(),regUtiLocalidade.getText(),regUtiNif.getText(),"Aluno"));
+            dataUtilizadores.add(new Utilizador(regUtiCc.getText(), regUtiNome.getText(),regUtiDataNasc.getValue().format(DateTimeFormatter.ofPattern("dd-MM-yyyy")),regUtiCont.getText(),regUtiEmail.getText(),regUtiMorada.getText(),regUtiLocalidade.getText(),regUtiNif.getText(),regUtiTipo.getValue()));
             
             Alert alert = new Alert(AlertType.INFORMATION);
             alert.setTitle("Registo com sucesso");
@@ -532,6 +547,20 @@ public class ColunaController implements Initializable {
         return flag;
     }
     
+    private boolean validarRegistarUtilizadorTipo()
+    {
+        boolean flag = true;
+        if (regUtiTipo.getValue() == null)
+        {
+            regUtiErroTipo.setVisible(true);
+            regUtiErroTipo.setText("Tipo Inválido");
+            regUtiErroTipo.setFill(Paint.valueOf("Red"));
+            flag = false;
+        }  
+        return flag; 
+    }
+    
+    
     private boolean validarRegistarUtilizador ()
     {
         boolean flag = true;
@@ -558,6 +587,8 @@ public class ColunaController implements Initializable {
         if(validarRegistarUtilizadorDNascimento()== false)
             flag = false;
         if(validarRegistarUtilizadorLocalidade(regUtiLocalidade.getText())== false)
+            flag = false;
+        if(validarRegistarUtilizadorTipo()== false)
             flag = false;
 
         if(flag)
@@ -707,10 +738,112 @@ public class ColunaController implements Initializable {
         else return false;
     }
     
+    private boolean validarRegistarFuncionarioNome(String s)
+    {
+        boolean flag = true;
+        if (s.length() == 0)
+        {
+            regFuncErroNome.setVisible(true);
+            regFuncErroNome.setText("Nome inválido");
+            regFuncErroNome.setFill(Paint.valueOf("Red"));
+            flag = false;
+        }
+        
+        return flag;
+    }
+    
+    private boolean validarRegistarFuncionarioLogin(String s)
+    {
+        boolean flag = true;
+        if (s.length() == 0)
+        {
+            regFuncErroLogin.setVisible(true);
+            regFuncErroLogin.setText("Login Inválido");
+            regFuncErroLogin.setFill(Paint.valueOf("Red"));
+            flag = false;
+        }
+        
+        return flag;
+    }
+    
+    private boolean validarRegistarFuncionarioPass(String s)
+    {
+        boolean flag = true;
+        if (s.length() == 0)
+        {
+            regFuncErroPass.setVisible(true);
+            regFuncErroPass.setText("Password Inválida");
+            regFuncErroPass.setFill(Paint.valueOf("Red"));
+            flag = false;
+        }
+        
+        return flag;
+    }
+    
+    private boolean validarRegistarFuncionarioTipo(String s)
+    {
+        boolean flag = false;
+        if (s.length() == 0)
+        {
+            flag = false;
+        }
+       else if (s.equals("Funcionario") || s.equals("Administrador"))
+       {
+           flag = true;
+       }
+        
+        if (flag == false)
+        {
+            regFuncErroTipo.setVisible(true);
+            regFuncErroTipo.setText("Apenas são válidos: Funcionario e Administrador");
+            regFuncErroTipo.setFill(Paint.valueOf("Red"));
+        }
+        
+        return flag;
+    }
+    
+    
+    private boolean validarRegistarFuncionario()
+    {
+        boolean flag = true;
+        regFuncErroNome.setVisible(false);
+        regFuncErroLogin.setVisible(false);
+        regFuncErroPass.setVisible(false);
+        regFuncErroTipo.setVisible(false);
+         
+        if(validarRegistarFuncionarioNome(regFuncNome.getText()) == false)
+            flag = false;
+        if(validarRegistarFuncionarioLogin(regFuncLogin.getText()) == false)
+            flag = false;
+        if(validarRegistarFuncionarioPass(regFuncPass.getText()) == false)
+            flag = false;
+        if(validarRegistarFuncionarioTipo(regFuncTipo.getValue()) == false)
+            flag = false;     
+        
+        if(flag)
+        {
+            return true;
+        }
+        else return false;
+    }
+    
+    
+    
     @FXML
     private void registarFuncionario(ActionEvent event) 
     {
-        //adicionar registo
+      
+        if(validarRegistarFuncionario())
+        {
+            dataFuncionario.add(new Funcionario(regFuncNome.getText(), regFuncLogin.getText(), regFuncPass.getText(), regFuncTipo.getValue()));
+            
+            Alert alert = new Alert(AlertType.INFORMATION);
+            alert.setTitle("Registo com sucesso");
+            alert.setHeaderText("Funcionário registado com sucesso!");
+            //alert.setContentText("I have a great message for you!");
+            alert.showAndWait();
+            fecharJanelas();
+        }
     }
     
     @FXML
@@ -759,6 +892,7 @@ public class ColunaController implements Initializable {
     {
         fecharJanelas();
         tableReq.setVisible(true);
+        calcularDias();
     }
     
     @FXML
@@ -1073,6 +1207,7 @@ public class ColunaController implements Initializable {
         }
         else
         {       
+            //marca date
            tableReq.getSelectionModel().getSelectedItem().setDEntrega(dateFormat.format(datatemp).toString());
            tableReq.refresh();
            tableLiv.getSelectionModel().select(f);
@@ -1351,6 +1486,34 @@ public class ColunaController implements Initializable {
     {
         //chamar esta função qaundo a janela Requisições é aberta!
         //falta fazer esta função
+        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+        Date data1;
+        Date data2 = new Date();
+        long resultado;
+        int dias;
+        Requisicao temp = new Requisicao("","","","");
+        
+        for (int i = 0; i< tableReq.getItems().size(); i++)
+        {
+            try {
+                data1 = formatter.parse(req_dReq_col.getCellData(i).toString());
+                data2 = new Date();
+                if(req_dEnt_col.getCellData(i).toString() != "")
+                {
+                   data2 = formatter.parse(req_dEnt_col.getCellData(i).toString());
+                }
+                resultado = data2.getTime() - data1.getTime();
+                dias = (int) (resultado / (1000*60*60*24));
+                
+                temp = tableReq.getItems().get(i);               
+                temp.setDias(Integer.toString(dias));
+                
+                tableReq.getItems().set(i, temp);
+            } catch (ParseException ex) {
+                Logger.getLogger(ColunaController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        }
     }
 
     
