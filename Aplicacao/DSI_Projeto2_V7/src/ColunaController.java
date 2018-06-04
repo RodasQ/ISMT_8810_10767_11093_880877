@@ -357,11 +357,11 @@ public class ColunaController implements Initializable {
         tablefunc.setItems(dataFuncionario);
         fecharJanelas();
         
-        regFuncTipo.getItems().removeAll(regFuncTipo.getItems());
+       // regFuncTipo.getItems().removeAll(regFuncTipo.getItems());
         regFuncTipo.getItems().addAll("Funcionario", "Administrador");
         regFuncTipo.getSelectionModel().select("Funcionario");
         
-        regUtiTipo.getItems().removeAll(regFuncTipo.getItems());
+        //regUtiTipo.getItems().removeAll(regUtiTipo.getItems());
         regUtiTipo.getItems().addAll("Aluno","Docente", "Funcionario");
         regUtiTipo.getSelectionModel().select("Aluno");
         
@@ -549,15 +549,24 @@ public class ColunaController implements Initializable {
     
     private boolean validarRegistarUtilizadorTipo()
     {
-        boolean flag = true;
-        if (regUtiTipo.getValue() == null)
+       boolean flag = false;
+       if (regUtiTipo.getValue() == null)
+       {//marca
+           flag = false;
+       }
+       else if (regUtiTipo.getValue().equals("Funcionario") || regUtiTipo.getValue().equals("Aluno") || regUtiTipo.getValue().equals("Docente"))
+       {
+           flag = true;
+       }
+        
+        if (flag == false)
         {
             regUtiErroTipo.setVisible(true);
-            regUtiErroTipo.setText("Tipo Inválido");
+            regUtiErroTipo.setText("Apenas são válidos: Aluno, Docente e Funcionario");
             regUtiErroTipo.setFill(Paint.valueOf("Red"));
-            flag = false;
-        }  
-        return flag; 
+        }
+        
+        return flag;
     }
     
     
@@ -780,14 +789,14 @@ public class ColunaController implements Initializable {
         return flag;
     }
     
-    private boolean validarRegistarFuncionarioTipo(String s)
+    private boolean validarRegistarFuncionarioTipo()
     {
         boolean flag = false;
-        if (s.length() == 0)
-        {
+        if (regFuncTipo.getValue() == null)
+        {//marca
             flag = false;
         }
-       else if (s.equals("Funcionario") || s.equals("Administrador"))
+       else if (regFuncTipo.getValue().equals("Funcionario") || regFuncTipo.getValue().equals("Administrador"))
        {
            flag = true;
        }
@@ -817,7 +826,7 @@ public class ColunaController implements Initializable {
             flag = false;
         if(validarRegistarFuncionarioPass(regFuncPass.getText()) == false)
             flag = false;
-        if(validarRegistarFuncionarioTipo(regFuncTipo.getValue()) == false)
+        if(validarRegistarFuncionarioTipo() == false)
             flag = false;     
         
         if(flag)
@@ -1207,7 +1216,6 @@ public class ColunaController implements Initializable {
         }
         else
         {       
-            //marca date
            tableReq.getSelectionModel().getSelectedItem().setDEntrega(dateFormat.format(datatemp).toString());
            tableReq.refresh();
            tableLiv.getSelectionModel().select(f);
@@ -1216,6 +1224,11 @@ public class ColunaController implements Initializable {
         }
     }
 
+    @FXML
+    private void apagarLinhaFuncionario(ActionEvent event) 
+    {
+        tablefunc.getItems().remove(tablefunc.getSelectionModel().getSelectedItem());
+    }
 
     @FXML
     private void editarUtiCc(TableColumn.CellEditEvent event) 
@@ -1518,6 +1531,7 @@ public class ColunaController implements Initializable {
 
     
    
+    @FXML
     private void gravarUtilizador()
     {
         //falta chamar esta função
@@ -1549,13 +1563,20 @@ public class ColunaController implements Initializable {
         }   
     }
     
+    @FXML
     private void carregarUtilizador()
     {
         //falta chamar esta função
         File ficheiro = new File("Utilizadores.bin");
             ObjectInputStream leitura = null; 
-            
-              
+        try{    
+        while (true)
+        {
+            dataUtilizadores.remove(0);
+        }
+        }catch (Exception ex){
+            //vazio de proposito
+        }    
         try{
             leitura = new ObjectInputStream(new FileInputStream(ficheiro));
             //while((String nome=(String) leitura.readObject())!=eof())
@@ -1599,6 +1620,7 @@ public class ColunaController implements Initializable {
         }
     }
     
+    @FXML
     private void gravarLivro()
     {
         //falta chamar esta função
@@ -1629,12 +1651,22 @@ public class ColunaController implements Initializable {
         }   
     }
 
+    @FXML
     private void carregarLivros()
     {
         //falta chamar esta função
         File ficheiro = new File("Livros.bin");
             ObjectInputStream leitura = null; 
             
+            
+        try{    
+            while (true)
+            {
+                dataLivros.remove(0);
+            }
+        }catch (Exception ex){
+            //vazio de proposito
+        }      
               
         try{
             leitura = new ObjectInputStream(new FileInputStream(ficheiro));
@@ -1678,6 +1710,7 @@ public class ColunaController implements Initializable {
         }
     }
     
+    @FXML
     private void gravarRequisicao()
     {
         //falta chamar esta função
@@ -1704,13 +1737,23 @@ public class ColunaController implements Initializable {
         }   
     }
     
+    @FXML
     private void carregarRequisicao()
     {
         //falta chamar esta função
         File ficheiro = new File("Requisicao.bin");
             ObjectInputStream leitura = null; 
             
-              
+        try{    
+            while (true)
+            {
+                dataRequisicao.remove(0);
+            }
+        }catch (Exception ex){
+            //vazio de proposito
+        }  
+            
+            
         try{
             leitura = new ObjectInputStream(new FileInputStream(ficheiro));
             //while((String nome=(String) leitura.readObject())!=eof())
@@ -1748,6 +1791,7 @@ public class ColunaController implements Initializable {
         }
     }
     
+    @FXML
     private void gravarFuncionario()
     {
         //falta chamar esta função
@@ -1774,12 +1818,22 @@ public class ColunaController implements Initializable {
         }   
     }
     
+    @FXML
     private void carregarFuncionario()
     {
         //falta chamar esta função
         File ficheiro = new File("Funcionario.bin");
             ObjectInputStream leitura = null; 
+        
             
+        try{    
+            while (true)
+            {
+                dataFuncionario.remove(0);
+            }
+        }catch (Exception ex){
+            //vazio de proposito
+        }  
               
         try{
             leitura = new ObjectInputStream(new FileInputStream(ficheiro));
