@@ -27,8 +27,22 @@
                     <menus>
                       <Menu mnemonicParsing="false" text="Ficheiro">
                         <items>
-                              <MenuItem mnemonicParsing="false" text="Importar tabelas" />
-                          <MenuItem mnemonicParsing="false" text="Fechar" />
+                              <Menu mnemonicParsing="false" text="Gravar">
+                                <items>
+                                    <MenuItem mnemonicParsing="false" onAction="#gravarUtilizador" text="Utilizadores" />
+                                    <MenuItem mnemonicParsing="false" onAction="#gravarLivro" text="Livros" />
+                                  <MenuItem mnemonicParsing="false" onAction="#gravarRequisicao" text="Requisicoes" />
+                                    <MenuItem mnemonicParsing="false" onAction="#gravarFuncionario" text="Funcionarios" />
+                                </items>
+                              </Menu>
+                              <Menu mnemonicParsing="false" text="Carregar">
+                                 <items>
+                                    <MenuItem mnemonicParsing="false" onAction="#carregarUtilizador" text="Utilizadores" />
+                                    <MenuItem mnemonicParsing="false" onAction="#carregarLivros" text="Livros" />
+                                    <MenuItem mnemonicParsing="false" onAction="#carregarRequisicao" text="Requisicoes" />
+                                    <MenuItem mnemonicParsing="false" onAction="#carregarFuncionario" text="Funcionarios" />
+                                 </items>
+                              </Menu>
                         </items>
                       </Menu>
                         <Menu mnemonicParsing="false" text="Pesquisar">
@@ -121,6 +135,13 @@
                   <TableColumn fx:id="func_pass_col" prefWidth="75.0" text="Password" />
                   <TableColumn fx:id="func_tipo_col" prefWidth="75.0" text="Tipo" />
               </columns>
+               <contextMenu>
+                  <ContextMenu>
+                     <items>
+                        <MenuItem mnemonicParsing="false" onAction="#apagarLinhaFuncionario" text="apagar" />
+                     </items>
+                  </ContextMenu>
+               </contextMenu>
             </TableView>
             <Pane fx:id="regLivWindow" layoutY="25.0" prefHeight="374.0" prefWidth="600.0" visible="false">
                <children>
@@ -147,7 +168,7 @@
                   <DatePicker fx:id="regLivData" layoutX="102.0" layoutY="244.0" prefHeight="25.0" prefWidth="258.0" />
                </children>
             </Pane>
-            <Pane fx:id="regUtiWindow" layoutY="25.0" prefHeight="374.0" prefWidth="600.0">
+            <Pane fx:id="regUtiWindow" layoutY="25.0" prefHeight="374.0" prefWidth="600.0" visible="false">
                <children>
                   <Text layoutX="34.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CC/TR" />
                   <Text layoutX="34.0" layoutY="113.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome" />
