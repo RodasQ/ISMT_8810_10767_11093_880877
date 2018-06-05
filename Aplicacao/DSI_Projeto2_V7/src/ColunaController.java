@@ -17,6 +17,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -39,6 +40,7 @@ import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextInputDialog;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.MouseEvent;
@@ -80,7 +82,7 @@ public class ColunaController implements Initializable {
         FXCollections.observableArrayList(
             new Requisicao("1","589624782","16-04-2017",""),
             new Requisicao("2","289756586","03-05-2017","21-04-2018"),
-            new Requisicao("2","589624782","22-04-2018","")
+            new Requisicao("2","589624782","22-04-2018","") 
         );
         
     @FXML
@@ -251,7 +253,7 @@ public class ColunaController implements Initializable {
     @FXML
     private Text regUtiErroTipo;
 
-
+    private int diasAtrasoPermitidos = 5;
 
 
 
@@ -1879,7 +1881,50 @@ public class ColunaController implements Initializable {
     }
 
     @FXML
-    private void defenirAlertaAtraso(ActionEvent event) {
+    private void defenirAlertaAtraso(ActionEvent event) 
+    {
+    TextInputDialog dialog = new TextInputDialog(Integer.toString(diasAtrasoPermitidos));
+    dialog.setTitle("Configurações");
+    dialog.setHeaderText("");
+    dialog.setContentText("Dias em atraso permitidos para devolver um livro:");
+
+    // Traditional way to get the response value.
+    Optional<String> result = dialog.showAndWait();
+    if (result.isPresent())
+    {
+        diasAtrasoPermitidos = stringToInt(result.get());
+        System.out.println(diasAtrasoPermitidos);
+    }
+
+    }
+    
+    private void alertarAtraso()
+    {
+        calcularDias();
+        int i;
+        String lista = "";
+        for(i=0;i<dataRequisicao.size();i++)
+            {
+                
+                if (stringToInt(req_dias_col.getCellData(i).toString()) > diasAtrasoPermitidos && req_dEnt_col.getCellData(i).equals(""))
+                {
+                   System.out.println("entrou2");
+                   lista += "Nome: ";
+                   lista += uti_nome_col.getCellData(UtiCcIndexOf(req_cc_col.getCellData(i).toString())).toString();
+                   lista += "\t\tcc/tr: ";
+                   lista += req_cc_col.getCellData(i).toString();
+                   lista += "\n";
+                    System.out.println(lista);
+                   
+                }
+
+            }
+        
+            Alert alert = new Alert(AlertType.WARNING);
+            alert.setTitle("Utilizadores com livros em atraso!");
+            alert.setHeaderText("");
+            alert.setContentText(lista);
+            alert.showAndWait();
     }
 
 }
