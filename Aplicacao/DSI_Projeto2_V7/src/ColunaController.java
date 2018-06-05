@@ -36,6 +36,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -254,6 +255,14 @@ public class ColunaController implements Initializable {
     private Text regUtiErroTipo;
 
     private int diasAtrasoPermitidos = 5;
+    @FXML
+    private Pane formLogin;
+    @FXML
+    private TextField campoLogin;
+    @FXML
+    private PasswordField campoPass;
+    @FXML
+    private Text erroDeLogin;
 
 
 
@@ -1878,6 +1887,8 @@ public class ColunaController implements Initializable {
     private void LoginJanela(ActionEvent event) 
     {
         
+        //função abaixo a aparecer depois de fazermos login
+        alertarAtraso();
     }
 
     @FXML
@@ -1925,6 +1936,12 @@ public class ColunaController implements Initializable {
             alert.setHeaderText("");
             alert.setContentText(lista);
             alert.showAndWait();
+    }
+
+    @FXML
+    private void botaoLogin(ActionEvent event) 
+    {
+        
     }
 
 }
