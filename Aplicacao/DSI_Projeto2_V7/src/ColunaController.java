@@ -710,7 +710,9 @@ public class ColunaController implements Initializable {
     @FXML
     private void registarFuncionario(ActionEvent event) 
     {
-        //adicionar registo
+        //adicionar validacao para todos os campos
+        // o tipo so pode ser funcionario ou admin
+        //dataFuncionario.add(new Funcionario(regFuncNome.getText(), login, password, tipo));
     }
     
     @FXML
