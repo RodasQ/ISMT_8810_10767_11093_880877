@@ -841,12 +841,7 @@ public class ColunaController implements Initializable {
     @FXML
     private void registarFuncionario(ActionEvent event) 
     {
-<<<<<<< HEAD
-        //adicionar validacao para todos os campos
-        // o tipo so pode ser funcionario ou admin
-        //dataFuncionario.add(new Funcionario(regFuncNome.getText(), login, password, tipo));
-=======
-      
+        
         if(validarRegistarFuncionario())
         {
             dataFuncionario.add(new Funcionario(regFuncNome.getText(), regFuncLogin.getText(), regFuncPass.getText(), regFuncTipo.getValue()));
@@ -858,7 +853,6 @@ public class ColunaController implements Initializable {
             alert.showAndWait();
             fecharJanelas();
         }
->>>>>>> 52c1cf0b602f599ded323adbc11b7dcd8c04f89b
     }
     
     @FXML
