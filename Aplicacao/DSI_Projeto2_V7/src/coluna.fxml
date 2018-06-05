@@ -27,6 +27,7 @@
                     <menus>
                       <Menu mnemonicParsing="false" text="Ficheiro">
                         <items>
+                              <MenuItem mnemonicParsing="false" onAction="#LoginJanela" text="Login" />
                               <Menu mnemonicParsing="false" text="Gravar">
                                 <items>
                                     <MenuItem mnemonicParsing="false" onAction="#gravarUtilizador" text="Utilizadores" />
