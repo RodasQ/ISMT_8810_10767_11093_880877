@@ -7,10 +7,13 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
@@ -268,6 +271,22 @@
                   </Text>
                   <Text fx:id="regFuncErroTipo" layoutX="393.0" layoutY="186.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" visible="false" />
                   <ComboBox fx:id="regFuncTipo" layoutX="101.0" layoutY="169.0" prefHeight="25.0" prefWidth="258.0" />
+               </children>
+            </Pane>
+            <Pane fx:id="formLogin" layoutY="25.0" prefHeight="374.0" prefWidth="600.0" visible="false">
+               <children>
+                  <TextField fx:id="campoLogin" layoutX="223.0" layoutY="104.0" prefHeight="25.0" prefWidth="160.0" style="-fx-border-color: #4951c3;" />
+                  <Text fill="#4951c3" layoutX="142.0" layoutY="225.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PASSWORD:" />
+                  <PasswordField fx:id="campoPass" layoutX="223.0" layoutY="208.0" prefHeight="25.0" prefWidth="160.0" style="-fx-border-color: #4951c3;" />
+                  <Button layoutX="448.0" layoutY="335.0" mnemonicParsing="false" onAction="#botaoLogin" prefHeight="25.0" prefWidth="62.0" text="Login" />
+                  <Button layoutX="524.0" layoutY="335.0" mnemonicParsing="false" onAction="#sairJanela" prefHeight="25.0" prefWidth="62.0" text="Sair" />
+                  <Text fill="#4951c3" layoutX="170.0" layoutY="121.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LOGIN:" />
+                  <ImageView fitHeight="85.0" fitWidth="119.0" layoutX="465.0" layoutY="14.0">
+                     <image>
+                        <Image url="@../../../../../../Desktop/login-icon-png-21.png" />
+                     </image>
+                  </ImageView>
+                  <Text fx:id="erroDeLogin" fill="#c63131" layoutX="252.0" layoutY="293.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dados Incorrectos" />
                </children>
             </Pane>
          </children></AnchorPane>
