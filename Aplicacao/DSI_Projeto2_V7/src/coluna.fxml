@@ -62,6 +62,11 @@
                               <MenuItem mnemonicParsing="false" onAction="#registarFuncionarioJanela" text="Funcionário" />
                         </items>
                       </Menu>
+                        <Menu mnemonicParsing="false" text="Configurações">
+                          <items>
+                            <MenuItem mnemonicParsing="false" onAction="#defenirAlertaAtraso" text="Alerta dias em atraso" />
+                          </items>
+                        </Menu>
                     </menus>
                   </MenuBar>
                </children>

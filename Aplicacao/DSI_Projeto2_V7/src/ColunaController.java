@@ -1878,5 +1878,9 @@ public class ColunaController implements Initializable {
         
     }
 
+    @FXML
+    private void defenirAlertaAtraso(ActionEvent event) {
+    }
+
 }
 
