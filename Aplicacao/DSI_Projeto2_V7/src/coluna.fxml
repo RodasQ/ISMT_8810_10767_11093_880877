@@ -283,7 +283,7 @@
                   <Text fill="#4951c3" layoutX="170.0" layoutY="121.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LOGIN:" />
                   <ImageView fitHeight="85.0" fitWidth="119.0" layoutX="465.0" layoutY="14.0">
                      <image>
-                        <Image url="@../../../../../../Desktop/login-icon-png-21.png" />
+                        <Image url="@login-icon-png-21.png" />
                      </image>
                   </ImageView>
                   <Text fx:id="erroDeLogin" fill="#c63131" layoutX="252.0" layoutY="293.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dados Incorrectos" />

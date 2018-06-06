@@ -1886,7 +1886,8 @@ public class ColunaController implements Initializable {
     @FXML
     private void LoginJanela(ActionEvent event) 
     {
-        
+        formLogin.setVisible(true);
+        fecharJanelas();
         //função abaixo a aparecer depois de fazermos login
         alertarAtraso();
     }
