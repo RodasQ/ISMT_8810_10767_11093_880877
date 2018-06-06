@@ -2115,10 +2115,6 @@ public class ColunaController implements Initializable {
         }  
         gravarConf();
     }
-<<<<<<< HEAD
-    
-    
-=======
 
     @FXML
     private void sairLogout(ActionEvent event) {
@@ -2158,7 +2154,6 @@ public class ColunaController implements Initializable {
     {
         
     }
->>>>>>> e890c89ba902779eeddce6f16c3a15f1dbcaf39b
     
 }
 
