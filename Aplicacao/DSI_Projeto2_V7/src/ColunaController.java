@@ -30,6 +30,7 @@ import javafx.collections.ObservableList;
 import javafx.event.EventTarget;
 import javafx.geometry.Insets;
 import javafx.scene.Group;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -53,6 +54,7 @@ import javafx.scene.text.Font;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -403,8 +405,15 @@ public class ColunaController implements Initializable {
         //System.out.println(uti_cc_col.getCellData(0));
         //colunaIndexOf("289756586");
         //System.out.println(LivNIndexOf("1"));
+        
+        carregarConf();
+        carregarFuncionario();
+        carregarLivros();
+        carregarRequisicao();
+        carregarUtilizador();
 
     }   
+    
 
     @FXML
     private void click(MouseEvent e) {
@@ -1935,6 +1944,63 @@ public class ColunaController implements Initializable {
 
         }
     }
+    
+    private void gravarConf()
+    {
+        //falta chamar esta função
+        File ficheiro = new File("Configuracoes.bin");
+        ObjectOutputStream escrita;      
+        try{
+            escrita = new ObjectOutputStream(new FileOutputStream(ficheiro));
+            
+            escrita.writeObject(diasAtrasoPermitidos);
+            escrita.writeObject(multaPorDia);
+            
+            escrita.close();
+         }catch (Exception ex) 
+        {
+            System.out.println("Deu erro a gravar configuracoes: " + ex);
+        }   
+    }
+    
+    private void carregarConf()
+    {
+        //falta chamar esta função
+        File ficheiro = new File("Configuracoes.bin");
+            ObjectInputStream leitura = null; 
+        
+              
+        try{
+            leitura = new ObjectInputStream(new FileInputStream(ficheiro));
+            //while((String nome=(String) leitura.readObject())!=eof())
+            while(true)
+            {
+                diasAtrasoPermitidos = (Integer) leitura.readObject();
+                multaPorDia = (Float) leitura.readObject();          
+            }
+            
+            
+         //   data.addAll(leitura.readObject());
+         }catch (Exception ex) 
+        {
+            if (ex.getClass() == IOException.class)
+            {
+                System.out.println("Deu erro a carregar configuracoes: " + ex);
+            }
+            else if (ex instanceof EOFException)
+            {                
+                System.out.println("eof");
+            }
+        }  finally
+        {
+            try {
+                leitura.close();
+            } catch (IOException ex) {
+                Logger.getLogger(ColunaController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        }
+    }
 
     @FXML
     private void LoginJanela(ActionEvent event) 
@@ -1957,9 +2023,13 @@ public class ColunaController implements Initializable {
         Optional<String> result = dialog.showAndWait();
         if (result.isPresent())
         {
-            diasAtrasoPermitidos = stringToInt(result.get());
-            System.out.println(diasAtrasoPermitidos);
+            if(stringToInt(result.get()) != -1)
+            {
+                diasAtrasoPermitidos = stringToInt(result.get());
+                System.out.println(diasAtrasoPermitidos);
+            }
         }
+        gravarConf();
 
     }
     
@@ -2034,12 +2104,16 @@ public class ColunaController implements Initializable {
         Optional<String> result = dialog.showAndWait();
         if (result.isPresent())
         {
-            multaPorDia = stringToFloat(result.get());
-            System.out.println(multaPorDia);
+            if(stringToFloat(result.get()) != -1)
+            {
+                multaPorDia = stringToFloat(result.get());
+                System.out.println(multaPorDia);
+            }
         }  
+        gravarConf();
     }
-
-
-
+    
+    
+    
 }
 
