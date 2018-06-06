@@ -264,7 +264,7 @@ public class ColunaController implements Initializable {
     @FXML
     private Text erroDeLogin;
 
-
+    private String login = "aluno";
 
     /**
      * Initializes the controller class.
@@ -1115,6 +1115,17 @@ public class ColunaController implements Initializable {
         return z;
     }
     
+     private int FuncLoginIndexOf(String st)
+    {
+        int z = -1;
+        for (int i = 0; i< tablefunc.getItems().size(); i++)
+        {
+            if(func_login_col.getCellData(i).equals(st))
+                z = i;         
+        }
+
+        return z;
+    }
     private boolean ReqCcPorEntregarLivro(String st)
     {
         for (int i = 0; i< tableReq.getItems().size(); i++)
@@ -1942,7 +1953,33 @@ public class ColunaController implements Initializable {
     @FXML
     private void botaoLogin(ActionEvent event) 
     {
-        
+        erroDeLogin.setVisible(false);
+      int pos = FuncLoginIndexOf(campoLogin.getText());  
+      
+      if (pos ==-1)
+            {
+            erroDeLogin.setVisible(true);
+            erroDeLogin.setText("Username Inválido");
+            }
+      else {
+            if (func_pass_col.getCellData(pos).toString().equals(campoPass.getText()))
+            {
+                if (func_tipo_col.getCellData(pos).toString().equals("Funcionario"))                   
+                {
+                    login = "func";
+                }  
+                else if (func_tipo_col.getCellData(pos).toString().equals("Administrador"))
+                {
+                    login = "admin";
+                }
+                System.out.println(login);
+            }
+            else
+            {
+                erroDeLogin.setVisible(true);
+                erroDeLogin.setText("Password Incorrecta");
+            }
+           }
     }
 
 }
