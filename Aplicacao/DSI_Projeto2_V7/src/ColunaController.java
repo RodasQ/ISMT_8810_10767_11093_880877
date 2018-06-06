@@ -11,6 +11,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.PrintWriter;
 import java.net.URL;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -1620,7 +1621,6 @@ public class ColunaController implements Initializable {
     @FXML
     private void gravarUtilizador()
     {
-        //falta chamar esta função
         File ficheiro = new File("Utilizadores.bin");
         ObjectOutputStream escrita;
         int i=0;      
@@ -1652,7 +1652,6 @@ public class ColunaController implements Initializable {
     @FXML
     private void carregarUtilizador()
     {
-        //falta chamar esta função
         File ficheiro = new File("Utilizadores.bin");
             ObjectInputStream leitura = null; 
         try{    
@@ -1709,7 +1708,6 @@ public class ColunaController implements Initializable {
     @FXML
     private void gravarLivro()
     {
-        //falta chamar esta função
         File ficheiro = new File("Livros.bin");
         ObjectOutputStream escrita;
         int i=0;      
@@ -1740,7 +1738,6 @@ public class ColunaController implements Initializable {
     @FXML
     private void carregarLivros()
     {
-        //falta chamar esta função
         File ficheiro = new File("Livros.bin");
             ObjectInputStream leitura = null; 
             
@@ -1799,7 +1796,6 @@ public class ColunaController implements Initializable {
     @FXML
     private void gravarRequisicao()
     {
-        //falta chamar esta função
         File ficheiro = new File("Requisicao.bin");
         ObjectOutputStream escrita;
         int i=0;      
@@ -1880,7 +1876,6 @@ public class ColunaController implements Initializable {
     @FXML
     private void gravarFuncionario()
     {
-        //falta chamar esta função
         File ficheiro = new File("Funcionario.bin");
         ObjectOutputStream escrita;
         int i=0;      
@@ -1960,7 +1955,6 @@ public class ColunaController implements Initializable {
     
     private void gravarConf()
     {
-        //falta chamar esta função
         File ficheiro = new File("Configuracoes.bin");
         ObjectOutputStream escrita;      
         try{
@@ -1978,7 +1972,6 @@ public class ColunaController implements Initializable {
     
     private void carregarConf()
     {
-        //falta chamar esta função
         File ficheiro = new File("Configuracoes.bin");
             ObjectInputStream leitura = null; 
         
@@ -2209,19 +2202,111 @@ public class ColunaController implements Initializable {
     }
 
     @FXML
-    private void gravarUtilizadorCSV(ActionEvent event) {
+    private void gravarUtilizadorCSV(ActionEvent event) 
+    {
+        int i=0;      
+        try{
+            
+            PrintWriter pw = new PrintWriter(new File("Utilizadores.csv"));  
+            for(i=0;i<dataUtilizadores.size();i++)
+            {
+                String s = uti_cc_col.getCellData(i).toString() 
+                        + ";" + uti_nome_col.getCellData(i).toString()
+                        + ";" + uti_dNasc_col.getCellData(i).toString()
+                        + ";" + uti_cont_col.getCellData(i).toString()
+                        + ";" + uti_mail_col.getCellData(i).toString()
+                        + ";" + uti_mora_col.getCellData(i).toString()
+                        + ";" + uti_loc_col.getCellData(i).toString()
+                        + ";" + uti_nif_col.getCellData(i).toString()
+                        + ";" + uti_tipo_col.getCellData(i).toString() + "\n";
+               pw.write(s);
+            }
+            
+            pw.close();
+         }catch (Exception ex) 
+        {
+            System.out.println("Deu erro a exportar tabela dos Utilizadores: " + ex);
+        }  
     }
 
     @FXML
-    private void gravarLivroCSV(ActionEvent event) {
+    private void gravarLivroCSV(ActionEvent event) 
+    {
+        int i=0;      
+        try{
+            PrintWriter pw = new PrintWriter(new File("Livros.csv"));  
+            
+            for(i=0;i<dataLivros.size();i++)
+            {
+                String s = liv_nLiv_col.getCellData(i).toString() 
+                        + ";" + liv_titu_col.getCellData(i).toString()
+                        + ";" + liv_tema_col.getCellData(i).toString()
+                        + ";" + liv_aut_col.getCellData(i).toString()
+                        + ";" + liv_edi_col.getCellData(i).toString()
+                        + ";" + liv_data_col.getCellData(i).toString()
+                        + ";" + liv_requi_col.getCellData(i).toString()
+                        + ";" + liv_ina_col.getCellData(i).toString() + "\n";
+                
+                pw.write(s);
+
+            }
+            
+            pw.close();
+         }catch (Exception ex) 
+        {
+            System.out.println("Deu erro a exportar tabela dos Livros: " + ex);
+        }   
     }
 
     @FXML
-    private void gravarRequisicaoCSV(ActionEvent event) {
+    private void gravarRequisicaoCSV(ActionEvent event) 
+    {
+        int i=0;      
+        try{
+            PrintWriter pw = new PrintWriter(new File("Requisicao.csv"));  
+            
+            for(i=0;i<dataRequisicao.size();i++)
+            {
+                String s = req_nLiv_col.getCellData(i).toString() 
+                        + ";" + req_cc_col.getCellData(i).toString()
+                        + ";" + req_dReq_col.getCellData(i).toString()
+                        + ";" + req_dEnt_col.getCellData(i).toString() + "\n";
+                
+                pw.write(s);
+            }
+            
+            pw.close();
+            
+         }catch (Exception ex) 
+        {
+            System.out.println("Deu erro a exportar tabela das requisições: " + ex);
+        }   
+        
     }
 
     @FXML
-    private void gravarFuncionarioCSV(ActionEvent event) {
+    private void gravarFuncionarioCSV(ActionEvent event) 
+    {
+        int i=0;      
+        try{
+            PrintWriter pw = new PrintWriter(new File("Funcionario.csv"));            
+
+            for(i=0;i<dataFuncionario.size();i++)
+            {
+                String s = func_nome_col.getCellData(i).toString() 
+                        + ";" + func_login_col.getCellData(i).toString()
+                        + ";" + func_pass_col.getCellData(i).toString()
+                        + ";" + func_tipo_col.getCellData(i).toString() + "\n";
+                
+                pw.write(s);
+            }
+            
+            pw.close();
+            
+         }catch (Exception ex) 
+        {
+            System.out.println("Deu erro a exportar tabela dos funcionarios: " + ex);
+        }   
     }
     
 }
