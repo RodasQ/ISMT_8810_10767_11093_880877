@@ -2020,7 +2020,7 @@ public class ColunaController implements Initializable {
         formLogin.setVisible(true);        
 
         //função abaixo a aparecer depois de fazermos login
-        alertarAtraso();
+        //alertarAtraso();
     }
     
     @FXML
@@ -2096,6 +2096,7 @@ public class ColunaController implements Initializable {
                 }
                 loginRestricoes();
                 fecharJanelas();
+                alertarAtraso();
             }
             else
             {
