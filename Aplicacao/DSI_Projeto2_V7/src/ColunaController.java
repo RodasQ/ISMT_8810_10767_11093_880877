@@ -1919,14 +1919,12 @@ public class ColunaController implements Initializable {
                 
                 if (stringToInt(req_dias_col.getCellData(i).toString()) > diasAtrasoPermitidos && req_dEnt_col.getCellData(i).equals(""))
                 {
-                   System.out.println("entrou2");
                    lista += "Nome: ";
                    lista += uti_nome_col.getCellData(UtiCcIndexOf(req_cc_col.getCellData(i).toString())).toString();
                    lista += "\t\tcc/tr: ";
                    lista += req_cc_col.getCellData(i).toString();
                    lista += "\n";
-                    System.out.println(lista);
-                   
+                   System.out.println(lista);              
                 }
 
             }
