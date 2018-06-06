@@ -31,7 +31,7 @@
                       <Menu mnemonicParsing="false" text="Ficheiro">
                         <items>
                               <MenuItem mnemonicParsing="false" onAction="#LoginJanela" text="Login" />
-                              <Menu mnemonicParsing="false" text="Gravar">
+                              <Menu fx:id="menuGravar" mnemonicParsing="false" text="Gravar">
                                 <items>
                                     <MenuItem mnemonicParsing="false" onAction="#gravarUtilizador" text="Utilizadores" />
                                     <MenuItem mnemonicParsing="false" onAction="#gravarLivro" text="Livros" />
@@ -39,7 +39,7 @@
                                     <MenuItem mnemonicParsing="false" onAction="#gravarFuncionario" text="Funcionarios" />
                                 </items>
                               </Menu>
-                              <Menu mnemonicParsing="false" text="Carregar">
+                              <Menu fx:id="menuCarregar" mnemonicParsing="false" text="Carregar">
                                  <items>
                                     <MenuItem mnemonicParsing="false" onAction="#carregarUtilizador" text="Utilizadores" />
                                     <MenuItem mnemonicParsing="false" onAction="#carregarLivros" text="Livros" />
@@ -51,10 +51,10 @@
                       </Menu>
                         <Menu mnemonicParsing="false" text="Pesquisar">
                            <items>
-                              <MenuItem mnemonicParsing="false" onAction="#pesquisarUtilizador" text="Utilizador" />
+                              <MenuItem fx:id="menuPesqUti" mnemonicParsing="false" onAction="#pesquisarUtilizador" text="Utilizador" />
                               <MenuItem mnemonicParsing="false" onAction="#pesquisarLivro" text="Livros" />
-                              <MenuItem mnemonicParsing="false" onAction="#pesquisarRequisicoes" text="Requisições" />
-                              <MenuItem mnemonicParsing="false" onAction="#pesquisarFuncionarios" text="Funcionários" />
+                              <MenuItem fx:id="menuPesqReq" mnemonicParsing="false" onAction="#pesquisarRequisicoes" text="Requisições" />
+                              <MenuItem fx:id="menuPesqFunc" mnemonicParsing="false" onAction="#pesquisarFuncionarios" text="Funcionários" />
                            </items>
                         </Menu>
                       <Menu mnemonicParsing="false" text="Registar">
@@ -62,10 +62,10 @@
                             <MenuItem mnemonicParsing="false" onAction="#registarUtilizadorJanela" text="Utilizador" />
                               <MenuItem mnemonicParsing="false" onAction="#registarLivroJanela" text="Livros" />
                               <MenuItem mnemonicParsing="false" onAction="#registarRequisicoesJanela" text="Requisição" />
-                              <MenuItem mnemonicParsing="false" onAction="#registarFuncionarioJanela" text="Funcionário" />
+                              <MenuItem fx:id="menuRegFunc" mnemonicParsing="false" onAction="#registarFuncionarioJanela" text="Funcionário" />
                         </items>
                       </Menu>
-                        <Menu mnemonicParsing="false" text="Configurações">
+                        <Menu fx:id="menuConfig" mnemonicParsing="false" text="Configurações">
                           <items>
                             <MenuItem mnemonicParsing="false" onAction="#definirAlertaAtraso" text="Alerta dias em atraso" />
                               <MenuItem mnemonicParsing="false" onAction="#definirMultaAtraso" text="Multa" />
@@ -88,7 +88,7 @@
                   <TableColumn fx:id="uti_tipo_col" prefWidth="75.0" text="Tipo" />
                      </columns>
                <contextMenu>
-                  <ContextMenu>
+                  <ContextMenu fx:id="menuUtilizador">
                     <items>
                         <MenuItem mnemonicParsing="false" onAction="#registarUtilizadorJanela" text="Registar Utilizador" />
                       <MenuItem mnemonicParsing="false" onAction="#apagarLinhaUtilizador" text="apagar" />
@@ -126,7 +126,7 @@
                   <TableColumn fx:id="req_dias_col" prefWidth="75.0" text="Dias" />
               </columns>
                <contextMenu>
-                  <ContextMenu>
+                  <ContextMenu fx:id="menuRequisicao">
                      <items>
                         <MenuItem mnemonicParsing="false" onAction="#registarUtilizadorJanela" text="Registar Utilizador" />
                         <MenuItem mnemonicParsing="false" onAction="#registarLivroJanela" text="Registar Livro" />
