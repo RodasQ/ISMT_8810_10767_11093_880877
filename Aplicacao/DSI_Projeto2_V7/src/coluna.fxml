@@ -287,7 +287,7 @@
                         <Image url="@login-icon-png-21.png" />
                      </image>
                   </ImageView>
-                  <Text fx:id="erroDeLogin" fill="#c63131" layoutX="252.0" layoutY="293.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dados Incorrectos" />
+                  <Text fx:id="erroDeLogin" fill="#c63131" layoutX="252.0" layoutY="293.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dados Incorrectos" visible="false" />
                </children>
             </Pane>
          </children></AnchorPane>
