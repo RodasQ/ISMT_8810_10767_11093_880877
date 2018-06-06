@@ -297,6 +297,8 @@ public class ColunaController implements Initializable {
     private MenuItem menuFloatAtivo;
     @FXML
     private MenuItem menuFloatInativo;
+    @FXML
+    private Menu menuGravarCSV;
 
     /**
      * Initializes the controller class.
@@ -2172,6 +2174,7 @@ public class ColunaController implements Initializable {
         menuFloatRegLiv.setVisible(false);
         menuFloatAtivo.setVisible(false);
         menuFloatInativo.setVisible(false);
+        menuGravarCSV.setVisible(false);
     }
     private void funcRestricoes()
     {
@@ -2186,6 +2189,7 @@ public class ColunaController implements Initializable {
         menuFloatRegLiv.setVisible(true);
         menuFloatAtivo.setVisible(true);
         menuFloatInativo.setVisible(true);
+        menuGravarCSV.setVisible(false);
     }
     
     private void adminRestricoes()
@@ -2201,6 +2205,23 @@ public class ColunaController implements Initializable {
         menuFloatRegLiv.setVisible(true);
         menuFloatAtivo.setVisible(true);
         menuFloatInativo.setVisible(true);
+        menuGravarCSV.setVisible(true);
+    }
+
+    @FXML
+    private void gravarUtilizadorCSV(ActionEvent event) {
+    }
+
+    @FXML
+    private void gravarLivroCSV(ActionEvent event) {
+    }
+
+    @FXML
+    private void gravarRequisicaoCSV(ActionEvent event) {
+    }
+
+    @FXML
+    private void gravarFuncionarioCSV(ActionEvent event) {
     }
     
 }

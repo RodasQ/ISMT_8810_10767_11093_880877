@@ -48,6 +48,14 @@
                                     <MenuItem mnemonicParsing="false" onAction="#carregarFuncionario" text="Funcionarios" />
                                  </items>
                               </Menu>
+                              <Menu fx:id="menuGravarCSV" mnemonicParsing="false" text="Exportar CSV">
+                                 <items>
+                                    <MenuItem mnemonicParsing="false" onAction="#gravarUtilizadorCSV" text="Utilizadores" />
+                                    <MenuItem mnemonicParsing="false" onAction="#gravarLivroCSV" text="Livros" />
+                                    <MenuItem mnemonicParsing="false" onAction="#gravarRequisicaoCSV" text="Requisicoes" />
+                                    <MenuItem mnemonicParsing="false" onAction="#gravarFuncionarioCSV" text="Funcionarios" />
+                                 </items>
+                              </Menu>
                         </items>
                       </Menu>
                         <Menu mnemonicParsing="false" text="Pesquisar">
