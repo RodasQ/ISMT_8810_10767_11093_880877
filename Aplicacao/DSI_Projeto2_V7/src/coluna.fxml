@@ -30,7 +30,7 @@
                     <menus>
                       <Menu mnemonicParsing="false" text="Ficheiro">
                         <items>
-                              <MenuItem mnemonicParsing="false" onAction="#LoginJanela" text="Login" />
+                              <MenuItem fx:id="menuLogin" mnemonicParsing="false" onAction="#LoginJanela" text="Login" />
                               <MenuItem fx:id="menuLogout" mnemonicParsing="false" onAction="#sairLogout" text="Logout" />
                               <Menu fx:id="menuGravar" mnemonicParsing="false" text="Gravar">
                                 <items>
@@ -58,7 +58,7 @@
                               <MenuItem fx:id="menuPesqFunc" mnemonicParsing="false" onAction="#pesquisarFuncionarios" text="Funcionários" />
                            </items>
                         </Menu>
-                      <Menu mnemonicParsing="false" text="Registar">
+                      <Menu fx:id="menuReg" mnemonicParsing="false" text="Registar">
                         <items>
                             <MenuItem mnemonicParsing="false" onAction="#registarUtilizadorJanela" text="Utilizador" />
                               <MenuItem mnemonicParsing="false" onAction="#registarLivroJanela" text="Livros" />
