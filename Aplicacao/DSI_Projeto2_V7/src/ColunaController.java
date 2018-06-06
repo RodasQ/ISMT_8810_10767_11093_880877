@@ -417,7 +417,7 @@ public class ColunaController implements Initializable {
         carregarConf();
         carregarFuncionario();
         carregarLivros();
-//        carregarRequisicao(); - falta corrigir este erro
+  //      carregarRequisicao(); 
         carregarUtilizador();
 
         loginRestricoes();
