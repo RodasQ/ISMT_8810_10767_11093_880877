@@ -196,12 +196,14 @@
                   <TextField fx:id="regUtiLocalidade" layoutX="102.0" layoutY="270.0" prefHeight="25.0" prefWidth="258.0" />
                   <TextField fx:id="regUtiNif" layoutX="102.0" layoutY="307.0" prefHeight="25.0" prefWidth="258.0" />
                   <Button layoutX="448.0" layoutY="335.0" mnemonicParsing="false" onAction="#registarUtilizador" prefHeight="25.0" prefWidth="62.0" text="Guardar" />
-                  <Text fx:id="regUtiErroCc" layoutX="404.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" visible="false" />
+                  <Text fx:id="regUtiErroCc" layoutX="383.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" visible="false" />
                   <Text fx:id="regUtiErroContacto" layoutX="383.0" layoutY="184.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" visible="false" />
-                  <Text fx:id="regUtiErroNome" layoutX="404.0" layoutY="113.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" visible="false" />
+                  <Text fx:id="regUtiErroNome" layoutX="383.0" layoutY="113.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" visible="false" />
                   <Text fx:id="regUtiErroEmail" layoutX="383.0" layoutY="220.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" visible="false" />
                   <Text fx:id="regUtiErroMorada" layoutX="383.0" layoutY="253.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" visible="false" />
                   <Text fx:id="regUtiErroNif" layoutX="383.0" layoutY="324.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" visible="false" />
+                  <Text fx:id="regUtiErroData" layoutX="383.0" layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" visible="false" />
+                  <Text fx:id="regUtiErroLocalidade" layoutX="383.0" layoutY="287.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" visible="false" />
                   <Button layoutX="524.0" layoutY="335.0" mnemonicParsing="false" onAction="#sairJanela" prefHeight="25.0" prefWidth="62.0" text="Sair" />
                   <Text layoutX="231.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="REGISTO DE UTILIZADORES" wrappingWidth="151.67578125" />
                   <Text layoutX="28.0" layoutY="287.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Localidade" />
@@ -210,8 +212,6 @@
                         <Font size="10.0" />
                      </font>
                   </Text>
-                  <Text fx:id="regUtiErroData" layoutX="410.0" layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" visible="false" />
-                  <Text fx:id="regUtiErroLocalidade" layoutX="405.0" layoutY="303.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" visible="false" />
                   <ComboBox fx:id="regUtiTipo" layoutX="102.0" layoutY="341.0" prefHeight="25.0" prefWidth="258.0" />
                   <Text layoutX="44.0" layoutY="358.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tipo" />
                   <Text fx:id="regUtiErroTipo" layoutX="415.0" layoutY="364.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" visible="false" />
