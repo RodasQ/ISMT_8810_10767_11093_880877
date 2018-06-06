@@ -4,10 +4,12 @@
  * and open the template in the editor.
  */
 
+import java.io.BufferedReader;
 import java.io.EOFException;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -300,6 +302,8 @@ public class ColunaController implements Initializable {
     private MenuItem menuFloatInativo;
     @FXML
     private Menu menuGravarCSV;
+    @FXML
+    private Menu menuGravarCSV1;
 
     /**
      * Initializes the controller class.
@@ -1822,7 +1826,6 @@ public class ColunaController implements Initializable {
     @FXML
     private void carregarRequisicao()
     {
-        //falta chamar esta função
         File ficheiro = new File("Requisicao.bin");
             ObjectInputStream leitura = null; 
             
@@ -2267,10 +2270,10 @@ public class ColunaController implements Initializable {
             
             for(i=0;i<dataRequisicao.size();i++)
             {
-                String s = req_nLiv_col.getCellData(i).toString() 
-                        + ";" + req_cc_col.getCellData(i).toString()
-                        + ";" + req_dReq_col.getCellData(i).toString()
-                        + ";" + req_dEnt_col.getCellData(i).toString() + "\n";
+                String s ="\"" + req_nLiv_col.getCellData(i).toString() + "\""
+                        + ";" + "\"" + req_cc_col.getCellData(i).toString() + "\""
+                        + ";" + "\"" + req_dReq_col.getCellData(i).toString() + "\""
+                        + ";" + "\"" + req_dEnt_col.getCellData(i).toString() + "\"" + "\n";
                 
                 pw.write(s);
             }
@@ -2293,10 +2296,10 @@ public class ColunaController implements Initializable {
 
             for(i=0;i<dataFuncionario.size();i++)
             {
-                String s = func_nome_col.getCellData(i).toString() 
-                        + ";" + func_login_col.getCellData(i).toString()
-                        + ";" + func_pass_col.getCellData(i).toString()
-                        + ";" + func_tipo_col.getCellData(i).toString() + "\n";
+                String s = "\"" + func_nome_col.getCellData(i).toString() + "\""
+                        + ";" + "\"" + func_login_col.getCellData(i).toString() + "\""
+                        + ";" + "\"" + func_pass_col.getCellData(i).toString()+ "\""
+                        + ";" + "\"" + func_tipo_col.getCellData(i).toString() + "\"" + "\n";
                 
                 pw.write(s);
             }
@@ -2307,6 +2310,72 @@ public class ColunaController implements Initializable {
         {
             System.out.println("Deu erro a exportar tabela dos funcionarios: " + ex);
         }   
+    }
+
+    @FXML
+    private void carregarUtilizadorCSV(ActionEvent event) 
+    {
+        
+    }
+
+    @FXML
+    private void carregarLivroCSV(ActionEvent event) 
+    {
+        
+    }
+
+    @FXML
+    private void carregarRequisicaoCSV(ActionEvent event) 
+    {
+        BufferedReader br = null; 
+        String line = "";
+              
+        try{    
+            while (true)
+            {
+                dataRequisicao.remove(0);
+            }
+        }catch (Exception ex){
+            //vazio de proposito
+        }  
+            
+            
+        try{
+            br = new BufferedReader(new FileReader("Requisicao.csv"));
+            while((line = br.readLine()) !=null)
+            {
+                String[] s = line.split(";");
+                
+                dataRequisicao.add(new Requisicao(s[2].substring(1, s[2].length()-1),s[1],s[2],s[3])); 
+            }
+            
+            
+         //   data.addAll(leitura.readObject());
+         }catch (Exception ex) 
+        {
+            if (ex.getClass() == IOException.class)
+            {
+                System.out.println("Deu erro a carregar requisição: " + ex);
+            }
+            else if (ex instanceof EOFException)
+            {                
+                System.out.println("eof");
+            }
+        }  finally
+        {
+            try {
+                br.close();
+            } catch (IOException ex) {
+                Logger.getLogger(ColunaController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        }
+    }
+
+    @FXML
+    private void carregarFuncionarioCSV(ActionEvent event) 
+    {
+        
     }
     
 }
