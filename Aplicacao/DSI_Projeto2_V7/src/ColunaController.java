@@ -34,8 +34,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.ContextMenu;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
+import javafx.scene.control.Menu;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableColumn;
@@ -266,6 +269,24 @@ public class ColunaController implements Initializable {
     private Text erroDeLogin;
 
     private String login = "aluno";
+    @FXML
+    private Menu menuGravar;
+    @FXML
+    private Menu menuCarregar;
+    @FXML
+    private MenuItem menuPesqUti;
+    @FXML
+    private MenuItem menuPesqReq;
+    @FXML
+    private MenuItem menuPesqFunc;
+    @FXML
+    private MenuItem menuRegFunc;
+    @FXML
+    private Menu menuConfig;
+    @FXML
+    private ContextMenu menuUtilizador;
+    @FXML
+    private ContextMenu menuRequisicao;
 
     /**
      * Initializes the controller class.
