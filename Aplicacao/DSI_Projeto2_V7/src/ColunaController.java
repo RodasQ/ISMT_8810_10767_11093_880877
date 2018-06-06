@@ -1239,6 +1239,16 @@ public class ColunaController implements Initializable {
         }
         else
         {       
+           if (diasAtrasoPermitidos < stringToInt(tableReq.getSelectionModel().getSelectedItem().getDias()))
+           {
+                Alert alert = new Alert(AlertType.WARNING); 
+                alert.setTitle("Multa a pagar"); 
+                float m = (stringToInt(tableReq.getSelectionModel().getSelectedItem().getDias()) - diasAtrasoPermitidos) * multaPorDia;
+                alert.setHeaderText(""); 
+                alert.setContentText("Este utiliador tem a pagar " + m + "€ de multa"); 
+                alert.showAndWait();
+           }
+            
            tableReq.getSelectionModel().getSelectedItem().setDEntrega(dateFormat.format(datatemp).toString());
            tableReq.refresh();
            tableLiv.getSelectionModel().select(f);
