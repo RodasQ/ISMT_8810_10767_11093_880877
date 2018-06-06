@@ -2213,15 +2213,15 @@ public class ColunaController implements Initializable {
             PrintWriter pw = new PrintWriter(new File("Utilizadores.csv"));  
             for(i=0;i<dataUtilizadores.size();i++)
             {
-                String s = uti_cc_col.getCellData(i).toString() 
-                        + ";" + uti_nome_col.getCellData(i).toString()
-                        + ";" + uti_dNasc_col.getCellData(i).toString()
-                        + ";" + uti_cont_col.getCellData(i).toString()
-                        + ";" + uti_mail_col.getCellData(i).toString()
-                        + ";" + uti_mora_col.getCellData(i).toString()
-                        + ";" + uti_loc_col.getCellData(i).toString()
-                        + ";" + uti_nif_col.getCellData(i).toString()
-                        + ";" + uti_tipo_col.getCellData(i).toString() + "\n";
+                String s = "\"" + uti_cc_col.getCellData(i).toString() + "\""
+                        + ";" + "\"" +  uti_nome_col.getCellData(i).toString() + "\""
+                        + ";" + "\"" +  uti_dNasc_col.getCellData(i).toString() + "\""
+                        + ";" + "\"" +  uti_cont_col.getCellData(i).toString() + "\""
+                        + ";" + "\"" +  uti_mail_col.getCellData(i).toString() + "\""
+                        + ";" + "\"" +  uti_mora_col.getCellData(i).toString() + "\""
+                        + ";" + "\"" +  uti_loc_col.getCellData(i).toString() + "\""
+                        + ";" + "\"" +  uti_nif_col.getCellData(i).toString() + "\""
+                        + ";" + "\"" +  uti_tipo_col.getCellData(i).toString() + "\"" + "\n";
                pw.write(s);
             }
             
@@ -2241,14 +2241,14 @@ public class ColunaController implements Initializable {
             
             for(i=0;i<dataLivros.size();i++)
             {
-                String s = liv_nLiv_col.getCellData(i).toString() 
-                        + ";" + liv_titu_col.getCellData(i).toString()
-                        + ";" + liv_tema_col.getCellData(i).toString()
-                        + ";" + liv_aut_col.getCellData(i).toString()
-                        + ";" + liv_edi_col.getCellData(i).toString()
-                        + ";" + liv_data_col.getCellData(i).toString()
-                        + ";" + liv_requi_col.getCellData(i).toString()
-                        + ";" + liv_ina_col.getCellData(i).toString() + "\n";
+                String s ="\"" + liv_nLiv_col.getCellData(i).toString() + "\""
+                        + ";" + "\"" + liv_titu_col.getCellData(i).toString() + "\""
+                        + ";" + "\"" + liv_tema_col.getCellData(i).toString() + "\""
+                        + ";" + "\"" + liv_aut_col.getCellData(i).toString() + "\""
+                        + ";" + "\"" + liv_edi_col.getCellData(i).toString() + "\""
+                        + ";" + "\"" + liv_data_col.getCellData(i).toString() + "\""
+                        + ";" + "\"" + liv_requi_col.getCellData(i).toString() + "\""
+                        + ";" + "\"" + liv_ina_col.getCellData(i).toString() + "\"" + "\n";
                 
                 pw.write(s);
 
@@ -2346,7 +2346,7 @@ public class ColunaController implements Initializable {
             {
                 String[] s = line.split(";");
                 
-                dataRequisicao.add(new Requisicao(s[2].substring(1, s[2].length()-1),s[1],s[2],s[3])); 
+                dataRequisicao.add(new Requisicao(s[0].substring(1, s[0].length()-1),s[1].substring(1, s[1].length()-1),s[2].substring(1, s[2].length()-1),s[3].substring(1, s[3].length()-1))); 
             }
             
             
