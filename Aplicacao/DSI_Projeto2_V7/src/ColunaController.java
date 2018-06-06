@@ -915,6 +915,7 @@ public class ColunaController implements Initializable {
         regUtiWindow.setVisible(false);
         regReqWindow.setVisible(false);
         regFuncWindow.setVisible(false);
+        formLogin.setVisible(false);
     }
             
     public int isInteger(String test){
@@ -2007,8 +2008,8 @@ public class ColunaController implements Initializable {
     @FXML
     private void LoginJanela(ActionEvent event) 
     {
-        formLogin.setVisible(true);
         fecharJanelas();
+        formLogin.setVisible(true);        
         //função abaixo a aparecer depois de fazermos login
         alertarAtraso();
     }
@@ -2145,16 +2146,34 @@ public class ColunaController implements Initializable {
    
     private void alunoRestricoes()
     {
-       
+       menuGravar.setVisible(false);
+       menuCarregar.setVisible(false);
+       menuPesqUti.setVisible(false);
+       menuPesqReq.setVisible(false);
+       menuPesqFunc.setVisible(false);
+       menuRegFunc.setVisible(false);
+       menuConfig.setVisible(false);
     }
     private void funcRestricoes()
     {
-        
+       menuGravar.setVisible(false);
+       menuCarregar.setVisible(false);
+       menuPesqUti.setVisible(false);
+       menuPesqReq.setVisible(false);
+       menuPesqFunc.setVisible(false);
+       menuRegFunc.setVisible(false);
+       menuConfig.setVisible(false);
     }
     
     private void adminRestricoes()
     {
-        
+       menuGravar.setVisible(false);
+       menuCarregar.setVisible(false);
+       menuPesqUti.setVisible(false);
+       menuPesqReq.setVisible(false);
+       menuPesqFunc.setVisible(false);
+       menuRegFunc.setVisible(false);
+       menuConfig.setVisible(false);
     }
     
 }
