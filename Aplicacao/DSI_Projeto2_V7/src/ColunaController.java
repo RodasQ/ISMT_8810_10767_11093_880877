@@ -417,7 +417,7 @@ public class ColunaController implements Initializable {
         carregarConf();
         carregarFuncionario();
         carregarLivros();
-  //      carregarRequisicao(); 
+        carregarRequisicao(); 
         carregarUtilizador();
 
         loginRestricoes();
@@ -1270,7 +1270,7 @@ public class ColunaController implements Initializable {
         {
             System.out.println("erro inesperado!\nDentro do entregarLivro");
         }
-        else if (tableReq.getSelectionModel().getSelectedItem().getDEntrega() != "")
+        else if (!tableReq.getSelectionModel().getSelectedItem().getDEntrega().equals(""))
         {
            Alert alert = new Alert(AlertType.ERROR); 
            alert.setTitle("Erro a registar entrega"); 
@@ -1595,7 +1595,7 @@ public class ColunaController implements Initializable {
             try {
                 data1 = formatter.parse(req_dReq_col.getCellData(i).toString());
                 data2 = new Date();
-                if(req_dEnt_col.getCellData(i).toString() != "")
+                if(!req_dEnt_col.getCellData(i).toString().equals(""))
                 {
                    data2 = formatter.parse(req_dEnt_col.getCellData(i).toString());
                 }
@@ -2059,9 +2059,9 @@ public class ColunaController implements Initializable {
                    lista += uti_nome_col.getCellData(UtiCcIndexOf(req_cc_col.getCellData(i).toString())).toString();
                    lista += "\t\tcc/tr: ";
                    lista += req_cc_col.getCellData(i).toString();
-                   lista += "\n";
-                   System.out.println(lista);              
+                   lista += "\n";             
                 }
+                System.out.println(lista); 
 
             }
         
