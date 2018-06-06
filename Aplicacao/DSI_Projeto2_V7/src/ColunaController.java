@@ -409,10 +409,10 @@ public class ColunaController implements Initializable {
         //System.out.println(LivNIndexOf("1"));
         
         carregarConf();
-        carregarFuncionario();
-        carregarLivros();
-        carregarRequisicao();
-        carregarUtilizador();
+//        carregarFuncionario();
+//        carregarLivros();
+//        carregarRequisicao();
+//        carregarUtilizador();
 
     }   
     
@@ -2009,7 +2009,11 @@ public class ColunaController implements Initializable {
     private void LoginJanela(ActionEvent event) 
     {
         fecharJanelas();
+<<<<<<< HEAD
         formLogin.setVisible(true);        
+=======
+        formLogin.setVisible(true); 
+>>>>>>> b0fc7362a56b324ec6a3b4355406af04e8dd0118
         //função abaixo a aparecer depois de fazermos login
         alertarAtraso();
     }
