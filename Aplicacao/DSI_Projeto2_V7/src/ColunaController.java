@@ -287,6 +287,8 @@ public class ColunaController implements Initializable {
     private ContextMenu menuUtilizador;
     @FXML
     private ContextMenu menuRequisicao;
+    @FXML
+    private MenuItem menuLogout;
 
     /**
      * Initializes the controller class.
@@ -2012,6 +2014,7 @@ public class ColunaController implements Initializable {
                 {
                     login = "admin";
                 }
+                
                 System.out.println(login);
             }
             else
@@ -2039,7 +2042,44 @@ public class ColunaController implements Initializable {
         }  
     }
 
+    @FXML
+    private void sairLogout(ActionEvent event) {
+    }
 
-
+    private void loginRestricoes() 
+    {
+        if (login=="aluno") 
+        {
+            alunoRestricoes();
+        } 
+        else if(login=="Funcionario")
+                {
+                    funcRestricoes();
+                }
+                else if(login=="Administrador")
+                        { 
+                         adminRestricoes();
+                        }         
+                        else {
+                               Alert alert = new Alert(AlertType.WARNING);
+                               alert.setContentText("Erro de Login");
+                               alert.showAndWait();
+                             }
+    }
+   
+    private void alunoRestricoes()
+    {
+        
+    }
+    private void funcRestricoes()
+    {
+        
+    }
+    
+    private void adminRestricoes()
+    {
+        
+    }
+    
 }
 

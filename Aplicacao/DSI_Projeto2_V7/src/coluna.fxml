@@ -31,6 +31,7 @@
                       <Menu mnemonicParsing="false" text="Ficheiro">
                         <items>
                               <MenuItem mnemonicParsing="false" onAction="#LoginJanela" text="Login" />
+                              <MenuItem fx:id="menuLogout" mnemonicParsing="false" onAction="#sairLogout" text="Logout" />
                               <Menu fx:id="menuGravar" mnemonicParsing="false" text="Gravar">
                                 <items>
                                     <MenuItem mnemonicParsing="false" onAction="#gravarUtilizador" text="Utilizadores" />
