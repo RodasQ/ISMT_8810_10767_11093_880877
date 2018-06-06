@@ -31,7 +31,7 @@
                       <Menu mnemonicParsing="false" text="Ficheiro">
                         <items>
                               <MenuItem fx:id="menuLogin" mnemonicParsing="false" onAction="#LoginJanela" text="Login" />
-                              <MenuItem fx:id="menuLogout" mnemonicParsing="false" onAction="#sairLogout" text="Logout" />
+                              <MenuItem fx:id="menuLogout" mnemonicParsing="false" onAction="#sairLogout" text="Logout" visible="false" />
                               <Menu fx:id="menuGravar" mnemonicParsing="false" text="Gravar">
                                 <items>
                                     <MenuItem mnemonicParsing="false" onAction="#gravarUtilizador" text="Utilizadores" />
@@ -89,7 +89,7 @@
                   <TableColumn fx:id="uti_tipo_col" prefWidth="75.0" text="Tipo" />
                      </columns>
                <contextMenu>
-                  <ContextMenu fx:id="menuUtilizador">
+                  <ContextMenu>
                     <items>
                         <MenuItem mnemonicParsing="false" onAction="#registarUtilizadorJanela" text="Registar Utilizador" />
                       <MenuItem mnemonicParsing="false" onAction="#apagarLinhaUtilizador" text="apagar" />
@@ -111,9 +111,9 @@
                <contextMenu>
                   <ContextMenu>
                      <items>
-                        <MenuItem mnemonicParsing="false" onAction="#registarLivroJanela" text="Registar Livro" />
-                        <MenuItem mnemonicParsing="false" onAction="#ativoLinhaLivro" text="Tornar Ativo" />
-                        <MenuItem mnemonicParsing="false" onAction="#InativoLinhaLivro" text="Tornar Inativo" />
+                        <MenuItem fx:id="menuFloatRegLiv" mnemonicParsing="false" onAction="#registarLivroJanela" text="Registar Livro" />
+                        <MenuItem fx:id="menuFloatAtivo" mnemonicParsing="false" onAction="#ativoLinhaLivro" text="Tornar Ativo" />
+                        <MenuItem fx:id="menuFloatInativo" mnemonicParsing="false" onAction="#InativoLinhaLivro" text="Tornar Inativo" />
                      </items>
                   </ContextMenu>
                </contextMenu>
@@ -127,7 +127,7 @@
                   <TableColumn fx:id="req_dias_col" prefWidth="75.0" text="Dias" />
               </columns>
                <contextMenu>
-                  <ContextMenu fx:id="menuRequisicao">
+                  <ContextMenu>
                      <items>
                         <MenuItem mnemonicParsing="false" onAction="#registarUtilizadorJanela" text="Registar Utilizador" />
                         <MenuItem mnemonicParsing="false" onAction="#registarLivroJanela" text="Registar Livro" />

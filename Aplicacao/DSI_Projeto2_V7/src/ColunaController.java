@@ -286,11 +286,17 @@ public class ColunaController implements Initializable {
     @FXML
     private Menu menuConfig;
     @FXML
-    private ContextMenu menuUtilizador;
-    @FXML
-    private ContextMenu menuRequisicao;
-    @FXML
     private MenuItem menuLogout;
+    @FXML
+    private MenuItem menuLogin;
+    @FXML
+    private Menu menuReg;
+    @FXML
+    private MenuItem menuFloatRegLiv;
+    @FXML
+    private MenuItem menuFloatAtivo;
+    @FXML
+    private MenuItem menuFloatInativo;
 
     /**
      * Initializes the controller class.
@@ -409,10 +415,12 @@ public class ColunaController implements Initializable {
         //System.out.println(LivNIndexOf("1"));
         
         carregarConf();
-//        carregarFuncionario();
-//        carregarLivros();
-//        carregarRequisicao();
-//        carregarUtilizador();
+        carregarFuncionario();
+        carregarLivros();
+//        carregarRequisicao(); - falta corrigir este erro
+        carregarUtilizador();
+
+        loginRestricoes();
 
     }   
     
@@ -2067,7 +2075,7 @@ public class ColunaController implements Initializable {
     @FXML
     private void botaoLogin(ActionEvent event) 
     {
-        erroDeLogin.setVisible(false);
+      erroDeLogin.setVisible(false);
       int pos = FuncLoginIndexOf(campoLogin.getText());  
       
       if (pos ==-1)
@@ -2087,6 +2095,7 @@ public class ColunaController implements Initializable {
                     login = "admin";
                 }
                 loginRestricoes();
+                fecharJanelas();
             }
             else
             {
@@ -2122,60 +2131,75 @@ public class ColunaController implements Initializable {
     {
         login = "aluno";
         loginRestricoes();
+        menuLogout.setVisible(false);
+        menuLogin.setVisible(true);
     }
 
     private void loginRestricoes() 
     {
-        if (login=="aluno") 
+        if (login.equals("aluno")) 
         {
             alunoRestricoes();
         } 
-        else if(login=="Funcionario")
+        else if(login.equals("func"))
                 {
                     funcRestricoes();
                 }
-                else if(login=="Administrador")
+                else if(login.equals("admin"))
                         { 
                          adminRestricoes();
                          menuLogout.setVisible(true);
+                         menuLogin.setVisible(false);
                         }         
                         else {
-                               Alert alert = new Alert(AlertType.WARNING);
-                               alert.setContentText("Erro de Login");
+                               Alert alert = new Alert(AlertType.ERROR);
+                               alert.setContentText("Erro estranho de Login");
                                alert.showAndWait();
                              }
     }
    
     private void alunoRestricoes()
     {
-       menuGravar.setVisible(false);
-       menuCarregar.setVisible(false);
-       menuPesqUti.setVisible(false);
-       menuPesqReq.setVisible(false);
-       menuPesqFunc.setVisible(false);
-       menuRegFunc.setVisible(false);
-       menuConfig.setVisible(false);
+        menuGravar.setVisible(false);
+        menuCarregar.setVisible(false);
+        menuPesqUti.setVisible(false);
+        menuPesqReq.setVisible(false);
+        menuPesqFunc.setVisible(false);
+        menuRegFunc.setVisible(false);
+        menuConfig.setVisible(false);
+        menuReg.setVisible(false);
+        menuFloatRegLiv.setVisible(false);
+        menuFloatAtivo.setVisible(false);
+        menuFloatInativo.setVisible(false);
     }
     private void funcRestricoes()
     {
-       menuGravar.setVisible(false);
-       menuCarregar.setVisible(false);
-       menuPesqUti.setVisible(false);
-       menuPesqReq.setVisible(false);
-       menuPesqFunc.setVisible(false);
-       menuRegFunc.setVisible(false);
-       menuConfig.setVisible(false);
+        menuGravar.setVisible(false);
+        menuCarregar.setVisible(false);
+        menuPesqUti.setVisible(true);
+        menuPesqReq.setVisible(true);
+        menuPesqFunc.setVisible(false);
+        menuRegFunc.setVisible(false);
+        menuConfig.setVisible(true);
+        menuReg.setVisible(true);
+        menuFloatRegLiv.setVisible(true);
+        menuFloatAtivo.setVisible(true);
+        menuFloatInativo.setVisible(true);
     }
     
     private void adminRestricoes()
     {
-       menuGravar.setVisible(false);
-       menuCarregar.setVisible(false);
-       menuPesqUti.setVisible(false);
-       menuPesqReq.setVisible(false);
-       menuPesqFunc.setVisible(false);
-       menuRegFunc.setVisible(false);
-       menuConfig.setVisible(false);
+        menuGravar.setVisible(true);
+        menuCarregar.setVisible(true);
+        menuPesqUti.setVisible(true);
+        menuPesqReq.setVisible(true);
+        menuPesqFunc.setVisible(true);
+        menuRegFunc.setVisible(true);
+        menuConfig.setVisible(true);
+        menuReg.setVisible(true);
+        menuFloatRegLiv.setVisible(true);
+        menuFloatAtivo.setVisible(true);
+        menuFloatInativo.setVisible(true);
     }
     
 }
