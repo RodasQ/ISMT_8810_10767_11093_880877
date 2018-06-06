@@ -255,6 +255,7 @@ public class ColunaController implements Initializable {
     private Text regUtiErroTipo;
 
     private int diasAtrasoPermitidos = 5;
+    private float multaPorDia = 1;
     @FXML
     private Pane formLogin;
     @FXML
@@ -1504,6 +1505,16 @@ public class ColunaController implements Initializable {
         }
     }
     
+    public float stringToFloat(String s)
+    {
+        try{
+            return Float.valueOf(s);
+        }catch (Exception e)
+        {
+            return -1;
+        }
+    }
+    
     
     
     private void calcularDias()
@@ -1891,22 +1902,22 @@ public class ColunaController implements Initializable {
         //função abaixo a aparecer depois de fazermos login
         alertarAtraso();
     }
-
+    
     @FXML
-    private void defenirAlertaAtraso(ActionEvent event) 
+    private void definirAlertaAtraso(ActionEvent event) 
     {
-    TextInputDialog dialog = new TextInputDialog(Integer.toString(diasAtrasoPermitidos));
-    dialog.setTitle("Configurações");
-    dialog.setHeaderText("");
-    dialog.setContentText("Dias em atraso permitidos para devolver um livro:");
+        TextInputDialog dialog = new TextInputDialog(Integer.toString(diasAtrasoPermitidos));
+        dialog.setTitle("Configurações");
+        dialog.setHeaderText("");
+        dialog.setContentText("Dias em atraso permitidos para devolver um livro:");
 
-    // Traditional way to get the response value.
-    Optional<String> result = dialog.showAndWait();
-    if (result.isPresent())
-    {
-        diasAtrasoPermitidos = stringToInt(result.get());
-        System.out.println(diasAtrasoPermitidos);
-    }
+        // Traditional way to get the response value.
+        Optional<String> result = dialog.showAndWait();
+        if (result.isPresent())
+        {
+            diasAtrasoPermitidos = stringToInt(result.get());
+            System.out.println(diasAtrasoPermitidos);
+        }
 
     }
     
@@ -1942,6 +1953,25 @@ public class ColunaController implements Initializable {
     {
         
     }
+
+    @FXML
+    private void definirMultaAtraso(ActionEvent event) 
+    {
+        TextInputDialog dialog = new TextInputDialog(Float.toString(multaPorDia));
+        dialog.setTitle("Configurações");
+        dialog.setHeaderText("");
+        dialog.setContentText("Multa a pagar por dia em atraso:");
+
+        // Traditional way to get the response value.
+        Optional<String> result = dialog.showAndWait();
+        if (result.isPresent())
+        {
+            multaPorDia = stringToFloat(result.get());
+            System.out.println(multaPorDia);
+        }  
+    }
+
+
 
 }
 

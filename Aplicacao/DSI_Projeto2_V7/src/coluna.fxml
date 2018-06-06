@@ -67,7 +67,8 @@
                       </Menu>
                         <Menu mnemonicParsing="false" text="Configurações">
                           <items>
-                            <MenuItem mnemonicParsing="false" onAction="#defenirAlertaAtraso" text="Alerta dias em atraso" />
+                            <MenuItem mnemonicParsing="false" onAction="#definirAlertaAtraso" text="Alerta dias em atraso" />
+                              <MenuItem mnemonicParsing="false" onAction="#definirMultaAtraso" text="Multa" />
                           </items>
                         </Menu>
                     </menus>
