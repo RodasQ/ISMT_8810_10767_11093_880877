@@ -2137,6 +2137,7 @@ public class ColunaController implements Initializable {
                 else if(login=="Administrador")
                         { 
                          adminRestricoes();
+                         menuLogout.setVisible(true);
                         }         
                         else {
                                Alert alert = new Alert(AlertType.WARNING);
