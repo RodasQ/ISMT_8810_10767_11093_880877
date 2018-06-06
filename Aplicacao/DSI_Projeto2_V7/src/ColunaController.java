@@ -2084,8 +2084,7 @@ public class ColunaController implements Initializable {
                 {
                     login = "admin";
                 }
-                
-                System.out.println(login);
+                loginRestricoes();
             }
             else
             {
@@ -2117,7 +2116,10 @@ public class ColunaController implements Initializable {
     }
 
     @FXML
-    private void sairLogout(ActionEvent event) {
+    private void sairLogout(ActionEvent event) 
+    {
+        login = "aluno";
+        loginRestricoes();
     }
 
     private void loginRestricoes() 
@@ -2143,7 +2145,7 @@ public class ColunaController implements Initializable {
    
     private void alunoRestricoes()
     {
-        
+       
     }
     private void funcRestricoes()
     {
