@@ -409,10 +409,10 @@ public class ColunaController implements Initializable {
         //System.out.println(LivNIndexOf("1"));
         
         carregarConf();
-        carregarFuncionario();
-        carregarLivros();
-        carregarRequisicao();
-        carregarUtilizador();
+//        carregarFuncionario();
+//        carregarLivros();
+//        carregarRequisicao();
+//        carregarUtilizador();
 
     }   
     
@@ -915,6 +915,7 @@ public class ColunaController implements Initializable {
         regUtiWindow.setVisible(false);
         regReqWindow.setVisible(false);
         regFuncWindow.setVisible(false);
+        formLogin.setVisible(false);
     }
             
     public int isInteger(String test){
@@ -2007,8 +2008,8 @@ public class ColunaController implements Initializable {
     @FXML
     private void LoginJanela(ActionEvent event) 
     {
-        formLogin.setVisible(true);
         fecharJanelas();
+        formLogin.setVisible(true); 
         //função abaixo a aparecer depois de fazermos login
         alertarAtraso();
     }
