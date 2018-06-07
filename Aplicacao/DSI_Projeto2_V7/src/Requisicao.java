@@ -1,4 +1,5 @@
 
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 
 /*
@@ -16,7 +17,7 @@ public class Requisicao {
     private final SimpleStringProperty cc;
     private final SimpleStringProperty dRequisicao;
     private final SimpleStringProperty dEntrega;
-    private final SimpleStringProperty dias;
+    private final SimpleIntegerProperty dias;
     
 
     Requisicao(String snLivro, String scc, String sdRequisicao, String sdEntrega) {
@@ -24,7 +25,7 @@ public class Requisicao {
         this.cc = new SimpleStringProperty(scc);
         this.dRequisicao = new SimpleStringProperty(sdRequisicao);
         this.dEntrega = new SimpleStringProperty(sdEntrega);
-        this.dias = new SimpleStringProperty("");
+        this.dias = new SimpleIntegerProperty();
     }
     
     
@@ -60,11 +61,11 @@ public class Requisicao {
         dEntrega.set(s);
     }
     
-    public String getDias() {
+    public Integer getDias() {
         return dias.get();
     }
  
-    public void setDias(String s) {
+    public void setDias(Integer s) {
         dias.set(s);
     }
 }

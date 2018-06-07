@@ -428,6 +428,10 @@ public class ColunaController implements Initializable {
         carregarUtilizador();
 
         loginRestricoes();
+        
+        req_dEnt_col.setSortType(TableColumn.SortType.ASCENDING);
+        req_dias_col.setSortType(TableColumn.SortType.DESCENDING);
+        tableReq.getSortOrder().setAll(req_dEnt_col,req_dias_col);
 
     }   
     
