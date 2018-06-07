@@ -56,7 +56,7 @@
                                     <MenuItem mnemonicParsing="false" onAction="#gravarFuncionarioCSV" text="Funcionarios" />
                                  </items>
                               </Menu>
-                              <Menu fx:id="menuGravarCSV1" mnemonicParsing="false" text="Importar CSV">
+                              <Menu fx:id="menuCarregarCSV" mnemonicParsing="false" text="Importar CSV">
                                  <items>
                                     <MenuItem mnemonicParsing="false" onAction="#carregarUtilizadorCSV" text="Utilizadores" />
                                     <MenuItem mnemonicParsing="false" onAction="#carregarLivroCSV" text="Livros" />

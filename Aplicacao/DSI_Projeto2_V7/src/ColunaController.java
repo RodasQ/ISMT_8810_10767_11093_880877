@@ -303,7 +303,7 @@ public class ColunaController implements Initializable {
     @FXML
     private Menu menuGravarCSV;
     @FXML
-    private Menu menuGravarCSV1;
+    private Menu menuCarregarCSV;
 
     /**
      * Initializes the controller class.
@@ -429,9 +429,6 @@ public class ColunaController implements Initializable {
 
         loginRestricoes();
         
-        req_dEnt_col.setSortType(TableColumn.SortType.ASCENDING);
-        req_dias_col.setSortType(TableColumn.SortType.DESCENDING);
-        tableReq.getSortOrder().setAll(req_dEnt_col,req_dias_col);
 
     }   
     
@@ -966,6 +963,9 @@ public class ColunaController implements Initializable {
         fecharJanelas();
         tableReq.setVisible(true);
         calcularDias();
+        req_dEnt_col.setSortType(TableColumn.SortType.ASCENDING);
+        req_dias_col.setSortType(TableColumn.SortType.DESCENDING);
+        tableReq.getSortOrder().setAll(req_dEnt_col,req_dias_col);
     }
     
     @FXML
@@ -2173,6 +2173,7 @@ public class ColunaController implements Initializable {
         menuFloatAtivo.setVisible(false);
         menuFloatInativo.setVisible(false);
         menuGravarCSV.setVisible(false);
+        menuCarregarCSV.setVisible(false);
     }
     private void funcRestricoes()
     {
@@ -2188,6 +2189,7 @@ public class ColunaController implements Initializable {
         menuFloatAtivo.setVisible(true);
         menuFloatInativo.setVisible(true);
         menuGravarCSV.setVisible(false);
+        menuCarregarCSV.setVisible(false);
     }
     
     private void adminRestricoes()
@@ -2204,6 +2206,7 @@ public class ColunaController implements Initializable {
         menuFloatAtivo.setVisible(true);
         menuFloatInativo.setVisible(true);
         menuGravarCSV.setVisible(true);
+        menuCarregarCSV.setVisible(true);
     }
 
     @FXML
