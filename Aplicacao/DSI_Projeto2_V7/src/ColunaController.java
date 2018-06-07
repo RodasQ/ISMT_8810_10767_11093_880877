@@ -1287,11 +1287,11 @@ public class ColunaController implements Initializable {
         }
         else
         {       
-           if (diasAtrasoPermitidos < stringToInt(tableReq.getSelectionModel().getSelectedItem().getDias()))
+           if (diasAtrasoPermitidos < tableReq.getSelectionModel().getSelectedItem().getDias())
            {
                 Alert alert = new Alert(AlertType.WARNING); 
                 alert.setTitle("Multa a pagar"); 
-                float m = (stringToInt(tableReq.getSelectionModel().getSelectedItem().getDias()) - diasAtrasoPermitidos) * multaPorDia;
+                float m = (tableReq.getSelectionModel().getSelectedItem().getDias() - diasAtrasoPermitidos) * multaPorDia;
                 alert.setHeaderText(""); 
                 alert.setContentText("Este utiliador tem a pagar " + m + "€ de multa"); 
                 alert.showAndWait();
@@ -1588,8 +1588,6 @@ public class ColunaController implements Initializable {
     
     private void calcularDias()
     {
-        //chamar esta função qaundo a janela Requisições é aberta!
-        //falta fazer esta função
         SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
         Date data1;
         Date data2 = new Date();
@@ -1610,7 +1608,7 @@ public class ColunaController implements Initializable {
                 dias = (int) (resultado / (1000*60*60*24));
                 
                 temp = tableReq.getItems().get(i);               
-                temp.setDias(Integer.toString(dias));
+                temp.setDias(dias);
                 
                 tableReq.getItems().set(i, temp);
             } catch (ParseException ex) {
