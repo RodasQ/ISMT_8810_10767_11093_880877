@@ -2311,17 +2311,121 @@ public class ColunaController implements Initializable {
             System.out.println("Deu erro a exportar tabela dos funcionarios: " + ex);
         }   
     }
+    
+//    @FXML
+//    private void gravarFuncionarioCSV2(ActionEvent event) {
+//        try {
+//            PrintWriter pw = new PrintWriter(new File("Funcionario2.csv"));
+//            
+//            for (int i = 0; i < dataFuncionario.size(); i++) {
+//                StringBuilder sb = new StringBuilder();
+//                sb
+//                    .append(func_nome_col.getCellData(i).toString()).append(", ")
+//                    .append(func_login_col.getCellData(i).toString()).append(", ")
+//                    .append(func_pass_col.getCellData(i).toString()).append(", ")
+//                    .append(func_tipo_col.getCellData(i).toString()).append(", ");
+//                
+//                pw.write(sb.toString());
+//            }
+//        } catch (Exception e) {
+//            
+//        }
+//    }
 
     @FXML
     private void carregarUtilizadorCSV(ActionEvent event) 
     {
-        
+                BufferedReader br = null; 
+        String line = "";
+              
+        try{    
+            while (true)
+            {
+                dataUtilizadores.remove(0);
+            }
+        }catch (Exception ex){
+            //vazio de proposito
+        }  
+            
+            
+        try{
+            br = new BufferedReader(new FileReader("Utilizador.csv"));
+            while((line = br.readLine()) !=null)
+            {
+                String[] s = line.split(";");
+                
+                dataUtilizadores.add(new Utilizador(s[0].substring(1, s[0].length()-1),s[1].substring(1, s[1].length()-1),s[2].substring(1, s[2].length()-1),s[3].substring(1, s[3].length()-1))); 
+            }
+            
+            
+         //   data.addAll(leitura.readObject());
+         }catch (Exception ex) 
+        {
+            if (ex.getClass() == IOException.class)
+            {
+                System.out.println("Deu erro a carregar utilizador: " + ex);
+            }
+            else if (ex instanceof EOFException)
+            {                
+                System.out.println("eof");
+            }
+        }  finally
+        {
+            try {
+                br.close();
+            } catch (IOException ex) {
+                Logger.getLogger(ColunaController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        }
     }
 
     @FXML
     private void carregarLivroCSV(ActionEvent event) 
     {
-        
+               BufferedReader br = null; 
+        String line = "";
+              
+        try{    
+            while (true)
+            {
+                dataLivros.remove(0);
+            }
+        }catch (Exception ex){
+            //vazio de proposito
+        }  
+            
+            
+        try{
+            br = new BufferedReader(new FileReader("Livro.csv"));
+            while((line = br.readLine()) !=null)
+            {
+                String[] s = line.split(";");
+                
+                dataLivros.add(new Livros(s[0].substring(1, s[0].length()-1),s[1].substring(1, s[1].length()-1),s[2].substring(1, s[2].length()-1),s[3].substring(1, s[3].length()-1))); 
+            }
+            
+            
+         //   data.addAll(leitura.readObject());
+         }catch (Exception ex) 
+        {
+            if (ex.getClass() == IOException.class)
+            {
+                System.out.println("Deu erro a carregar livro: " + ex);
+            }
+            else if (ex instanceof EOFException)
+            {                
+                System.out.println("eof");
+            }
+        }  finally
+        {
+            try {
+                br.close();
+            } catch (IOException ex) {
+                Logger.getLogger(ColunaController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        } 
     }
 
     @FXML
@@ -2375,7 +2479,49 @@ public class ColunaController implements Initializable {
     @FXML
     private void carregarFuncionarioCSV(ActionEvent event) 
     {
-        
+            BufferedReader br = null; 
+        String line = "";
+              
+        try{    
+            while (true)
+            {
+                dataFuncionario.remove(0);
+            }
+        }catch (Exception ex){
+            //vazio de proposito
+        }  
+            
+            
+        try{
+            br = new BufferedReader(new FileReader("Funcionario.csv"));
+            while((line = br.readLine()) !=null)
+            {
+                String[] s = line.split(";");
+                
+                dataFuncionario.add(new Funcionario(s[0].substring(1, s[0].length()-1),s[1].substring(1, s[1].length()-1),s[2].substring(1, s[2].length()-1),s[3].substring(1, s[3].length()-1))); 
+            }
+            
+            
+         //   data.addAll(leitura.readObject());
+         }catch (Exception ex) 
+        {
+            if (ex.getClass() == IOException.class)
+            {
+                System.out.println("Deu erro a carregar utilizdor: " + ex);
+            }
+            else if (ex instanceof EOFException)
+            {                
+                System.out.println("eof");
+            }
+        }  finally
+        {
+            try {
+                br.close();
+            } catch (IOException ex) {
+                Logger.getLogger(ColunaController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        }    
     }
     
 }
