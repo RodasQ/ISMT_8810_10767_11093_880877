@@ -1,5 +1,6 @@
 
 import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -42,6 +43,11 @@ import javafx.beans.property.SimpleStringProperty;
         public void setCc(String scc) {
             cc.set(scc);
         }
+        
+        public StringProperty ccProperty()
+        {
+            return cc;
+        }
  
         public String getNome() {
             return nome.get();
@@ -49,6 +55,11 @@ import javafx.beans.property.SimpleStringProperty;
  
         public void setNome(String snome) {
             nome.set(snome);
+        }
+        
+        public StringProperty nomeProperty()
+        {
+            return nome;
         }
         
         public String getDNascimento() {
@@ -59,12 +70,22 @@ import javafx.beans.property.SimpleStringProperty;
             dNascimento.set(s);
         }
         
+        public StringProperty dNascimentoProperty()
+        {
+            return dNascimento;
+        }
+        
         public String getContacto() {
             return contacto.get();
         }
  
         public void setContacto(String scontacto) {
             contacto.set(scontacto);
+        }
+        
+        public StringProperty contactoProperty()
+        {
+            return contacto;
         }
  
         public String getEmail() {
@@ -75,6 +96,11 @@ import javafx.beans.property.SimpleStringProperty;
             email.set(smail);
         }
         
+        public StringProperty emailProperty()
+        {
+            return email;
+        }
+        
         public String getMorada() {
             return morada.get();
         }
@@ -82,6 +108,12 @@ import javafx.beans.property.SimpleStringProperty;
         public void setMorada(String smorada) {
             morada.set(smorada);
         }
+        
+        public StringProperty moradaProperty()
+        {
+            return morada;
+        }
+        
         public String getLocalidade() {
             return localidade.get();
         }
@@ -90,12 +122,22 @@ import javafx.beans.property.SimpleStringProperty;
             localidade.set(s);
         }
         
+        public StringProperty localidadeProperty()
+        {
+            return localidade;
+        }
+        
         public String getNif() {
             return nif.get();
         }
  
         public void setNif(String snif) {
-            email.set(snif);
+            nif.set(snif);
+        }
+        
+        public StringProperty nifProperty()
+        {
+            return nif;
         }
         
         public String getTipo() {
@@ -105,4 +147,11 @@ import javafx.beans.property.SimpleStringProperty;
         public void setTipo(String snif) {
             tipo.set(snif);
         }
+        
+        public StringProperty tipoProperty()
+        {
+            return tipo;
+        }
+        
+
     }

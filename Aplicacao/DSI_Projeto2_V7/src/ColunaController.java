@@ -30,6 +30,8 @@ import javafx.fxml.Initializable;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.EventTarget;
 import javafx.geometry.Insets;
 import javafx.scene.Group;
@@ -71,27 +73,27 @@ public class ColunaController implements Initializable {
     
     private final ObservableList<Utilizador> dataUtilizadores =
         FXCollections.observableArrayList(
-            new Utilizador("589624782", "André","01-07-1989", "915896547","andre@gmail.com","Rua do Brasil","Coimbra","842498745","Aluno"),
-            new Utilizador("289756586", "Flávio","10-05-1990", "912568749","flavio@gmail.com","Praça da República","Coimbra","125483314","Aluno"),
-            new Utilizador("965235783", "Rodrigo","03-02-1994", "962315696", "rodrigo@email.com","Avenida", "Coimbra", "654236957","Aluno")
+       //     new Utilizador("589624782", "André","01-07-1989", "915896547","andre@gmail.com","Rua do Brasil","Coimbra","842498745","Aluno"),
+       //     new Utilizador("289756586", "Flávio","10-05-1990", "912568749","flavio@gmail.com","Praça da República","Coimbra","125483314","Aluno"),
+       //     new Utilizador("965235783", "Rodrigo","03-02-1994", "962315696", "rodrigo@email.com","Avenida", "Coimbra", "654236957","Aluno")
         );
     @FXML
     private TableView<Livro> tableLiv = new TableView<Livro>();
     
         private final ObservableList<Livro> dataLivros =
         FXCollections.observableArrayList(
-            new Livro("1","Anjos e Demónios","policial","Dan Brown","Asa","01-04-2003","Requisitado","Não"),
-            new Livro("2","Harry Potter e a Câmera dos Segredos","magia","J.K.Rowlings","Asa","01-02-2001","Requisitado","Não"),
-            new Livro("3","Juntos Para Sempre", "Ficção Literária", "W. Bruce Cameron","Asa","04-04-2017","Livre","Não")
+       //     new Livro("1","Anjos e Demónios","policial","Dan Brown","Asa","01-04-2003","Requisitado","Não"),
+       //     new Livro("2","Harry Potter e a Câmera dos Segredos","magia","J.K.Rowlings","Asa","01-02-2001","Requisitado","Não"),
+       //     new Livro("3","Juntos Para Sempre", "Ficção Literária", "W. Bruce Cameron","Asa","04-04-2017","Livre","Não")
         );
     @FXML
     private TableView<Requisicao> tableReq = new TableView<Requisicao>();
     
         private final ObservableList<Requisicao> dataRequisicao =
         FXCollections.observableArrayList(
-            new Requisicao("1","589624782","16-04-2017",""),
-            new Requisicao("2","289756586","03-05-2017","21-04-2018"),
-            new Requisicao("2","589624782","22-04-2018","") 
+       //     new Requisicao("1","589624782","16-04-2017",""),
+       //     new Requisicao("2","289756586","03-05-2017","21-04-2018"),
+       //     new Requisicao("2","589624782","22-04-2018","") 
         );
         
     @FXML
@@ -99,65 +101,65 @@ public class ColunaController implements Initializable {
     
         private final ObservableList<Funcionario> dataFuncionario =
         FXCollections.observableArrayList(
-            new Funcionario("Maria","Loira","123","Funcionario"),
-            new Funcionario("John","admin","admin","Administrador")   
+       //     new Funcionario("Maria","Loira","123","Funcionario"),
+       //     new Funcionario("John","admin","admin","Administrador")   
         );
     
     @FXML
-    private TableColumn uti_cc_col = new TableColumn();
+    private TableColumn <Utilizador, String> uti_cc_col  = new TableColumn();
     @FXML
-    private TableColumn uti_nome_col = new TableColumn();
+    private TableColumn <Utilizador, String> uti_nome_col = new TableColumn();
     @FXML
-    private TableColumn uti_cont_col = new TableColumn();
+    private TableColumn <Utilizador, String> uti_cont_col = new TableColumn();
     @FXML
-    private TableColumn uti_mail_col = new TableColumn();
+    private TableColumn <Utilizador, String> uti_mail_col = new TableColumn();
     @FXML
-    private TableColumn uti_mora_col = new TableColumn();
+    private TableColumn <Utilizador, String> uti_mora_col = new TableColumn();
     @FXML
-    private TableColumn uti_nif_col = new TableColumn();
+    private TableColumn <Utilizador, String> uti_nif_col = new TableColumn();
     @FXML
-    private TableColumn uti_dNasc_col = new TableColumn();
+    private TableColumn <Utilizador, String> uti_dNasc_col = new TableColumn();
     @FXML
-    private TableColumn uti_loc_col = new TableColumn();
+    private TableColumn <Utilizador, String> uti_loc_col = new TableColumn();
     @FXML
-    private TableColumn uti_tipo_col = new TableColumn();
+    private TableColumn <Utilizador, String> uti_tipo_col = new TableColumn();
     
     @FXML
-    private TableColumn liv_nLiv_col = new TableColumn();
+    private TableColumn <Livro, String> liv_nLiv_col = new TableColumn();
     @FXML
-    private TableColumn liv_titu_col = new TableColumn();
+    private TableColumn <Livro, String> liv_titu_col = new TableColumn();
     @FXML
-    private TableColumn liv_tema_col = new TableColumn();
+    private TableColumn <Livro, String> liv_tema_col = new TableColumn();
     @FXML
-    private TableColumn liv_aut_col = new TableColumn();
+    private TableColumn <Livro, String> liv_aut_col = new TableColumn();
     @FXML
-    private TableColumn liv_edi_col = new TableColumn();
+    private TableColumn <Livro, String> liv_edi_col = new TableColumn();
     @FXML
-    private TableColumn liv_data_col = new TableColumn();
+    private TableColumn <Livro, String> liv_data_col = new TableColumn();
     @FXML
-    private TableColumn liv_requi_col = new TableColumn();
+    private TableColumn <Livro, String> liv_requi_col = new TableColumn();
     @FXML
-    private TableColumn liv_ina_col = new TableColumn();
+    private TableColumn <Livro, String> liv_ina_col = new TableColumn();
     
     @FXML
-    private TableColumn req_nLiv_col = new TableColumn();
+    private TableColumn <Requisicao, String> req_nLiv_col = new TableColumn();
     @FXML
-    private TableColumn req_cc_col = new TableColumn();
+    private TableColumn <Requisicao, String> req_cc_col = new TableColumn();
     @FXML
-    private TableColumn req_dReq_col = new TableColumn();
+    private TableColumn <Requisicao, String> req_dReq_col = new TableColumn();
     @FXML
-    private TableColumn req_dEnt_col = new TableColumn();
+    private TableColumn <Requisicao, String> req_dEnt_col = new TableColumn();
     @FXML
-    private TableColumn req_dias_col = new TableColumn();
+    private TableColumn <Requisicao, Integer> req_dias_col = new TableColumn();
     
     @FXML
-    private TableColumn func_nome_col = new TableColumn();
+    private TableColumn <Funcionario, String> func_nome_col = new TableColumn();
     @FXML
-    private TableColumn func_login_col = new TableColumn();
+    private TableColumn <Funcionario, String> func_login_col = new TableColumn();
     @FXML
-    private TableColumn func_pass_col = new TableColumn();
+    private TableColumn <Funcionario, String> func_pass_col = new TableColumn();
     @FXML
-    private TableColumn func_tipo_col = new TableColumn();
+    private TableColumn <Funcionario, String> func_tipo_col = new TableColumn();
     
     @FXML
     private TextField regUtiCc;
@@ -304,6 +306,14 @@ public class ColunaController implements Initializable {
     private Menu menuGravarCSV;
     @FXML
     private Menu menuCarregarCSV;
+    @FXML
+    private TextField utiFilteredField;
+    @FXML
+    private TextField livFilteredField;
+    @FXML
+    private TextField reqFilteredField;
+    @FXML
+    private TextField funcFilteredField;
 
     /**
      * Initializes the controller class.
@@ -313,61 +323,36 @@ public class ColunaController implements Initializable {
  
       //  table.setEditable(true);
  
-        uti_cc_col.setCellValueFactory(
-                new PropertyValueFactory("cc"));
-        uti_nome_col.setCellValueFactory(
-                new PropertyValueFactory("nome"));
-        uti_dNasc_col.setCellValueFactory(
-                new PropertyValueFactory("dNascimento"));
-        uti_cont_col.setCellValueFactory(
-                new PropertyValueFactory("contacto"));
-        uti_mail_col.setCellValueFactory(
-                new PropertyValueFactory("email"));
-        uti_mora_col.setCellValueFactory(
-                new PropertyValueFactory("morada"));
-        uti_loc_col.setCellValueFactory(
-                new PropertyValueFactory("localidade"));
-        uti_nif_col.setCellValueFactory(
-                new PropertyValueFactory("nif"));
-        uti_tipo_col.setCellValueFactory(
-                new PropertyValueFactory("tipo"));
+        uti_cc_col.setCellValueFactory(cellData -> cellData.getValue().ccProperty());
+        uti_nome_col.setCellValueFactory(cellData -> cellData.getValue().nomeProperty());
+        uti_dNasc_col.setCellValueFactory(cellData -> cellData.getValue().dNascimentoProperty());
+        uti_cont_col.setCellValueFactory(cellData -> cellData.getValue().contactoProperty());
+        uti_mail_col.setCellValueFactory(cellData -> cellData.getValue().emailProperty());
+        uti_mora_col.setCellValueFactory(cellData -> cellData.getValue().moradaProperty());
+        uti_loc_col.setCellValueFactory(cellData -> cellData.getValue().localidadeProperty());
+        uti_nif_col.setCellValueFactory(cellData -> cellData.getValue().nifProperty());
+        uti_tipo_col.setCellValueFactory(cellData -> cellData.getValue().tipoProperty());
         
-        liv_nLiv_col.setCellValueFactory(
-                new PropertyValueFactory("nLivro"));
-        liv_titu_col.setCellValueFactory(
-                new PropertyValueFactory("titulo"));
-        liv_tema_col.setCellValueFactory(
-                new PropertyValueFactory("tema"));
-        liv_aut_col.setCellValueFactory(
-                new PropertyValueFactory("autor"));
-        liv_edi_col.setCellValueFactory(
-                new PropertyValueFactory("editora"));
-        liv_data_col.setCellValueFactory(
-                new PropertyValueFactory("data"));
-        liv_requi_col.setCellValueFactory(
-                new PropertyValueFactory("requisitado"));
-        liv_ina_col.setCellValueFactory(
-                new PropertyValueFactory("inativo"));
+        liv_nLiv_col.setCellValueFactory(cellData -> cellData.getValue().nLivroProperty());
+        liv_titu_col.setCellValueFactory(cellData -> cellData.getValue().tituloProperty());
+        liv_tema_col.setCellValueFactory(cellData -> cellData.getValue().temaProperty());
+        liv_aut_col.setCellValueFactory(cellData -> cellData.getValue().autorProperty());
+        liv_edi_col.setCellValueFactory(cellData -> cellData.getValue().editoraProperty());
+        liv_data_col.setCellValueFactory(cellData -> cellData.getValue().dataProperty());
+        liv_requi_col.setCellValueFactory(cellData -> cellData.getValue().requisitadoProperty());
+        liv_ina_col.setCellValueFactory(cellData -> cellData.getValue().inativoProperty());
         
-        req_nLiv_col.setCellValueFactory(
-                new PropertyValueFactory("nLivro"));
-        req_cc_col.setCellValueFactory(
-                new PropertyValueFactory("cc"));
-        req_dReq_col.setCellValueFactory(
-                new PropertyValueFactory("dRequisicao"));
-        req_dEnt_col.setCellValueFactory(
-                new PropertyValueFactory("dEntrega"));
+        req_nLiv_col.setCellValueFactory(cellData -> cellData.getValue().nLivroProperty());
+        req_cc_col.setCellValueFactory(cellData -> cellData.getValue().ccProperty());
+        req_dReq_col.setCellValueFactory(cellData -> cellData.getValue().dRequisicaoProperty());
+        req_dEnt_col.setCellValueFactory(cellData -> cellData.getValue().dEntregaProperty());
         req_dias_col.setCellValueFactory(
                 new PropertyValueFactory("dias"));
           
-        func_nome_col.setCellValueFactory(
-                new PropertyValueFactory("nome"));
-        func_login_col.setCellValueFactory(
-                new PropertyValueFactory("login"));
-        func_pass_col.setCellValueFactory(
-                new PropertyValueFactory("password"));
-        func_tipo_col.setCellValueFactory(
-                new PropertyValueFactory("tipo"));
+        func_nome_col.setCellValueFactory(cellData -> cellData.getValue().nomeProperty());
+        func_login_col.setCellValueFactory(cellData -> cellData.getValue().loginProperty());
+        func_pass_col.setCellValueFactory(cellData -> cellData.getValue().passwordProperty());
+        func_tipo_col.setCellValueFactory(cellData -> cellData.getValue().tipoProperty());
  
         
         uti_cc_col.setCellFactory(TextFieldTableCell.forTableColumn());
@@ -420,6 +405,208 @@ public class ColunaController implements Initializable {
         //System.out.println(uti_cc_col.getCellData(0));
         //colunaIndexOf("289756586");
         //System.out.println(LivNIndexOf("1"));
+        
+        FilteredList<Utilizador> filteredDataUti = new FilteredList<>(dataUtilizadores, p -> true);
+
+        utiFilteredField.textProperty().addListener((observableUti, oldValueUti, newValueUti) -> {
+            filteredDataUti.setPredicate(utilizador -> {
+                //if filter text is empty, display all scores.
+                if (newValueUti == null || newValueUti.isEmpty()) {
+                    return true;
+                }
+                
+                //Compare score e valores
+                
+                String lowerCaseFilter = newValueUti.toLowerCase();
+                
+                if (utilizador.getCc().toLowerCase().contains(lowerCaseFilter))
+                {
+                    return true;
+                }
+                else if (utilizador.getNome().toLowerCase().contains(lowerCaseFilter))
+                {
+                    return true;
+                }
+                else if (utilizador.getDNascimento().toLowerCase().contains(lowerCaseFilter))
+                {
+                    return true;
+                }
+                else if (utilizador.getContacto().toLowerCase().contains(lowerCaseFilter))
+                {
+                    return true;
+                }
+                else if (utilizador.getEmail().toLowerCase().contains(lowerCaseFilter))
+                {
+                    return true;
+                }
+                else if (utilizador.getMorada().toLowerCase().contains(lowerCaseFilter))
+                {
+                    return true;
+                }
+                else if (utilizador.getLocalidade().toLowerCase().contains(lowerCaseFilter))
+                {
+                    return true;
+                }
+                else if (utilizador.getNif().toLowerCase().contains(lowerCaseFilter))
+                {
+                    return true;
+                }
+                else if (utilizador.getTipo().toLowerCase().contains(lowerCaseFilter))
+                {
+                    return true;
+                }
+                
+                return false;
+            });
+        });
+        
+        SortedList<Utilizador> sortedDataUti = new SortedList<>(filteredDataUti);
+        
+        sortedDataUti.comparatorProperty().bind(tableUti.comparatorProperty());
+        
+        tableUti.setItems(sortedDataUti);
+        
+        
+        
+        FilteredList<Livro> filteredDataLiv = new FilteredList<>(dataLivros, p -> true);
+
+        livFilteredField.textProperty().addListener((observableLiv, oldValueLiv, newValueLiv) -> {
+            filteredDataLiv.setPredicate(livro -> {
+                //if filter text is empty, display all scores.
+                if (newValueLiv == null || newValueLiv.isEmpty()) {
+                    return true;
+                }
+                
+                //Compare score e valores
+                
+                String lowerCaseFilter = newValueLiv.toLowerCase();
+                
+                if (livro.getNLivro().toLowerCase().contains(lowerCaseFilter))
+                {
+                    return true;
+                }
+                else if (livro.getTitulo().toLowerCase().contains(lowerCaseFilter))
+                {
+                    return true;
+                }
+                else if (livro.getTema().toLowerCase().contains(lowerCaseFilter))
+                {
+                    return true;
+                }
+                else if (livro.getAutor().toLowerCase().contains(lowerCaseFilter))
+                {
+                    return true;
+                }
+                else if (livro.getEditora().toLowerCase().contains(lowerCaseFilter))
+                {
+                    return true;
+                }
+                else if (livro.getData().toLowerCase().contains(lowerCaseFilter))
+                {
+                    return true;
+                }
+                else if (livro.getRequisitado().toLowerCase().contains(lowerCaseFilter))
+                {
+                    return true;
+                }
+                else if (livro.getInativo().toLowerCase().contains(lowerCaseFilter))
+                {
+                    return true;
+                }
+                
+                return false;
+            });
+        });
+        
+        SortedList<Livro> sortedDataLiv = new SortedList<>(filteredDataLiv);
+        
+        sortedDataLiv.comparatorProperty().bind(tableLiv.comparatorProperty());
+        
+        tableLiv.setItems(sortedDataLiv);
+        
+        
+        
+//        FilteredList<Requisicao> filteredDataReq = new FilteredList<>(dataRequisicao, p -> true);
+//
+//        reqFilteredField.textProperty().addListener((observableReq, oldValueReq, newValueReq) -> {
+//            filteredDataReq.setPredicate(requisicao -> {
+//                //if filter text is empty, display all scores.
+//                if (newValueReq == null || newValueReq.isEmpty()) {
+//                    return true;
+//                }
+//                
+//                //Compare score e valores
+//                
+//                String lowerCaseFilter = newValueReq.toLowerCase();
+//                
+//                if (requisicao.getNLivro().toLowerCase().contains(lowerCaseFilter))
+//                {
+//                    return true;
+//                }
+//                else if (requisicao.getCc().toLowerCase().contains(lowerCaseFilter))
+//                {
+//                    return true;
+//                }
+//                else if (requisicao.getDRequisicao().toLowerCase().contains(lowerCaseFilter))
+//                {
+//                    return true;
+//                }
+//                else if (requisicao.getDEntrega().toLowerCase().contains(lowerCaseFilter))
+//                {
+//                    return true;
+//                }
+//                
+//                return false;
+//            });
+//        });
+//        
+//        SortedList<Requisicao> sortedDataReq = new SortedList<>(filteredDataReq);
+//        
+//        sortedDataReq.comparatorProperty().bind(tableReq.comparatorProperty());
+//        
+//        tableReq.setItems(sortedDataReq);
+
+
+
+        FilteredList<Funcionario> filteredDataFunc = new FilteredList<>(dataFuncionario, p -> true);
+
+        funcFilteredField.textProperty().addListener((observableFunc, oldValueFunc, newValueFunc) -> {
+            filteredDataFunc.setPredicate(funcionario -> {
+                //if filter text is empty, display all scores.
+                if (newValueFunc == null || newValueFunc.isEmpty()) {
+                    return true;
+                }
+                
+                //Compare score e valores
+                
+                String lowerCaseFilter = newValueFunc.toLowerCase();
+                
+                if (funcionario.getNome().toLowerCase().contains(lowerCaseFilter))
+                {
+                    return true;
+                }
+                else if (funcionario.getLogin().toLowerCase().contains(lowerCaseFilter))
+                {
+                    return true;
+                }
+                else if (funcionario.getPassword().toLowerCase().contains(lowerCaseFilter))
+                {
+                    return true;
+                }
+                else if (funcionario.getTipo().toLowerCase().contains(lowerCaseFilter))
+                {
+                    return true;
+                }
+                
+                return false;
+            });
+        });
+        
+        SortedList<Funcionario> sortedDataFunc = new SortedList<>(filteredDataFunc);
+        
+        sortedDataFunc.comparatorProperty().bind(tablefunc.comparatorProperty());
+        
+        tablefunc.setItems(sortedDataFunc);
         
         carregarConf();
         carregarFuncionario();
@@ -932,6 +1119,10 @@ public class ColunaController implements Initializable {
         regReqWindow.setVisible(false);
         regFuncWindow.setVisible(false);
         formLogin.setVisible(false);
+        utiFilteredField.setVisible(false);
+        livFilteredField.setVisible(false);
+        reqFilteredField.setVisible(false);
+        funcFilteredField.setVisible(false);
     }
             
     public int isInteger(String test){
@@ -948,6 +1139,7 @@ public class ColunaController implements Initializable {
     {
         fecharJanelas();
         tableUti.setVisible(true);
+        utiFilteredField.setVisible(true);
     }
 
     @FXML
@@ -955,6 +1147,7 @@ public class ColunaController implements Initializable {
     {
         fecharJanelas();
         tableLiv.setVisible(true);
+        livFilteredField.setVisible(true);
     }
 
     @FXML
@@ -962,6 +1155,7 @@ public class ColunaController implements Initializable {
     {
         fecharJanelas();
         tableReq.setVisible(true);
+       // reqFilteredField.setVisible(true);
         calcularDias();
         req_dEnt_col.setSortType(TableColumn.SortType.ASCENDING);
         req_dias_col.setSortType(TableColumn.SortType.DESCENDING);
@@ -973,6 +1167,7 @@ public class ColunaController implements Initializable {
     {
        fecharJanelas();
        tablefunc.setVisible(true);
+       funcFilteredField.setVisible(true);
     }
 
     @FXML

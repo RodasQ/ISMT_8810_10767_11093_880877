@@ -1,5 +1,6 @@
 
 import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -42,6 +43,11 @@ public class Livro {
         nLivro.set(s);
     }
     
+    public StringProperty nLivroProperty()
+        {
+            return nLivro;
+        }
+    
     public String getTitulo() {
         return titulo.get();
     }
@@ -49,6 +55,11 @@ public class Livro {
     public void setTitulo(String s) {
         titulo.set(s);
     }
+    
+    public StringProperty tituloProperty()
+        {
+            return titulo;
+        }
     
     public String getTema() {
         return tema.get();
@@ -58,6 +69,11 @@ public class Livro {
         tema.set(s);
     }
     
+    public StringProperty temaProperty()
+        {
+            return tema;
+        }
+    
     public String getAutor() {
         return autor.get();
     }
@@ -65,6 +81,11 @@ public class Livro {
     public void setAutor(String s) {
         autor.set(s);
     }
+    
+    public StringProperty autorProperty()
+        {
+            return autor;
+        }
     
     public String getEditora() {
         return editora.get();
@@ -74,6 +95,11 @@ public class Livro {
         editora.set(s);
     }
     
+    public StringProperty editoraProperty()
+        {
+            return editora;
+        }
+    
     public String getData() {
         return data.get();
     }
@@ -81,6 +107,11 @@ public class Livro {
     public void setData(String s) {
         data.set(s);
     }
+    
+    public StringProperty dataProperty()
+        {
+            return data;
+        }
     
     public String getRequisitado() {
         return requisitado.get();
@@ -90,6 +121,11 @@ public class Livro {
         requisitado.set(s);
     }
     
+    public StringProperty requisitadoProperty()
+        {
+            return requisitado;
+        }
+    
     public String getInativo() {
         return inativo.get();
     }
@@ -97,6 +133,11 @@ public class Livro {
     public void setInativo(String s) {
         inativo.set(s);
     }
+    
+    public StringProperty inativoProperty()
+        {
+            return inativo;
+        }
 
     
 }

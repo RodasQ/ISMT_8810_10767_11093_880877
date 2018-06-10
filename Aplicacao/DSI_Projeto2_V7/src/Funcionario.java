@@ -1,5 +1,6 @@
 
 import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -34,12 +35,22 @@ public class Funcionario {
             nome.set(s);
         }
         
+        public StringProperty nomeProperty()
+        {
+            return nome;
+        }
+        
         public String getLogin() {
             return login.get();
         }
  
         public void setLogin(String s) {
             login.set(s);
+        }
+        
+        public StringProperty loginProperty()
+        {
+            return login;
         }
         
         public String getPassword() {
@@ -50,11 +61,21 @@ public class Funcionario {
             password.set(s);
         }
         
+        public StringProperty passwordProperty()
+        {
+            return password;
+        }
+        
         public String getTipo() {
             return tipo.get();
         }
  
         public void setTipo(String s) {
             tipo.set(s);
+        }
+        
+        public StringProperty tipoProperty()
+        {
+            return tipo;
         }
 }

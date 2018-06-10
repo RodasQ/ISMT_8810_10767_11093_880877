@@ -1,6 +1,8 @@
 
+import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -37,6 +39,11 @@ public class Requisicao {
         nLivro.set(s);
     }
     
+    public StringProperty nLivroProperty()
+        {
+            return nLivro;
+        }
+    
     public String getCc() {
         return cc.get();
     }
@@ -44,6 +51,11 @@ public class Requisicao {
     public void setCc(String s) {
         cc.set(s);
     }
+    
+    public StringProperty ccProperty()
+        {
+            return cc;
+        }
     
     public String getDRequisicao() {
         return dRequisicao.get();
@@ -53,6 +65,11 @@ public class Requisicao {
         dRequisicao.set(s);
     }
     
+    public StringProperty dRequisicaoProperty()
+        {
+            return dRequisicao;
+        }
+    
     public String getDEntrega() {
         return dEntrega.get();
     }
@@ -61,6 +78,11 @@ public class Requisicao {
         dEntrega.set(s);
     }
     
+    public StringProperty dEntregaProperty()
+        {
+            return dEntrega;
+        }
+    
     public Integer getDias() {
         return dias.get();
     }
@@ -68,4 +90,9 @@ public class Requisicao {
     public void setDias(Integer s) {
         dias.set(s);
     }
+    
+    public IntegerProperty diasProperty()
+        {
+            return dias;
+        }
 }
