@@ -1167,7 +1167,7 @@ public class ColunaController implements Initializable {
     {
        fecharJanelas();
        tablefunc.setVisible(true);
-       funcFilteredField.setVisible(true);
+       funcFilteredField.setVisible(true); 
     }
 
     @FXML
@@ -1396,7 +1396,11 @@ public class ColunaController implements Initializable {
      //   MyDataType selectedItem = tableUti.getSelectionModel().getSelectedItem();
        if(ReqCcIndexOf(tableUti.getSelectionModel().getSelectedItem().getCc()) == -1)
        {
-            tableUti.getItems().remove(tableUti.getSelectionModel().getSelectedItem());
+           
+           dataUtilizadores.remove(tableUti.getSelectionModel().getSelectedIndex()); //função com o filteredList
+           
+         //   tableUti.getItems().remove(tableUti.getSelectionModel().getSelectedItem()); //função sem o filteredList
+           
             Alert alert = new Alert(AlertType.INFORMATION);
             alert.setTitle("Apagado com sucesso");
             alert.setHeaderText("Utilizador apagado com sucesso!");
@@ -1429,7 +1433,13 @@ public class ColunaController implements Initializable {
 
     @FXML
     private void apagarLinhaRequisicao(ActionEvent event) {
-        tableReq.getItems().remove(tableReq.getSelectionModel().getSelectedItem());
+        tableReq.getItems().remove(tableReq.getSelectionModel().getSelectedItem()); //função sem filteredList
+       // dataRequisicao.remove(tableReq.getSelectionModel().getSelectedIndex()); //função para filteredList
+        Alert alert = new Alert(AlertType.INFORMATION);
+        alert.setTitle("Apagado com sucesso");
+        alert.setHeaderText("Requisição apagada com sucesso!");
+        //alert.setContentText("I have a great message for you!");
+        alert.showAndWait();
     }
 
     @FXML
@@ -1490,7 +1500,9 @@ public class ColunaController implements Initializable {
            {
                 Alert alert = new Alert(AlertType.WARNING); 
                 alert.setTitle("Multa a pagar"); 
-                float m = (tableReq.getSelectionModel().getSelectedItem().getDias() - diasAtrasoPermitidos) * multaPorDia;
+                float m = (tableReq.getSelectionModel().getSelectedItem().getDias() - diasAtrasoPermitidos) * multaPorDia; //sem filteredList
+               // float m = (dataRequisicao.get(tableReq.getSelectionModel().getSelectedIndex()).getDias() - diasAtrasoPermitidos) * multaPorDia; //com filteredList
+                
                 alert.setHeaderText(""); 
                 alert.setContentText("Este utiliador tem a pagar " + m + "€ de multa"); 
                 alert.showAndWait();
