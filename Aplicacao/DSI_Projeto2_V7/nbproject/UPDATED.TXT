@@ -1,5 +1,5 @@
 ============================================
-Project DSI_Projeto2_V1 build script updated
+Project DSI_Projeto2_V7 build script updated
 ============================================
 
 Project build script file jfx-impl.xml in nbproject sub-directory has not been recognized
