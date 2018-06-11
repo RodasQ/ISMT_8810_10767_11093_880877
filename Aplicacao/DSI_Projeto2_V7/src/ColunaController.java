@@ -59,6 +59,7 @@ import javafx.scene.text.Font;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.Text;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 /**
@@ -1519,7 +1520,8 @@ public class ColunaController implements Initializable {
     @FXML
     private void apagarLinhaFuncionario(ActionEvent event) 
     {
-        tablefunc.getItems().remove(tablefunc.getSelectionModel().getSelectedItem());
+        dataFuncionario.remove(tablefunc.getSelectionModel().getSelectedIndex()); //com filteredList
+        //tablefunc.getItems().remove(tablefunc.getSelectionModel().getSelectedItem()); //sem filteredList
         //não tem verificação para não poder apagar todos os admins, porque partimos do principio que o administrador do sistema percebe de informática!
     }
 
@@ -2422,8 +2424,9 @@ public class ColunaController implements Initializable {
     {
         int i=0;      
         try{
-            
-            PrintWriter pw = new PrintWriter(new File("Utilizadores.csv"));  
+            FileChooser ficheiro = new FileChooser();
+            File ficheiro2 = ficheiro.showOpenDialog(new Stage());
+            PrintWriter pw = new PrintWriter(ficheiro2);  
             for(i=0;i<dataUtilizadores.size();i++)
             {
                 String s = "\"" + uti_cc_col.getCellData(i).toString() + "\""
@@ -2450,7 +2453,9 @@ public class ColunaController implements Initializable {
     {
         int i=0;      
         try{
-            PrintWriter pw = new PrintWriter(new File("Livros.csv"));  
+            FileChooser ficheiro = new FileChooser();
+            File ficheiro2 = ficheiro.showOpenDialog(new Stage());
+            PrintWriter pw = new PrintWriter(ficheiro2);  
             
             for(i=0;i<dataLivros.size();i++)
             {
@@ -2479,7 +2484,9 @@ public class ColunaController implements Initializable {
     {
         int i=0;      
         try{
-            PrintWriter pw = new PrintWriter(new File("Requisicao.csv"));  
+            FileChooser ficheiro = new FileChooser();
+            File ficheiro2 = ficheiro.showOpenDialog(new Stage());
+            PrintWriter pw = new PrintWriter(ficheiro2);  
             
             for(i=0;i<dataRequisicao.size();i++)
             {
@@ -2505,7 +2512,9 @@ public class ColunaController implements Initializable {
     {
         int i=0;      
         try{
-            PrintWriter pw = new PrintWriter(new File("Funcionario.csv"));            
+            FileChooser ficheiro = new FileChooser();
+            File ficheiro2 = ficheiro.showOpenDialog(new Stage());
+            PrintWriter pw = new PrintWriter(ficheiro2);            
 
             for(i=0;i<dataFuncionario.size();i++)
             {
@@ -2539,7 +2548,9 @@ public class ColunaController implements Initializable {
             //vazio de proposito
         }    
         try{
-            br = new BufferedReader(new FileReader("Utilizadores.csv"));
+            FileChooser ficheiro = new FileChooser();
+            File ficheiro2 = ficheiro.showOpenDialog(new Stage());
+            br = new BufferedReader(new FileReader(ficheiro2));
             while((line = br.readLine()) !=null)
             {               
                 String[] s = line.split(";");
@@ -2593,7 +2604,9 @@ public class ColunaController implements Initializable {
             //vazio de proposito
         }    
         try{
-            br = new BufferedReader(new FileReader("Livros.csv"));
+            FileChooser ficheiro = new FileChooser();
+            File ficheiro2 = ficheiro.showOpenDialog(new Stage());
+            br = new BufferedReader(new FileReader(ficheiro2));
             while((line = br.readLine()) !=null)
             {               
                 String[] s = line.split(";");
@@ -2649,7 +2662,9 @@ public class ColunaController implements Initializable {
             
             
         try{
-            br = new BufferedReader(new FileReader("Requisicao.csv"));
+            FileChooser ficheiro = new FileChooser();
+            File ficheiro2 = ficheiro.showOpenDialog(new Stage());
+            br = new BufferedReader(new FileReader(ficheiro2));
             while((line = br.readLine()) !=null)
             {
                 String[] s = line.split(";");
@@ -2697,7 +2712,9 @@ public class ColunaController implements Initializable {
             
             
         try{
-            br = new BufferedReader(new FileReader("Funcionario.csv"));
+            FileChooser ficheiro = new FileChooser();
+            File ficheiro2 = ficheiro.showOpenDialog(new Stage());
+            br = new BufferedReader(new FileReader(ficheiro2));
             while((line = br.readLine()) !=null)
             {
                 String[] s = line.split(";");
