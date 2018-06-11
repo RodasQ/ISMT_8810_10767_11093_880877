@@ -303,7 +303,7 @@ public class ColunaController implements Initializable {
     @FXML
     private Menu menuGravarCSV;
     @FXML
-    private Menu menuGravarCSV1;
+    private Menu menuCarregarCSV;
 
     /**
      * Initializes the controller class.
@@ -428,6 +428,7 @@ public class ColunaController implements Initializable {
         carregarUtilizador();
 
         loginRestricoes();
+        
 
     }   
     
@@ -962,6 +963,9 @@ public class ColunaController implements Initializable {
         fecharJanelas();
         tableReq.setVisible(true);
         calcularDias();
+        req_dEnt_col.setSortType(TableColumn.SortType.ASCENDING);
+        req_dias_col.setSortType(TableColumn.SortType.DESCENDING);
+        tableReq.getSortOrder().setAll(req_dEnt_col,req_dias_col);
     }
     
     @FXML
@@ -1287,11 +1291,11 @@ public class ColunaController implements Initializable {
         }
         else
         {       
-           if (diasAtrasoPermitidos < stringToInt(tableReq.getSelectionModel().getSelectedItem().getDias()))
+           if (diasAtrasoPermitidos < tableReq.getSelectionModel().getSelectedItem().getDias())
            {
                 Alert alert = new Alert(AlertType.WARNING); 
                 alert.setTitle("Multa a pagar"); 
-                float m = (stringToInt(tableReq.getSelectionModel().getSelectedItem().getDias()) - diasAtrasoPermitidos) * multaPorDia;
+                float m = (tableReq.getSelectionModel().getSelectedItem().getDias() - diasAtrasoPermitidos) * multaPorDia;
                 alert.setHeaderText(""); 
                 alert.setContentText("Este utiliador tem a pagar " + m + "€ de multa"); 
                 alert.showAndWait();
@@ -1309,6 +1313,7 @@ public class ColunaController implements Initializable {
     private void apagarLinhaFuncionario(ActionEvent event) 
     {
         tablefunc.getItems().remove(tablefunc.getSelectionModel().getSelectedItem());
+        //não tem verificação para não poder apagar todos os admins, porque partimos do principio que o administrador do sistema percebe de informática!
     }
 
     @FXML
@@ -1588,8 +1593,6 @@ public class ColunaController implements Initializable {
     
     private void calcularDias()
     {
-        //chamar esta função qaundo a janela Requisições é aberta!
-        //falta fazer esta função
         SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
         Date data1;
         Date data2 = new Date();
@@ -1610,7 +1613,7 @@ public class ColunaController implements Initializable {
                 dias = (int) (resultado / (1000*60*60*24));
                 
                 temp = tableReq.getItems().get(i);               
-                temp.setDias(Integer.toString(dias));
+                temp.setDias(dias);
                 
                 tableReq.getItems().set(i, temp);
             } catch (ParseException ex) {
@@ -2171,6 +2174,7 @@ public class ColunaController implements Initializable {
         menuFloatAtivo.setVisible(false);
         menuFloatInativo.setVisible(false);
         menuGravarCSV.setVisible(false);
+        menuCarregarCSV.setVisible(false);
     }
     private void funcRestricoes()
     {
@@ -2186,6 +2190,7 @@ public class ColunaController implements Initializable {
         menuFloatAtivo.setVisible(true);
         menuFloatInativo.setVisible(true);
         menuGravarCSV.setVisible(false);
+        menuCarregarCSV.setVisible(false);
     }
     
     private void adminRestricoes()
@@ -2202,6 +2207,7 @@ public class ColunaController implements Initializable {
         menuFloatAtivo.setVisible(true);
         menuFloatInativo.setVisible(true);
         menuGravarCSV.setVisible(true);
+        menuCarregarCSV.setVisible(true);
     }
 
     @FXML
@@ -2335,6 +2341,7 @@ public class ColunaController implements Initializable {
     @FXML
     private void carregarUtilizadorCSV(ActionEvent event) 
     {
+<<<<<<< HEAD
                 BufferedReader br = null; 
         String line = "";
               
@@ -2355,6 +2362,34 @@ public class ColunaController implements Initializable {
                 String[] s = line.split(";");
                 
                 dataUtilizadores.add(new Utilizador(s[0].substring(1, s[0].length()-1),s[1].substring(1, s[1].length()-1),s[2].substring(1, s[2].length()-1),s[3].substring(1, s[3].length()-1))); 
+=======
+        BufferedReader br = null; 
+        String line = "";
+        try{    
+        while (true)
+        {
+            dataUtilizadores.remove(0);
+        }
+        }catch (Exception ex){
+            //vazio de proposito
+        }    
+        try{
+            br = new BufferedReader(new FileReader("Utilizadores.csv"));
+            while((line = br.readLine()) !=null)
+            {               
+                String[] s = line.split(";");
+                
+                dataUtilizadores.add(new Utilizador(s[0].substring(1, s[0].length()-1),
+                        s[1].substring(1, s[1].length()-1),
+                        s[2].substring(1, s[2].length()-1),
+                        s[3].substring(1, s[3].length()-1),
+                        s[4].substring(1, s[4].length()-1),
+                        s[5].substring(1, s[5].length()-1),
+                        s[6].substring(1, s[6].length()-1),
+                        s[7].substring(1, s[7].length()-1),
+                        s[8].substring(1, s[8].length()-1))); 
+                
+>>>>>>> 6a0a36af628df839e2a69657007e54047ae7904b
             }
             
             
@@ -2363,7 +2398,11 @@ public class ColunaController implements Initializable {
         {
             if (ex.getClass() == IOException.class)
             {
+<<<<<<< HEAD
                 System.out.println("Deu erro a carregar utilizador: " + ex);
+=======
+                System.out.println("Deu erro a carregar utilizadores: " + ex);
+>>>>>>> 6a0a36af628df839e2a69657007e54047ae7904b
             }
             else if (ex instanceof EOFException)
             {                
@@ -2383,6 +2422,7 @@ public class ColunaController implements Initializable {
     @FXML
     private void carregarLivroCSV(ActionEvent event) 
     {
+<<<<<<< HEAD
                BufferedReader br = null; 
         String line = "";
               
@@ -2403,6 +2443,33 @@ public class ColunaController implements Initializable {
                 String[] s = line.split(";");
                 
                 dataLivros.add(new Livros(s[0].substring(1, s[0].length()-1),s[1].substring(1, s[1].length()-1),s[2].substring(1, s[2].length()-1),s[3].substring(1, s[3].length()-1))); 
+=======
+        BufferedReader br = null; 
+        String line = "";
+        try{    
+        while (true)
+        {
+            dataLivros.remove(0);
+        }
+        }catch (Exception ex){
+            //vazio de proposito
+        }    
+        try{
+            br = new BufferedReader(new FileReader("Livros.csv"));
+            while((line = br.readLine()) !=null)
+            {               
+                String[] s = line.split(";");
+                
+                dataLivros.add(new Livro(s[0].substring(1, s[0].length()-1),
+                        s[1].substring(1, s[1].length()-1),
+                        s[2].substring(1, s[2].length()-1),
+                        s[3].substring(1, s[3].length()-1),
+                        s[4].substring(1, s[4].length()-1),
+                        s[5].substring(1, s[5].length()-1),
+                        s[6].substring(1, s[6].length()-1),
+                        s[7].substring(1, s[7].length()-1))); 
+                
+>>>>>>> 6a0a36af628df839e2a69657007e54047ae7904b
             }
             
             
@@ -2411,7 +2478,11 @@ public class ColunaController implements Initializable {
         {
             if (ex.getClass() == IOException.class)
             {
+<<<<<<< HEAD
                 System.out.println("Deu erro a carregar livro: " + ex);
+=======
+                System.out.println("Deu erro a carregar utilizadores: " + ex);
+>>>>>>> 6a0a36af628df839e2a69657007e54047ae7904b
             }
             else if (ex instanceof EOFException)
             {                
@@ -2425,7 +2496,11 @@ public class ColunaController implements Initializable {
                 Logger.getLogger(ColunaController.class.getName()).log(Level.SEVERE, null, ex);
             }
 
+<<<<<<< HEAD
         } 
+=======
+        }
+>>>>>>> 6a0a36af628df839e2a69657007e54047ae7904b
     }
 
     @FXML
@@ -2479,7 +2554,11 @@ public class ColunaController implements Initializable {
     @FXML
     private void carregarFuncionarioCSV(ActionEvent event) 
     {
+<<<<<<< HEAD
             BufferedReader br = null; 
+=======
+        BufferedReader br = null; 
+>>>>>>> 6a0a36af628df839e2a69657007e54047ae7904b
         String line = "";
               
         try{    
@@ -2498,7 +2577,14 @@ public class ColunaController implements Initializable {
             {
                 String[] s = line.split(";");
                 
+<<<<<<< HEAD
                 dataFuncionario.add(new Funcionario(s[0].substring(1, s[0].length()-1),s[1].substring(1, s[1].length()-1),s[2].substring(1, s[2].length()-1),s[3].substring(1, s[3].length()-1))); 
+=======
+                dataFuncionario.add(new Funcionario(s[0].substring(1, s[0].length()-1),
+                        s[1].substring(1, s[1].length()-1),
+                        s[2].substring(1, s[2].length()-1),
+                        s[3].substring(1, s[3].length()-1))); 
+>>>>>>> 6a0a36af628df839e2a69657007e54047ae7904b
             }
             
             
@@ -2507,7 +2593,11 @@ public class ColunaController implements Initializable {
         {
             if (ex.getClass() == IOException.class)
             {
+<<<<<<< HEAD
                 System.out.println("Deu erro a carregar utilizdor: " + ex);
+=======
+                System.out.println("Deu erro a carregar requisição: " + ex);
+>>>>>>> 6a0a36af628df839e2a69657007e54047ae7904b
             }
             else if (ex instanceof EOFException)
             {                
@@ -2521,7 +2611,11 @@ public class ColunaController implements Initializable {
                 Logger.getLogger(ColunaController.class.getName()).log(Level.SEVERE, null, ex);
             }
 
+<<<<<<< HEAD
         }    
+=======
+        }
+>>>>>>> 6a0a36af628df839e2a69657007e54047ae7904b
     }
     
 }
