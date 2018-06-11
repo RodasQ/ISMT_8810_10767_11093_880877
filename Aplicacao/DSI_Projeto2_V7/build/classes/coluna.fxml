@@ -56,7 +56,7 @@
                                     <MenuItem mnemonicParsing="false" onAction="#gravarFuncionarioCSV" text="Funcionarios" />
                                  </items>
                               </Menu>
-                              <Menu fx:id="menuGravarCSV1" mnemonicParsing="false" text="Importar CSV">
+                              <Menu fx:id="menuCarregarCSV" mnemonicParsing="false" text="Importar CSV">
                                  <items>
                                     <MenuItem mnemonicParsing="false" onAction="#carregarUtilizadorCSV" text="Utilizadores" />
                                     <MenuItem mnemonicParsing="false" onAction="#carregarLivroCSV" text="Livros" />
@@ -92,7 +92,7 @@
                   </MenuBar>
                </children>
             </VBox>
-            <TableView fx:id="tableUti" editable="true" layoutY="25.0" onMousePressed="#click" prefHeight="374.0" prefWidth="614.0" tableMenuButtonVisible="true" visible="false">
+            <TableView fx:id="tableUti" editable="true" layoutY="50.0" onMousePressed="#click" prefHeight="350.0" prefWidth="600.0" tableMenuButtonVisible="true">
                      <columns>
                         <TableColumn fx:id="uti_cc_col" onEditCommit="#editarUtiCc" text="Nº CC/TR" />
                         <TableColumn fx:id="uti_nome_col" onEditCommit="#editarUtiNome" prefWidth="116.0" text="Nome" />
@@ -113,7 +113,7 @@
                   </ContextMenu>
                </contextMenu>
             </TableView>
-            <TableView fx:id="tableLiv" editable="true" layoutY="25.0" prefHeight="374.0" prefWidth="600.0" tableMenuButtonVisible="true" visible="false">
+            <TableView fx:id="tableLiv" editable="true" layoutY="50.0" prefHeight="350.0" prefWidth="600.0" tableMenuButtonVisible="true" visible="false">
               <columns>
                 <TableColumn fx:id="liv_nLiv_col" onEditCommit="#editarLivroNum" prefWidth="75.0" text="Nº livro" />
                 <TableColumn fx:id="liv_titu_col" onEditCommit="#editarLivroTitulo" prefWidth="75.0" text="Titulo" />
@@ -134,7 +134,7 @@
                   </ContextMenu>
                </contextMenu>
             </TableView>
-            <TableView fx:id="tableReq" editable="true" layoutY="25.0" prefHeight="374.0" prefWidth="600.0" tableMenuButtonVisible="true" visible="false">
+            <TableView fx:id="tableReq" editable="true" layoutY="50.0" prefHeight="350.0" prefWidth="600.0" tableMenuButtonVisible="true" visible="false">
               <columns>
                 <TableColumn fx:id="req_nLiv_col" prefWidth="75.0" text="Nº Livro" />
                 <TableColumn fx:id="req_cc_col" prefWidth="85.0" text="Nº CC" />
@@ -155,7 +155,7 @@
                   </ContextMenu>
                </contextMenu>
             </TableView>
-            <TableView fx:id="tablefunc" layoutY="25.0" prefHeight="374.0" prefWidth="600.0" visible="false">
+            <TableView fx:id="tablefunc" layoutY="50.0" prefHeight="350.0" prefWidth="600.0" tableMenuButtonVisible="true" visible="false">
               <columns>
                 <TableColumn fx:id="func_nome_col" prefWidth="75.0" text="Nome" />
                 <TableColumn fx:id="func_login_col" prefWidth="75.0" text="Login" />
@@ -307,6 +307,10 @@
                   <Text fx:id="erroDeLogin" fill="#c63131" layoutX="252.0" layoutY="293.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dados Incorrectos" visible="false" />
                </children>
             </Pane>
+            <TextField fx:id="utiFilteredField" layoutY="25.0" prefHeight="25.0" prefWidth="600.0" promptText="Procurar" />
+            <TextField fx:id="livFilteredField" layoutY="25.0" prefHeight="25.0" prefWidth="600.0" promptText="Procurar" visible="false" />
+            <TextField fx:id="reqFilteredField" layoutY="25.0" prefHeight="25.0" prefWidth="600.0" promptText="Procurar" visible="false" />
+            <TextField fx:id="funcFilteredField" layoutY="25.0" prefHeight="25.0" prefWidth="600.0" promptText="Procurar" visible="false" />
          </children></AnchorPane>
 
   </content>
