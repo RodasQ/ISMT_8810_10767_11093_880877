@@ -1519,7 +1519,8 @@ public class ColunaController implements Initializable {
     @FXML
     private void apagarLinhaFuncionario(ActionEvent event) 
     {
-        tablefunc.getItems().remove(tablefunc.getSelectionModel().getSelectedItem());
+        dataFuncionario.remove(tablefunc.getSelectionModel().getSelectedIndex()); //com filteredList
+       // tablefunc.getItems().remove(tablefunc.getSelectionModel().getSelectedItem()); //sem filteredList
         //não tem verificação para não poder apagar todos os admins, porque partimos do principio que o administrador do sistema percebe de informática!
     }
 

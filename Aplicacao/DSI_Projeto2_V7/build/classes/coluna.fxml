@@ -95,9 +95,9 @@
             <TableView fx:id="tableUti" editable="true" layoutY="50.0" onMousePressed="#click" prefHeight="350.0" prefWidth="600.0" tableMenuButtonVisible="true">
                      <columns>
                         <TableColumn fx:id="uti_cc_col" onEditCommit="#editarUtiCc" text="Nº CC/TR" />
-                        <TableColumn fx:id="uti_nome_col" onEditCommit="#editarUtiNome" prefWidth="116.0" text="Nome" />
-                  <TableColumn fx:id="uti_dNasc_col" onEditCommit="#editarUtiDN" prefWidth="75.0" text="Data Nascimento" />
-                        <TableColumn fx:id="uti_cont_col" onEditCommit="#editarUtiContacto" prefWidth="94.0" text="Contacto" />
+                        <TableColumn fx:id="uti_nome_col" onEditCommit="#editarUtiNome" prefWidth="108.0" text="Nome" />
+                  <TableColumn fx:id="uti_dNasc_col" onEditCommit="#editarUtiDN" prefWidth="91.0" text="Data Nascimento" />
+                        <TableColumn fx:id="uti_cont_col" onEditCommit="#editarUtiContacto" prefWidth="86.0" text="Contacto" />
                         <TableColumn fx:id="uti_mail_col" onEditCommit="#editarUtiEmail" prefWidth="93.0" text="E-mail" />
                         <TableColumn fx:id="uti_mora_col" onEditCommit="#editarUtiMorada" prefWidth="150.0" text="Morada" />
                   <TableColumn fx:id="uti_loc_col" onEditCommit="#editarUtiLocalidade" prefWidth="75.0" text="Localidade" />
@@ -160,7 +160,7 @@
                 <TableColumn fx:id="func_nome_col" prefWidth="75.0" text="Nome" />
                 <TableColumn fx:id="func_login_col" prefWidth="75.0" text="Login" />
                   <TableColumn fx:id="func_pass_col" prefWidth="75.0" text="Password" />
-                  <TableColumn fx:id="func_tipo_col" prefWidth="75.0" text="Tipo" />
+                  <TableColumn fx:id="func_tipo_col" prefWidth="85.0" text="Tipo" />
               </columns>
                <contextMenu>
                   <ContextMenu>
@@ -307,7 +307,7 @@
                   <Text fx:id="erroDeLogin" fill="#c63131" layoutX="252.0" layoutY="293.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dados Incorrectos" visible="false" />
                </children>
             </Pane>
-            <TextField fx:id="utiFilteredField" layoutY="25.0" prefHeight="25.0" prefWidth="600.0" promptText="Procurar" />
+            <TextField fx:id="utiFilteredField" layoutY="25.0" prefHeight="25.0" prefWidth="600.0" promptText="Procurar" visible="false" />
             <TextField fx:id="livFilteredField" layoutY="25.0" prefHeight="25.0" prefWidth="600.0" promptText="Procurar" visible="false" />
             <TextField fx:id="reqFilteredField" layoutY="25.0" prefHeight="25.0" prefWidth="600.0" promptText="Procurar" visible="false" />
             <TextField fx:id="funcFilteredField" layoutY="25.0" prefHeight="25.0" prefWidth="600.0" promptText="Procurar" visible="false" />
